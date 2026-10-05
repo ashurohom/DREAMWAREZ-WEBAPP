@@ -1,0 +1,92 @@
+/* Special CSS code specific to the Home page */
+
+
+
+.home-page .site-header .logo-subtitle {
+  color: var(--text-muted);
+}
+
+/* Home Hero Section Styles */
+.home-page .hero-section {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1651151798244-e2641c1af115?q=100&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 100vh;
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 60px;
+  overflow: hidden;
+}
+
+.home-page .hero-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+/* Interactive Rotating Ring Animation */
+.interactive-ring-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-ring-container:hover {
+  transform: scale(1.05);
+}
+
+.ring-center-icon {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: rgba(122, 122, 122, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.interactive-ring-container:hover .ring-center-icon {
+  background: rgba(122, 122, 122, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 50px rgba(122, 122, 122, 0.6);
+  transform: scale(1.15);
+}
+
+.rotating-text-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: spinRing 20s linear infinite;
+  transition: opacity 0.5s;
+  opacity: 0.8;
+}
+
+.interactive-ring-container:hover .rotating-text-svg {
+  opacity: 1;
+  /* Faster spin on hover */
+  animation: spinRing 8s linear infinite;
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

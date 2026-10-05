@@ -1,0 +1,64 @@
+/* Our Softwares specific styles */
+.softwares-hero {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), url('../../assets/softwares_hero_bg_new.png');
+}
+
+.softwares-title-gradient {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+  background-size: 200% auto;
+  animation: shine-slow 8s ease infinite;
+}
+
+/* Logo Marquee Slider */
+.logo-slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+}
+
+.logo-slider-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-logos 30s linear infinite;
+}
+
+.logo-slider-track:hover {
+  animation-play-state: paused;
+}
+
+.client-logo-slide {
+  flex: 0 0 auto;
+  width: 200px;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.client-logo-slide:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.client-logo-slide img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
