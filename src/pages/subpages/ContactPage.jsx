@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
-import contactHeroBg from '../../assets/new_contact_hero.png';
 import newHeroImage from '../../assets/Contact-UsJPEG-1.jpg';
 import {
   MapPin,
@@ -423,179 +422,188 @@ export function ContactPage() {
           </div>
         </section>
 
-        {/* ================= INTERACTIVE CONSULTATION FORM ================= */}
-        <section id="contact-form" className="py-20 px-6 bg-slate-50 relative overflow-hidden">
-          
-          {/* Subtle Ambient Background */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-            <div className="absolute top-20 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-[100px]" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-100/40 rounded-full blur-[100px]" />
-          </div>
-
-          <div className="max-w-[1240px] mx-auto relative z-10">
+        {/* ================= MINIMAL & PROFESSIONAL CONSULTATION FORM ================= */}
+        <section id="contact-form" className="py-16 md:py-20 px-6 bg-slate-50/70 relative">
+          <div className="max-w-[840px] mx-auto relative z-10">
             
-            {/* Form Card Shell */}
-            <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] shadow-[0_25px_60px_rgba(15,23,42,0.08)] border border-slate-200/80 overflow-hidden">
-              
-              {/* Left Panel: Brand & Value Proposition */}
-              <div
-                className="lg:w-[42%] relative flex flex-col justify-between p-8 sm:p-12 text-white overflow-hidden bg-slate-950"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.88) 100%), url(${contactHeroBg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                {/* Floating Glow Orbs */}
-                <div className="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/25 rounded-full filter blur-3xl pointer-events-none animate-pulse" />
-                <div className="absolute bottom-10 -right-20 w-72 h-72 bg-cyan-400/20 rounded-full filter blur-3xl pointer-events-none" />
-
-                <div className="relative z-10">
-                  {/* Decorative bar */}
-                  <div className="w-16 h-1 bg-gradient-to-r from-[#0EA5E9] to-cyan-400 mb-8 rounded-full" />
-                  
-                  <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest block mb-2">
-                    Enterprise Engineering
+            {/* Header */}
+            <div className="text-center max-w-xl mx-auto mb-10 reveal reveal-fade-up">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-[12px] font-bold tracking-[0.22em] text-[#8B2C2C] uppercase relative">
+                  <span className="font-extrabold">LETS WORK</span> TOGETHER
+                  <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    <span className="h-[2px] w-6 bg-[#7A7A7A] rounded-full"></span>
+                    <span className="h-[2px] w-2 bg-[#7A7A7A] rounded-full"></span>
                   </span>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 leading-tight">
-                    Let's Build the Future Together
-                  </h2>
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-                    Accelerating your digital transformation with proven technological expertise and custom-tailored software solutions.
-                  </p>
-
-                  {/* Feature Checklist */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Full-Lifecycle Engineering</div>
-                        <div className="text-xs text-slate-300">From concept and UX design to production architecture &amp; scale.</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Dedicated Tech Advisory</div>
-                        <div className="text-xs text-slate-300">Direct collaboration with senior architects without layers of management.</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Guaranteed Confidentiality</div>
-                        <div className="text-xs text-slate-300">Signed mutual Non-Disclosure Agreement before technical discovery.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Quick Contact in Dark Panel */}
-                <div className="relative z-10 pt-6 border-t border-white/10 text-xs text-slate-300 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>Wakad Business Bay, Pune - 411057</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>+91 9130081817</span>
-                  </div>
-                </div>
-
+                </span>
               </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading tracking-tight mt-3">
+                Start a Conversation
+              </h2>
+              <p className="text-slate-600 text-sm mt-2">
+                Have a project in mind or need software consulting? Fill out the form below and our team will get back to you shortly.
+              </p>
+            </div>
 
-              {/* Right Panel: The Form */}
-              <div className="lg:w-[58%] p-8 sm:p-12 lg:p-14 flex flex-col justify-center bg-white">
-                
-                {/* Header Tag */}
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-[13px] font-bold tracking-widest text-[#8B2C2C] uppercase relative">
-                    Lets Work Together
-                    <span className="absolute -bottom-2 left-0 flex gap-1.5">
-                      <span className="h-[2px] w-6 bg-[#7A7A7A] rounded-full"></span>
-                      <span className="h-[2px] w-2 bg-[#7A7A7A] rounded-full"></span>
-                    </span>
-                  </span>
-                </div>
-
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mb-2 tracking-tight mt-2">
-                  Start a Conversation
-                </h2>
-                <p className="text-slate-600 mb-8 text-sm">
-                  Let's discuss your software development and enterprise technology needs.
-                </p>
-
-                {isSubmitted ? (
-                  <div className="bg-emerald-50/80 border border-emerald-200 rounded-3xl p-10 text-center shadow-sm animate-fade-in">
-                    <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-sm">
-                      <CheckCircle2 className="w-10 h-10" />
-                    </div>
-                    <h3 className="font-extrabold text-emerald-950 font-heading text-2xl sm:text-3xl mb-3">
-                      Message Sent Successfully!
-                    </h3>
-                    <p className="text-emerald-800 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-6">
-                      Thank you for reaching out, <span className="font-bold">{name || 'there'}</span>. Your request has been successfully submitted and our team will get back to you shortly.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setName('');
-                        setEmail('');
-                        setCompany('');
-                        setPhone('');
-                        setDesignation('');
-                        setServiceArea('');
-                        setMessage('');
-                      }}
-                      className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full transition-all cursor-pointer"
-                    >
-                      Send Another Message
-                    </button>
+            {/* Form Card */}
+            <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-[0_15px_45px_rgba(15,23,42,0.05)] reveal reveal-fade-up">
+              {isSubmitted ? (
+                <div className="bg-emerald-50/80 border border-emerald-200 rounded-2xl p-8 sm:p-10 text-center animate-fade-in">
+                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                ) : (
-                  <form ref={formRef} onSubmit={handleFormSubmit} noValidate className="space-y-5">
-                    
-                    {formError && (
-                      <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm font-semibold flex items-center gap-2.5">
-                        <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                        {formError}
-                      </div>
-                    )}
+                  <h3 className="font-extrabold text-emerald-950 font-heading text-2xl mb-2">
+                    Message Sent Successfully!
+                  </h3>
+                  <p className="text-emerald-800 text-sm leading-relaxed max-w-md mx-auto mb-6">
+                    Thank you for reaching out, <span className="font-bold">{name || 'there'}</span>. Your inquiry has been submitted and our engineering team will get back to you shortly.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setName('');
+                      setEmail('');
+                      setCompany('');
+                      setPhone('');
+                      setDesignation('');
+                      setServiceArea('');
+                      setMessage('');
+                    }}
+                    className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full transition-all cursor-pointer"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form ref={formRef} onSubmit={handleFormSubmit} noValidate className="space-y-5">
+                  {formError && (
+                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl text-sm font-semibold flex items-center gap-2.5">
+                      <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                      {formError}
+                    </div>
+                  )}
 
-                    {/* Interactive Service Area Chips */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Full Name */}
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-                        Select Service Area <span className="text-red-500">*</span>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Full Name <span className="text-red-500">*</span>
                       </label>
-                      <div className="flex flex-wrap gap-2">
-                        {SERVICE_OPTIONS.map((srv) => {
-                          const isSelected = serviceArea === srv;
-                          return (
-                            <button
-                              key={srv}
-                              type="button"
-                              onClick={() => {
-                                setServiceArea(srv);
-                                setErrors((prev) => ({ ...prev, serviceArea: null }));
-                              }}
-                              className={`text-xs font-semibold py-2 px-3.5 rounded-full transition-all cursor-pointer border ${
-                                isSelected
-                                  ? 'bg-[#0EA5E9] text-white border-[#0EA5E9] shadow-sm'
-                                  : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300 hover:bg-slate-100'
-                              }`}
-                            >
+                      <input
+                        type="text"
+                        name="user_name"
+                        required
+                        value={name}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                          setErrors((prev) => ({ ...prev, name: null }));
+                        }}
+                        className={`w-full px-4 py-3 border ${
+                          errors.name ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                        } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                        placeholder="e.g. John Doe"
+                      />
+                      {errors.name && (
+                        <span className="text-red-500 text-xs mt-1 block font-medium">
+                          {errors.name}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Email Address */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Email Address <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="user_email"
+                        required
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          setErrors((prev) => ({ ...prev, email: null }));
+                        }}
+                        className={`w-full px-4 py-3 border ${
+                          errors.email ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                        } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                        placeholder="john@company.com"
+                      />
+                      {errors.email && (
+                        <span className="text-red-500 text-xs mt-1 block font-medium">
+                          {errors.email}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Phone Number */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        name="user_phone"
+                        required
+                        value={phone}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                          setErrors((prev) => ({ ...prev, phone: null }));
+                        }}
+                        className={`w-full px-4 py-3 border ${
+                          errors.phone ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                        } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                        placeholder="+91 98765 43210"
+                      />
+                      {errors.phone && (
+                        <span className="text-red-500 text-xs mt-1 block font-medium">
+                          {errors.phone}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Company Name */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Company Name <span className="text-slate-400 text-[11px]">(Optional)</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="company_name"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                        className="w-full px-4 py-3 border border-slate-200 bg-slate-50/30 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400"
+                        placeholder="Your Organization"
+                      />
+                    </div>
+
+                    {/* Service Area */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Service Area <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          name="service_area"
+                          value={serviceArea}
+                          onChange={(e) => {
+                            setServiceArea(e.target.value);
+                            setErrors((prev) => ({ ...prev, serviceArea: null }));
+                          }}
+                          className={`w-full px-4 py-3 border ${
+                            errors.serviceArea ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                          } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all appearance-none ${
+                            !serviceArea ? 'text-slate-400' : 'text-slate-900'
+                          }`}
+                        >
+                          <option value="" disabled>Select Service Area *</option>
+                          {SERVICE_OPTIONS.map((srv) => (
+                            <option key={srv} value={srv} className="text-slate-900">
                               {srv}
-                            </button>
-                          );
-                        })}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
                       {errors.serviceArea && (
                         <span className="text-red-500 text-xs mt-1 block font-medium">
@@ -604,206 +612,95 @@ export function ContactPage() {
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      
-                      {/* Full Name */}
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                          Full Name <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            name="user_name"
-                            required
-                            value={name}
-                            onChange={(e) => {
-                              setName(e.target.value);
-                              setErrors((prev) => ({ ...prev, name: null }));
-                            }}
-                            className={`w-full px-4 py-3 border ${
-                              errors.name ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/40'
-                            } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm placeholder:text-slate-400`}
-                            placeholder="e.g. John Doe"
-                          />
-                        </div>
-                        {errors.name && (
-                          <span className="text-red-500 text-xs mt-1 block font-medium">
-                            {errors.name}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Email Address */}
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="email"
-                            name="user_email"
-                            required
-                            value={email}
-                            onChange={(e) => {
-                              setEmail(e.target.value);
-                              setErrors((prev) => ({ ...prev, email: null }));
-                            }}
-                            className={`w-full px-4 py-3 border ${
-                              errors.email ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/40'
-                            } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm placeholder:text-slate-400`}
-                            placeholder="john@company.com"
-                          />
-                        </div>
-                        {errors.email && (
-                          <span className="text-red-500 text-xs mt-1 block font-medium">
-                            {errors.email}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Company Name */}
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                          Company Name <span className="text-slate-400 text-[11px]">(Optional)</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="company_name"
-                          value={company}
-                          onChange={(e) => setCompany(e.target.value)}
-                          className="w-full px-4 py-3 border border-slate-200 bg-slate-50/40 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm placeholder:text-slate-400"
-                          placeholder="Your Organization"
-                        />
-                      </div>
-
-                      {/* Phone Number */}
-                      <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                          Phone Number <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="tel"
-                          name="user_phone"
-                          required
-                          value={phone}
+                    {/* Designation */}
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Your Designation <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          name="designation"
+                          value={designation}
                           onChange={(e) => {
-                            setPhone(e.target.value);
-                            setErrors((prev) => ({ ...prev, phone: null }));
+                            setDesignation(e.target.value);
+                            setErrors((prev) => ({ ...prev, designation: null }));
                           }}
                           className={`w-full px-4 py-3 border ${
-                            errors.phone ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/40'
-                          } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm placeholder:text-slate-400`}
-                          placeholder="+91 98765 43210"
-                        />
-                        {errors.phone && (
-                          <span className="text-red-500 text-xs mt-1 block font-medium">
-                            {errors.phone}
-                          </span>
-                        )}
+                            errors.designation ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                          } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all appearance-none ${
+                            !designation ? 'text-slate-400' : 'text-slate-900'
+                          }`}
+                        >
+                          <option value="" disabled>Select your role / designation *</option>
+                          {DESIGNATION_OPTIONS.map((opt) => (
+                            <option key={opt.value} value={opt.value} className="text-slate-900">
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
-
-                      {/* Designation */}
-                      <div className="md:col-span-2">
-                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                          Your Designation <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                          <select
-                            name="designation"
-                            value={designation}
-                            onChange={(e) => {
-                              setDesignation(e.target.value);
-                              setErrors((prev) => ({ ...prev, designation: null }));
-                            }}
-                            className={`w-full px-4 py-3 border ${
-                              errors.designation ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/40'
-                            } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm appearance-none ${
-                              !designation ? 'text-slate-400' : 'text-slate-900'
-                            }`}
-                          >
-                            <option value="" disabled>Select your role / designation *</option>
-                            {DESIGNATION_OPTIONS.map((opt) => (
-                              <option key={opt.value} value={opt.value} className="text-slate-900">
-                                {opt.label}
-                              </option>
-                            ))}
-                          </select>
-                          <ChevronDown className="w-4 h-4 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-                        </div>
-                        {errors.designation && (
-                          <span className="text-red-500 text-xs mt-1 block font-medium">
-                            {errors.designation}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Hidden or synchronized service area input for EmailJS */}
-                      <input type="hidden" name="service_area" value={serviceArea} />
-
-                      {/* Message Box */}
-                      <div className="md:col-span-2">
-                        <div className="flex justify-between items-center mb-1.5">
-                          <label className="block text-xs font-semibold text-slate-700">
-                            Project Requirements <span className="text-red-500">*</span>
-                          </label>
-                          <span className="text-[11px] text-slate-400">
-                            {message.length} characters
-                          </span>
-                        </div>
-                        <textarea
-                          required
-                          name="message"
-                          value={message}
-                          onChange={(e) => {
-                            handleMessageChange(e);
-                            setErrors((prev) => ({ ...prev, message: null }));
-                          }}
-                          rows={4}
-                          className={`w-full px-4 py-3 border ${
-                            errors.message ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/40'
-                          } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all shadow-sm resize-none placeholder:text-slate-400`}
-                          placeholder="Tell us about your project requirements, scope, timeline, or current challenges... *"
-                        />
-                        {errors.message && (
-                          <span className="text-red-500 text-xs mt-1 block font-medium">
-                            {errors.message}
-                          </span>
-                        )}
-                      </div>
-
+                      {errors.designation && (
+                        <span className="text-red-500 text-xs mt-1 block font-medium">
+                          {errors.designation}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Submit Button */}
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="inline-flex items-center justify-center gap-3 bg-[#0EA5E9] hover:bg-[#0284C7] disabled:bg-slate-400 text-white font-bold py-4 px-9 rounded-full shadow-[0_10px_25px_rgba(14,165,233,0.35)] hover:shadow-[0_12px_30px_rgba(14,165,233,0.45)] transition-all hover:-translate-y-0.5 cursor-pointer w-full sm:w-auto text-sm"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            <span>Sending Inquiry...</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>Send Inquiry</span>
-                            <Send className="w-4 h-4" />
-                          </>
-                        )}
-                      </button>
-
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                        <span>Protected by SSL. We respect your privacy.</span>
-                      </div>
+                    {/* Message Box */}
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                        Project Requirements <span className="text-red-500">*</span>
+                      </label>
+                      <textarea
+                        required
+                        name="message"
+                        value={message}
+                        onChange={(e) => {
+                          handleMessageChange(e);
+                          setErrors((prev) => ({ ...prev, message: null }));
+                        }}
+                        rows={4}
+                        className={`w-full px-4 py-3 border ${
+                          errors.message ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                        } rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all resize-none placeholder:text-slate-400`}
+                        placeholder="Tell us about your project requirements, scope, timeline, or objectives... *"
+                      />
+                      {errors.message && (
+                        <span className="text-red-500 text-xs mt-1 block font-medium">
+                          {errors.message}
+                        </span>
+                      )}
                     </div>
+                  </div>
 
-                  </form>
-                )}
+                  {/* Submit Button */}
+                  <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center justify-center gap-2.5 bg-[#0EA5E9] hover:bg-[#0284C7] disabled:bg-slate-400 text-white font-bold py-3.5 px-8 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_10px_25px_rgba(14,165,233,0.4)] transition-all hover:-translate-y-0.5 cursor-pointer w-full sm:w-auto text-sm"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Sending Inquiry...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Inquiry</span>
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
 
-              </div>
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      <span>Protected by SSL. We respect your confidentiality.</span>
+                    </div>
+                  </div>
+                </form>
+              )}
             </div>
 
           </div>
