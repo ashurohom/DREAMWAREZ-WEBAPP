@@ -187,39 +187,23 @@ export function ContactPage() {
       <SEO title="Contact Us | Dreamwarez Software Solutions" />
 
       <main className="main-content">
-        {/* ================= HERO SECTION ================= */}
-        <section className="relative pt-6 pb-8 md:pt-8 md:pb-10 lg:pt-10 lg:pb-10 bg-gradient-to-b from-slate-50 via-white to-slate-50/60 overflow-hidden">
+        {/* ================= HERO SECTION (PROFESSIONAL & MINIMAL) ================= */}
+        <section className="relative pt-8 pb-10 md:pt-12 md:pb-14 lg:pt-14 lg:pb-14 bg-white overflow-hidden border-b border-slate-100">
           {/* Subtle Ambient Backdrops */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-            <div className="absolute -top-32 right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-100/50 blur-[130px]" />
-            <div className="absolute top-[40%] -left-32 w-[500px] h-[500px] rounded-full bg-cyan-100/40 blur-[120px]" />
-            <div
-              className="absolute top-0 right-0 w-full h-full opacity-[0.03]"
-              style={{
-                backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)',
-                backgroundSize: '24px 24px',
-              }}
-            />
+            <div className="absolute -top-32 right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-50/50 blur-[120px]" />
+            <div className="absolute top-[30%] -left-24 w-[450px] h-[450px] rounded-full bg-slate-50 blur-[100px]" />
           </div>
 
           <div className="max-w-[1350px] mx-auto px-6 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               
               {/* Left Content */}
               <div className="lg:col-span-7 flex flex-col justify-center reveal reveal-fade-up">
                 
-                {/* Live Availability Pill */}
-                <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-semibold w-fit mb-2.5 shadow-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span>Currently Available for New Consultations</span>
-                </div>
-
                 {/* Subtitle with signature accent pill */}
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[12px] font-bold tracking-[0.22em] text-[#8B2C2C] uppercase relative">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[13px] font-bold tracking-[0.22em] text-[#8B2C2C] uppercase relative">
                     <span className="font-extrabold">CONTACT</span> DREAMWAREZ
                     <span className="absolute -bottom-1.5 left-0 flex gap-1.5">
                       <span className="h-[2.5px] w-7 bg-[#7A7A7A] rounded-full"></span>
@@ -229,25 +213,25 @@ export function ContactPage() {
                 </div>
 
                 {/* Main Heading */}
-                <h1 className="text-[32px] sm:text-[40px] md:text-[46px] lg:text-[50px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.08] mt-1 mb-2.5">
+                <h1 className="text-[36px] sm:text-[44px] md:text-[50px] lg:text-[54px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.08] mt-2 mb-4">
                   Contact <span className="text-[#0EA5E9]">Us</span>
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-lg md:text-xl font-semibold text-slate-800 mb-2 leading-snug">
+                <p className="text-xl md:text-2xl font-semibold text-slate-800 mb-3 leading-snug">
                   Ready to achieve your vision? We&apos;re here to help.
                 </p>
 
                 {/* Paragraph Description */}
-                <p className="text-[15px] md:text-[16px] text-slate-600 leading-relaxed max-w-[620px] mb-4">
+                <p className="text-[16px] md:text-[17px] text-slate-600 leading-relaxed max-w-[620px] mb-8">
                   Connect with Dreamwarez to explore simplified software solutions, custom application development, and enterprise strategies tailored to streamline your business operations and achieve your goals.
                 </p>
 
-                {/* Interactive CTAs */}
-                <div className="flex flex-wrap items-center gap-3.5 pt-0">
+                {/* Action CTAs */}
+                <div className="flex flex-wrap items-center gap-4">
                   <button
                     onClick={() => scrollToSection('contact-form')}
-                    className="inline-flex items-center justify-center gap-2.5 bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold text-sm py-3 px-7 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_10px_25px_rgba(14,165,233,0.4)] transition-all hover:-translate-y-0.5 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2.5 bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold text-sm sm:text-base py-3.5 px-8 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.25)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all hover:-translate-y-0.5 cursor-pointer"
                   >
                     Start a Conversation
                     <ArrowRight className="w-4 h-4" />
@@ -255,90 +239,25 @@ export function ContactPage() {
 
                   <button
                     onClick={() => scrollToSection('office-location')}
-                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm py-3 px-5 rounded-full border border-slate-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm sm:text-base py-3.5 px-6 rounded-full border border-slate-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5 cursor-pointer"
                   >
                     <MapPin className="w-4 h-4 text-emerald-600" />
                     Pune Office Directions
                   </button>
                 </div>
 
-                {/* Trust Badges */}
-                <div className="grid grid-cols-3 gap-4 pt-3.5 mt-3.5 border-t border-slate-200/80 max-w-lg">
-                  <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 font-heading">&lt; 2h</div>
-                    <div className="text-[11px] text-slate-500 font-medium">Avg. Response Time</div>
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 font-heading">100%</div>
-                    <div className="text-[11px] text-slate-500 font-medium">Confidential NDA</div>
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-black text-slate-900 font-heading">Direct</div>
-                    <div className="text-[11px] text-slate-500 font-medium">Engineering Access</div>
-                  </div>
-                </div>
-
               </div>
 
-              {/* Right Hero Visual Card */}
+              {/* Right Hero Visual Card - Minimal & Clean */}
               <div className="lg:col-span-5 relative flex justify-center lg:justify-end reveal reveal-fade-left">
-                <div className="relative w-full max-w-[420px] lg:max-w-[440px]">
-                  
-                  {/* Decorative Glowing Rings */}
-                  <div className="absolute -inset-3 bg-gradient-to-tr from-cyan-400/20 via-blue-500/20 to-indigo-500/20 rounded-[2.2rem] blur-xl opacity-75 -z-10" />
-
-                  {/* Image Presentation Card */}
-                  <div className="relative rounded-[2rem] overflow-hidden border border-white/80 bg-white/70 backdrop-blur-md shadow-[0_16px_40px_rgba(15,23,42,0.1)] group">
+                <div className="relative w-full max-w-[450px] lg:max-w-[480px]">
+                  <div className="relative rounded-[2rem] overflow-hidden border border-slate-200/80 bg-white shadow-[0_15px_40px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_50px_rgba(15,23,42,0.09)] transition-all duration-500">
                     <img
                       src={newHeroImage}
                       alt="Dreamwarez Client Support & Technology Consultant"
-                      className="w-full h-auto max-h-[360px] sm:max-h-[400px] object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-auto object-cover"
                     />
-
-                    {/* Gradient Overlay at Bottom */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-85" />
-
-                    {/* Bottom Caption Inside Card */}
-                    <div className="absolute bottom-4 left-5 right-5 text-white">
-                      <div className="flex items-center gap-1.5 text-cyan-300 text-[11px] font-bold uppercase tracking-wider mb-0.5">
-                        <Headphones className="w-3 h-3" />
-                        Dedicated Advisory Team
-                      </div>
-                      <h2 className="text-base sm:text-lg font-bold text-white leading-snug">
-                        Let's Engineer Your Next Big Breakthrough
-                      </h2>
-                      <p className="text-[11px] text-slate-300 mt-0.5">
-                        Wakad Business Bay, Pune • Serving Global Clients
-                      </p>
-                    </div>
                   </div>
-
-                  {/* Floating Interactive Badge 1 (Top Left) */}
-                  <div className="absolute -top-3 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 shadow-[0_10px_25px_rgba(15,23,42,0.12)] border border-slate-100 flex items-center gap-2.5 animate-float">
-                    <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Direct Hotline</div>
-                      <a href="tel:+919130081817" className="text-xs font-extrabold text-slate-900 hover:text-blue-600 transition-colors">
-                        +91 9130081817
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Floating Interactive Badge 2 (Bottom Right) */}
-                  <div className="absolute -bottom-3 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 shadow-[0_10px_25px_rgba(15,23,42,0.12)] border border-slate-100 flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Enterprise Grade</div>
-                      <div className="text-xs font-extrabold text-slate-900">
-                        Secure &amp; Scalable
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
               </div>
 
