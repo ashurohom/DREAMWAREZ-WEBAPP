@@ -436,8 +436,83 @@ export function ContactPage() {
             {/* Form Card Shell */}
             <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] shadow-[0_25px_60px_rgba(15,23,42,0.08)] border border-slate-200/80 overflow-hidden">
               
-              {/* Form Panel (Left) */}
-              <div className="lg:w-[58%] p-8 sm:p-12 lg:p-14 flex flex-col justify-center bg-white order-1">
+              {/* Left Panel: Brand & Value Proposition (Image + Content) */}
+              <div
+                className="lg:w-[42%] relative flex flex-col justify-between p-8 sm:p-12 text-white overflow-hidden bg-slate-950"
+                style={{
+                  backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.88) 100%), url(${contactHeroBg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
+                {/* Floating Glow Orbs */}
+                <div className="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/25 rounded-full filter blur-3xl pointer-events-none animate-pulse" />
+                <div className="absolute bottom-10 -right-20 w-72 h-72 bg-cyan-400/20 rounded-full filter blur-3xl pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Decorative bar */}
+                  <div className="w-16 h-1 bg-gradient-to-r from-[#0EA5E9] to-cyan-400 mb-8 rounded-full" />
+                  
+                  <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest block mb-2">
+                    Enterprise Engineering
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 leading-tight">
+                    Let's Build the Future Together
+                  </h2>
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                    Accelerating your digital transformation with proven technological expertise and custom-tailored software solutions.
+                  </p>
+
+                  {/* Feature Checklist */}
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-white">Full-Lifecycle Engineering</div>
+                        <div className="text-xs text-slate-300">From concept and UX design to production architecture &amp; scale.</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-white">Dedicated Tech Advisory</div>
+                        <div className="text-xs text-slate-300">Direct collaboration with senior architects without layers of management.</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-white">Guaranteed Confidentiality</div>
+                        <div className="text-xs text-slate-300">Signed mutual Non-Disclosure Agreement before technical discovery.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Quick Contact in Dark Panel */}
+                <div className="relative z-10 pt-6 border-t border-white/10 text-xs text-slate-300 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                    <span>Wakad Business Bay, Pune - 411057</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                    <span>+91 9130081817</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Panel: The Form */}
+              <div className="lg:w-[58%] p-8 sm:p-12 lg:p-14 flex flex-col justify-center bg-white">
                 
                 {/* Header Tag */}
                 <div className="flex items-center gap-2 mb-3">
@@ -706,81 +781,6 @@ export function ContactPage() {
                     </div>
                   </form>
                 )}
-              </div>
-
-              {/* Right Panel: Brand & Value Proposition (Image + Content) */}
-              <div
-                className="lg:w-[42%] relative flex flex-col justify-between p-8 sm:p-12 text-white overflow-hidden bg-slate-950 order-2"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.88) 100%), url(${contactHeroBg})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                {/* Floating Glow Orbs */}
-                <div className="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/25 rounded-full filter blur-3xl pointer-events-none animate-pulse" />
-                <div className="absolute bottom-10 -right-20 w-72 h-72 bg-cyan-400/20 rounded-full filter blur-3xl pointer-events-none" />
-
-                <div className="relative z-10">
-                  {/* Decorative bar */}
-                  <div className="w-16 h-1 bg-gradient-to-r from-[#0EA5E9] to-cyan-400 mb-8 rounded-full" />
-                  
-                  <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest block mb-2">
-                    Enterprise Engineering
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold font-heading mb-4 leading-tight">
-                    Let's Build the Future Together
-                  </h2>
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-                    Accelerating your digital transformation with proven technological expertise and custom-tailored software solutions.
-                  </p>
-
-                  {/* Feature Checklist */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Full-Lifecycle Engineering</div>
-                        <div className="text-xs text-slate-300">From concept and UX design to production architecture &amp; scale.</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Dedicated Tech Advisory</div>
-                        <div className="text-xs text-slate-300">Direct collaboration with senior architects without layers of management.</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Guaranteed Confidentiality</div>
-                        <div className="text-xs text-slate-300">Signed mutual Non-Disclosure Agreement before technical discovery.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Quick Contact in Dark Panel */}
-                <div className="relative z-10 pt-6 border-t border-white/10 text-xs text-slate-300 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>Wakad Business Bay, Pune - 411057</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                    <span>+91 9130081817</span>
-                  </div>
-                </div>
-
               </div>
 
             </div>
