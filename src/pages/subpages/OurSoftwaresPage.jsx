@@ -270,7 +270,7 @@ export function OurSoftwaresPage() {
             </div>
             <h2 style={{ fontSize: '40px', fontWeight: '800', fontFamily: '"Open Sans", sans-serif', marginBottom: '20px', lineHeight: '1.2', color: '#000000' }}>Delivering Excellence, Partnering for Success</h2>
             <p style={{ fontSize: '16px', fontFamily: '"Open Sans", sans-serif', color: '#000000', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto' }}>We are the best value digital solutions company. A claim that our clients have gladly endorsed.</p>
-            <a href="/contact/#contact-form" className="cta-button" style={{ padding: '14px 36px', fontSize: '16px', marginTop: '10px' }}>
+            <a href="/contact/" className="cta-button" style={{ padding: '14px 36px', fontSize: '16px', marginTop: '10px' }}>
               Contact Us <span style={{ marginLeft: '8px' }}>➔</span>
             </a>
           </div>

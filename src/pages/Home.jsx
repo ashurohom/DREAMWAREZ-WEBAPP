@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { SiteHeader } from '../components/layout/SiteHeader';
 import { SiteFooter } from '../components/layout/SiteFooter';
 import { ChatWidget } from '../components/layout/ChatWidget';
@@ -101,12 +102,12 @@ export function Home() {
                 Streamlining Business Through Technology. Empowering You with Digital Solutions revolutionizing with Every Click.
               </p>
               <div className="hero-actions flex flex-wrap justify-start w-full gap-4 reveal reveal-fade-up -mt-2" style={{ transitionDelay: '200ms' }}>
-                <a href="/contact/#contact-form" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all">
+                <Link to="/contact/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all">
                   Contact Us <span style={{ marginLeft: '8px' }}>➔</span>
-                </a>
-                <a href="/our-softwares/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold rounded-full transition-all border-2 border-[#7a7a7a] text-[#7a7a7a] bg-transparent hover:bg-[#7a7a7a] hover:text-white">
+                </Link>
+                <Link to="/our-softwares/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold rounded-full transition-all border-2 border-[#7a7a7a] text-[#7a7a7a] bg-transparent hover:bg-[#7a7a7a] hover:text-white">
                   Explore Softwares <span style={{ marginLeft: '8px' }}>➔</span>
-                </a>
+                </Link>
               </div>
             </div>
             {/* Interactive Network Globe */}
@@ -132,9 +133,9 @@ export function Home() {
             <p className="section-desc" style={{ color: 'var(--text-secondary)', maxWidth: '700px', marginBottom: '24px', lineHeight: '1.6' }}>
               As a Software Company, we recognize that brilliant ideas demand exceptional executions. We boost your success with our expertise and innovative cutting edge IT solutions. It's our passion, process, & integrity that guarantees your success.
             </p>
-            <a href="/about-us/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all mt-4">
+            <Link to="/about-us/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all mt-4">
               About Us <span style={{ marginLeft: '8px' }}>➔</span>
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -268,9 +269,9 @@ export function Home() {
                 Manage your complete business software flow from multiple warehouse, manufacturing to sales and purchase right from a single software solution.
               </p>
               <div className="erp-btn-wrapper-new">
-                <a href="/erp/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+                <Link to="/erp/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
                   Explore More <span className="ml-2">➔</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -301,9 +302,9 @@ export function Home() {
                 Empower your business online with our comprehensive marketing solutions. From paid advertising to organic strategies, and design to web development – the power is in your hands.
               </p>
               <div className="strategies-btn-wrapper-new">
-                <a href="/customised-software-development/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+                <Link to="/customised-software-development/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
                   Explore Services <span className="ml-2">➔</span>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -355,9 +356,9 @@ export function Home() {
                 We offer a range of Android development services that are fully capable of supporting established companies. We deliver scalability with expertise in everything related to what is android app development.
               </p>
               <div className="android-btn-wrapper-new">
-                <a href="/android-app/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+                <Link to="/android-app/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
                   Explore More <span className="ml-2">➔</span>
-                </a>
+                </Link>
               </div>
             </div>
 

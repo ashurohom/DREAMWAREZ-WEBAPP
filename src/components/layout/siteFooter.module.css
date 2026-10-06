@@ -1,101 +1,82 @@
 .footer {
   background: #001f3f;
   color: #e5e7eb;
-  margin-top: 40px;
   font-family: 'Open Sans', sans-serif;
+  width: 100%;
 }
 
 .inner {
-  max-width: 1300px;
+  max-width: 1350px;
   margin: 0 auto;
-  padding: 60px 20px 40px;
+  padding: 64px 32px 48px;
   display: grid;
-  grid-template-columns: 1.2fr 1.5fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.35fr 0.9fr 0.9fr 1.05fr;
+  gap: 48px;
   align-items: flex-start;
 }
 
-.colLeft {
+.colBrand,
+.colLinks,
+.colPolicies,
+.colConnect {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.colMiddle {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.colRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  width: 100%;
 }
 
 .headingContainer {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
+  min-height: 36px;
+  display: flex;
+  align-items: flex-end;
 }
 
-.heading {
-  font-size: 20px;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
-}
-
-.heading::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-  background: #fbff00;
-}
-
+.heading,
 .headingBrand {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
   position: relative;
   display: inline-block;
   padding-bottom: 8px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
+.headingBrand {
+  letter-spacing: 2px;
+}
+
+.heading::after,
 .headingBrand::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 2px;
+  height: 2.5px;
   width: 100%;
   background: #fbff00;
+  border-radius: 2px;
 }
 
 .text {
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
   color: #cbd5e1;
-  line-height: 1.6;
+  line-height: 1.65;
   font-size: 14px;
 }
 
-.quickLinksWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  width: 100%;
+.text:last-of-type {
+  margin-bottom: 0;
 }
 
-.quickLinksCol {
+.linkList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 13px;
+  width: 100%;
 }
 
 .link {
@@ -103,51 +84,55 @@
   text-decoration: none;
   font-weight: 400;
   font-size: 14px;
-  transition: color 0.2s, transform 0.2s;
+  line-height: 1.4;
+  transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
+  width: fit-content;
 }
 
 .link:hover {
   color: #fbff00;
-  transform: scale(1.05);
+  transform: translateX(4px);
 }
 
 .socialIcons {
   display: flex;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 18px;
+  align-items: center;
 }
 
 .socialBtn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.25s ease, filter 0.2s ease;
 }
 
 .socialBtn:hover {
-  transform: scale(1.1);
+  transform: translateY(-2px) scale(1.08);
+  filter: brightness(1.1);
 }
 
 .bottomBorder {
-  border-top: 1px solid #1f2937;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .bottom {
-  max-width: 100%;
-  margin: 0;
-  padding: 24px 40px;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 24px 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #cbd5e1;
-  font-size: 14px;
-  flex-wrap: wrap;
-  gap: 16px;
+  font-size: 13.5px;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .companyName {
@@ -155,18 +140,29 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
+/* Tablet Layout (2 x 2 Columns) */
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 50px 24px 36px;
+  }
+}
+
+/* Mobile Layout (1 Column Stack) */
+@media (max-width: 640px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
+    padding: 40px 20px 28px;
   }
-  .quickLinksWrapper {
-    grid-template-columns: 1fr;
-    gap: 16px;
+
+  .headingContainer {
+    margin-bottom: 16px;
   }
+
   .bottom {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+    padding: 20px;
+    font-size: 13px;
   }
 }

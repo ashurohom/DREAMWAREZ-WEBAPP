@@ -116,7 +116,7 @@ export function AboutUsPage() {
                 </p>
               </div>
               <div className="mt-10">
-                <a href="/contact/#contact-form" className="inline-flex items-center gap-3 bg-[#7A7A7A] text-white font-bold text-[14px] px-8 py-4 rounded-xl shadow-lg shadow-[#7A7A7A]/30 hover:bg-[#5A5A5A] hover:scale-[1.02] transition-all duration-300 group">
+                <a href="/contact/" className="inline-flex items-center gap-3 bg-[#7A7A7A] text-white font-bold text-[14px] px-8 py-4 rounded-xl shadow-lg shadow-[#7A7A7A]/30 hover:bg-[#5A5A5A] hover:scale-[1.02] transition-all duration-300 group">
                   contact us <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </a>
               </div>

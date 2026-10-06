@@ -1,16 +1,14 @@
 import React from 'react'
 import styles from './siteFooter.module.css'
-import logo from '../../assets/logo.png'
 
 export function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <div className={styles.colLeft}>
+        {/* Column 1: Brand Info */}
+        <div className={styles.colBrand}>
           <div className={styles.headingContainer}>
-            <div className={styles.headingBrand} style={{ paddingBottom: '8px' }}>
-              <span style={{ fontSize: '20px', fontWeight: '600', color: '#ffffff', letterSpacing: '2px', fontFamily: '"Open Sans", sans-serif' }}>DREAMWAREZ</span>
-            </div>
+            <h3 className={styles.headingBrand}>DREAMWAREZ</h3>
           </div>
           <p className={styles.text}>
             Dreamwarez solutions designed by experts, built with the future in mind. Our history makes us credible. Our work keeps us competitive. Our people are our strength.
@@ -20,32 +18,36 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className={styles.colMiddle}>
-          <div className={styles.quickLinksWrapper}>
-            <div className={styles.quickLinksCol}>
-              <div className={styles.headingContainer}>
-                <h3 className={styles.heading}>Quick Links</h3>
-              </div>
-              <a className={styles.link} href="/">Home</a>
-              <a className={styles.link} href="/about-us/">About Us</a>
-              <a className={styles.link} href="/career-opportunities/">Career Opportunities</a>
-              <a className={styles.link} href="/contact/">Contact Us</a>
-              <a className={styles.link} href="/our-softwares/">Our Softwares</a>
-              <a className={styles.link} href="/privacy-policy/">Privacy Policy</a>
-              <a className={styles.link} href="/services/">Services</a>
-            </div>
-            <div className={styles.quickLinksCol}>
-              <div className={styles.headingContainer}>
-                <h3 className={styles.heading}>Policies</h3>
-              </div>
-              <a className={styles.link} href="/terms/">Terms and condition</a>
-              <a className={styles.link} href="/refund-policy/">Refund Policy</a>
-              <a className={styles.link} href="/cancellation-policy/">Cancellation Policy</a>
-            </div>
+        {/* Column 2: Quick Links */}
+        <div className={styles.colLinks}>
+          <div className={styles.headingContainer}>
+            <h3 className={styles.heading}>Quick Links</h3>
           </div>
+          <nav className={styles.linkList} aria-label="Quick Links">
+            <a className={styles.link} href="/">Home</a>
+            <a className={styles.link} href="/about-us/">About Us</a>
+            <a className={styles.link} href="/career-opportunities/">Career Opportunities</a>
+            <a className={styles.link} href="/contact/">Contact Us</a>
+            <a className={styles.link} href="/our-softwares/">Our Softwares</a>
+            <a className={styles.link} href="/privacy-policy/">Privacy Policy</a>
+            <a className={styles.link} href="/services/">Services</a>
+          </nav>
         </div>
 
-        <div className={styles.colRight}>
+        {/* Column 3: Policies */}
+        <div className={styles.colPolicies}>
+          <div className={styles.headingContainer}>
+            <h3 className={styles.heading}>Policies</h3>
+          </div>
+          <nav className={styles.linkList} aria-label="Policies">
+            <a className={styles.link} href="/terms/">Terms and condition</a>
+            <a className={styles.link} href="/refund-policy/">Refund Policy</a>
+            <a className={styles.link} href="/cancellation-policy/">Cancellation Policy</a>
+          </nav>
+        </div>
+
+        {/* Column 4: Let's Connect */}
+        <div className={styles.colConnect}>
           <div className={styles.headingContainer}>
             <h3 className={styles.heading}>Let's Connect!</h3>
           </div>

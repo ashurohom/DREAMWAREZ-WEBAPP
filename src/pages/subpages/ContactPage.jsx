@@ -85,6 +85,8 @@ export function ContactPage() {
         const el = document.getElementById('contact-form');
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [location.hash]);
 
