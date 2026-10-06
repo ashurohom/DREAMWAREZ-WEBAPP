@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
-import newHeroImage from '../../assets/Contact-UsJPEG-1.jpg';
 import contactHeroBg from '../../assets/new_contact_hero.png';
 import {
   MapPin,
@@ -78,6 +77,7 @@ export function ContactPage() {
   const [formError, setFormError] = useState('');
   const [copiedField, setCopiedField] = useState(null);
   const [openFaq, setOpenFaq] = useState(null);
+  const publicContactEmail = import.meta.env.VITE_PUBLIC_CONTACT_EMAIL || 'info@dreamwarez.in';
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -119,7 +119,7 @@ export function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setFormError('');
 
@@ -130,11 +130,46 @@ export function ContactPage() {
 
     setIsSubmitting(true);
 
+    const formData = {
+      name,
+      email,
+      phone,
+      company,
+      serviceArea,
+      designation,
+      message,
+      formType: 'Website Consultation Form'
+    };
+
+    // 1. Send directly to company mail via our backend SMTP API (/api/send-email)
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          setIsSubmitted(true);
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    } catch (apiErr) {
+      console.warn('Backend email API unavailable, falling back to secondary transport...', apiErr);
+    }
+
+    // 2. Secondary fallback via EmailJS if configured
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     const sendMailFallback = () => {
+      const adminEmail = import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'ashitosh@dreamwarez.in';
       const subject = encodeURIComponent(`New enquiry from ${name || 'website form'}`);
       const body = encodeURIComponent([
         `Name: ${name || 'N/A'}`,
@@ -147,7 +182,7 @@ export function ContactPage() {
         `Message: ${message || 'N/A'}`,
       ].join('\n'));
 
-      window.location.href = `mailto:sakshinilwant@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
       setIsSubmitted(true);
       setIsSubmitting(false);
     };
@@ -157,12 +192,12 @@ export function ContactPage() {
         .sendForm(serviceId, templateId, formRef.current, publicKey)
         .then(
           (result) => {
-            console.log('Email successfully sent!', result.text);
+            console.log('Email successfully sent via EmailJS!', result.text);
             setIsSubmitted(true);
             setIsSubmitting(false);
           },
           (error) => {
-            console.error('Failed to send email. Falling back to mail client.', error.text);
+            console.error('Failed to send email via EmailJS. Falling back to mail client.', error.text);
             sendMailFallback();
           }
         );
@@ -186,8 +221,8 @@ export function ContactPage() {
       <SEO title="Contact Us | Dreamwarez Software Solutions" />
 
       <main className="main-content">
-        {/* ================= HERO SECTION (PROFESSIONAL & MINIMAL) ================= */}
-        <section className="relative pt-8 pb-10 md:pt-12 md:pb-14 lg:pt-14 lg:pb-14 bg-white overflow-hidden border-b border-slate-100">
+        {/* ================= HERO SECTION WITH INTEGRATED DIRECT CONTACT CHANNELS ================= */}
+        <section className="relative pt-10 pb-12 md:pt-14 md:pb-16 lg:pt-16 lg:pb-16 bg-white overflow-hidden border-b border-slate-200/80">
           {/* Subtle Ambient Backdrops */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div className="absolute -top-32 right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-50/50 blur-[120px]" />
@@ -197,8 +232,8 @@ export function ContactPage() {
           <div className="max-w-[1350px] mx-auto px-6 lg:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               
-              {/* Left Content */}
-              <div className="lg:col-span-7 flex flex-col justify-center reveal reveal-fade-up">
+              {/* Left Column: Brand & Hero Messaging */}
+              <div className="lg:col-span-5 flex flex-col justify-center reveal reveal-fade-up">
                 
                 {/* Subtitle with signature accent pill */}
                 <div className="flex items-center gap-2 mb-3">
@@ -212,25 +247,25 @@ export function ContactPage() {
                 </div>
 
                 {/* Main Heading */}
-                <h1 className="text-[36px] sm:text-[44px] md:text-[50px] lg:text-[54px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.08] mt-2 mb-4">
+                <h1 className="text-[34px] sm:text-[42px] lg:text-[46px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.1] mt-2 mb-3">
                   Contact <span className="text-[#0EA5E9]">Us</span>
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-xl md:text-2xl font-semibold text-slate-800 mb-3 leading-snug">
+                <p className="text-lg sm:text-xl font-semibold text-slate-800 mb-3 leading-snug">
                   Ready to achieve your vision? We&apos;re here to help.
                 </p>
 
                 {/* Paragraph Description */}
-                <p className="text-[16px] md:text-[17px] text-slate-600 leading-relaxed max-w-[620px] mb-8">
+                <p className="text-[15px] sm:text-[16px] text-slate-600 leading-relaxed mb-6">
                   Connect with Dreamwarez to explore simplified software solutions, custom application development, and enterprise strategies tailored to streamline your business operations and achieve your goals.
                 </p>
 
                 {/* Action CTAs */}
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3.5 mb-7">
                   <button
                     onClick={() => scrollToSection('contact-form')}
-                    className="inline-flex items-center justify-center gap-2.5 bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold text-sm sm:text-base py-3.5 px-8 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.25)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all hover:-translate-y-0.5 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.22)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.32)] transition-all hover:-translate-y-0.5 cursor-pointer"
                   >
                     Start a Conversation
                     <ArrowRight className="w-4 h-4" />
@@ -238,184 +273,213 @@ export function ContactPage() {
 
                   <button
                     onClick={() => scrollToSection('office-location')}
-                    className="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm sm:text-base py-3.5 px-6 rounded-full border border-slate-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm py-3 px-5 rounded-full border border-slate-200 shadow-xs hover:shadow transition-all hover:-translate-y-0.5 cursor-pointer"
                   >
                     <MapPin className="w-4 h-4 text-emerald-600" />
                     Pune Office Directions
                   </button>
                 </div>
 
-              </div>
-
-              {/* Right Hero Visual Card - Minimal & Clean */}
-              <div className="lg:col-span-5 relative flex justify-center lg:justify-end reveal reveal-fade-left">
-                <div className="relative w-full max-w-[450px] lg:max-w-[480px]">
-                  <div className="relative rounded-[2rem] overflow-hidden border border-slate-200/80 bg-white shadow-[0_15px_40px_rgba(15,23,42,0.06)] hover:shadow-[0_20px_50px_rgba(15,23,42,0.09)] transition-all duration-500">
-                    <img
-                      src={newHeroImage}
-                      alt="Dreamwarez Client Support & Technology Consultant"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* ================= DIRECT CONTACT CHANNELS (3 INTERACTIVE CARDS) ================= */}
-        <section className="py-16 px-6 bg-white relative z-10 border-y border-slate-200/70">
-          <div className="max-w-[1350px] mx-auto">
-            
-            {/* Header */}
-            <div className="text-center max-w-2xl mx-auto mb-12 reveal reveal-fade-up">
-              <span className="text-xs font-extrabold tracking-widest text-[#0EA5E9] uppercase bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
-                Direct Contact Channels
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading mt-3">
-                How Would You Like to Connect?
-              </h2>
-              <p className="text-slate-600 text-sm mt-2">
-                Choose the direct contact method that works best for your schedule.
-              </p>
-            </div>
-
-            {/* 3 Interactive Hub Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              
-              {/* Card 1: Location */}
-              <div className="group bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200/80 hover:border-emerald-300 transition-all duration-300 hover:shadow-[0_15px_35px_rgba(16,185,129,0.1)] flex flex-col justify-between">
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-100/70 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                    <MapPin className="w-7 h-7" />
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">Corporate HQ</div>
-                  <h3 className="text-xl font-extrabold text-slate-900 font-heading mb-3">Our Location</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    Dreamwarez, 518, 5th Floor, Wakad Business Bay, Behind Tip Top International Hotel, Wakad, Pune - 411057, Maharashtra MH, India
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between gap-2">
-                  <button
-                    onClick={() => copyToClipboard('Dreamwarez, 518, 5th Floor, Wakad Business Bay, Behind Tip Top International Hotel, Wakad, Pune - 411057, Maharashtra MH, India', 'address')}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 transition-colors cursor-pointer py-1.5 px-3 rounded-lg hover:bg-emerald-50"
-                  >
-                    {copiedField === 'address' ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span className="text-emerald-600">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy Address</span>
-                      </>
-                    )}
-                  </button>
-
-                  <button
-                    onClick={() => scrollToSection('office-location')}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 cursor-pointer"
-                  >
-                    View Map <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 2: Phone */}
-              <div className="group bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200/80 hover:border-sky-300 transition-all duration-300 hover:shadow-[0_15px_35px_rgba(14,165,233,0.1)] flex flex-col justify-between">
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-sky-100/70 text-[#0EA5E9] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300 shadow-sm">
-                    <Phone className="w-7 h-7" />
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-sky-700 mb-1">Direct Hotline</div>
-                  <h3 className="text-xl font-extrabold text-slate-900 font-heading mb-3">Call Us On</h3>
-                  <a
-                    href="tel:+919130081817"
-                    className="text-2xl font-black text-slate-900 hover:text-[#0EA5E9] transition-colors block mb-2 font-heading"
-                  >
-                    +91 9130081817
-                  </a>
-                  <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-2">
-                    <Clock className="w-3.5 h-3.5 text-slate-400" />
-                    Mon – Sat: 9:30 AM – 7:00 PM IST
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between gap-2 mt-6">
-                  <button
-                    onClick={() => copyToClipboard('+919130081817', 'phone')}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-sky-600 transition-colors cursor-pointer py-1.5 px-3 rounded-lg hover:bg-sky-50"
-                  >
-                    {copiedField === 'phone' ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-sky-600" />
-                        <span className="text-sky-600">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy Number</span>
-                      </>
-                    )}
-                  </button>
-
-                  <a
-                    href="tel:+919130081817"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0EA5E9] hover:text-[#0284C7]"
-                  >
-                    Call Now <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 3: Email */}
-              <div className="group bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200/80 hover:border-amber-300 transition-all duration-300 hover:shadow-[0_15px_35px_rgba(245,158,11,0.1)] flex flex-col justify-between">
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-amber-100/70 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                    <Mail className="w-7 h-7" />
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-amber-700 mb-1">Written Inquiries</div>
-                  <h3 className="text-xl font-extrabold text-slate-900 font-heading mb-3">Email Us</h3>
-                  <a
-                    href="mailto:info@dreamwarez.in"
-                    className="text-xl sm:text-2xl font-black text-slate-900 hover:text-amber-600 transition-colors block mb-2 font-heading break-all"
-                  >
-                    info@dreamwarez.in
-                  </a>
-                  <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-2">
+                {/* Trust & Quality Indicators */}
+                <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-5 border-t border-slate-200/70 text-xs text-slate-600 font-semibold">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-[#0EA5E9]" />
+                    &lt; 2h Response Time
+                  </span>
+                  <span className="text-slate-300">•</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    100% Confidential NDA
+                  </span>
+                  <span className="text-slate-300">•</span>
+                  <span className="inline-flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                    Guaranteed response within 24h
-                  </p>
+                    Direct Engineering
+                  </span>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between gap-2 mt-6">
-                  <button
-                    onClick={() => copyToClipboard('info@dreamwarez.in', 'email')}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-amber-600 transition-colors cursor-pointer py-1.5 px-3 rounded-lg hover:bg-amber-50"
-                  >
-                    {copiedField === 'email' ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-amber-600" />
-                        <span className="text-amber-600">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy Email</span>
-                      </>
-                    )}
-                  </button>
+              </div>
 
-                  <a
-                    href="mailto:info@dreamwarez.in"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700"
-                  >
-                    Send Email <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+              {/* Right Column: Direct Contact Channels (Replacing Image) */}
+              <div className="lg:col-span-7 reveal reveal-fade-left">
+                
+                {/* Header Bar */}
+                <div className="flex items-center justify-between mb-3.5 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-extrabold tracking-widest text-[#0EA5E9] uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                      Direct Contact Channels
+                    </span>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Support Team Online
+                  </div>
                 </div>
+
+                {/* Channels Stack */}
+                <div className="flex flex-col gap-3.5">
+                  
+                  {/* Channel 1: Direct Hotline (Phone) */}
+                  <div className="group bg-white hover:bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-200/90 hover:border-sky-300 transition-all duration-300 shadow-[0_4px_16px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_25px_rgba(14,165,233,0.1)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-start sm:items-center gap-3.5">
+                        <div className="w-12 h-12 rounded-xl bg-sky-100/80 text-[#0EA5E9] flex items-center justify-center shrink-0 group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300 shadow-xs">
+                          <Phone className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md border border-sky-100">
+                              Direct Hotline
+                            </span>
+                            <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">Mon – Sat: 9:30 AM – 7:00 PM IST</span>
+                          </div>
+                          <a
+                            href="tel:+919130081817"
+                            className="text-lg sm:text-xl font-bold text-slate-900 hover:text-[#0EA5E9] transition-colors block mt-1 font-heading"
+                          >
+                            +91 9130081817
+                          </a>
+                          <p className="text-xs text-slate-500 sm:hidden mt-0.5">Mon – Sat: 9:30 AM – 7:00 PM IST</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 self-end sm:self-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 w-full sm:w-auto justify-end">
+                        <button
+                          onClick={() => copyToClipboard('+919130081817', 'phone')}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#0EA5E9] transition-colors py-2 px-3 rounded-xl border border-slate-200 hover:border-sky-200 hover:bg-sky-50 cursor-pointer"
+                        >
+                          {copiedField === 'phone' ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-sky-600" />
+                              <span className="text-sky-600">Copied</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5 text-slate-400" />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+
+                        <a
+                          href="tel:+919130081817"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#0EA5E9] hover:bg-[#0284C7] py-2 px-3.5 rounded-xl shadow-xs hover:shadow transition-all"
+                        >
+                          Call Now <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Channel 2: Written Inquiries (Email) */}
+                  <div className="group bg-white hover:bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-200/90 hover:border-amber-300 transition-all duration-300 shadow-[0_4px_16px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_25px_rgba(245,158,11,0.1)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-start sm:items-center gap-3.5">
+                        <div className="w-12 h-12 rounded-xl bg-amber-100/80 text-amber-600 flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300 shadow-xs">
+                          <Mail className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-100">
+                              Written Inquiries
+                            </span>
+                            <span className="text-[11px] text-slate-400 font-medium hidden sm:inline flex items-center gap-1">
+                              <Sparkles className="w-3 h-3 text-amber-500" /> Guaranteed response within 24h
+                            </span>
+                          </div>
+                          <a
+                            href={`mailto:${publicContactEmail}`}
+                            className="text-lg sm:text-xl font-bold text-slate-900 hover:text-amber-600 transition-colors block mt-1 font-heading break-all"
+                          >
+                            {publicContactEmail}
+                          </a>
+                          <p className="text-xs text-slate-500 sm:hidden mt-0.5 flex items-center gap-1">
+                            <Sparkles className="w-3 h-3 text-amber-500" /> Response within 24h
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 self-end sm:self-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 w-full sm:w-auto justify-end">
+                        <button
+                          onClick={() => copyToClipboard(publicContactEmail, 'email')}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-amber-600 transition-colors py-2 px-3 rounded-xl border border-slate-200 hover:border-amber-200 hover:bg-amber-50 cursor-pointer"
+                        >
+                          {copiedField === 'email' ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-amber-600" />
+                              <span className="text-amber-600">Copied</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5 text-slate-400" />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+
+                        <a
+                          href={`mailto:${publicContactEmail}`}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 py-2 px-3.5 rounded-xl shadow-xs hover:shadow transition-all"
+                        >
+                          Send Email <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Channel 3: Corporate HQ (Location) */}
+                  <div className="group bg-white hover:bg-slate-50/80 rounded-2xl p-4 sm:p-5 border border-slate-200/90 hover:border-emerald-300 transition-all duration-300 shadow-[0_4px_16px_rgba(15,23,42,0.03)] hover:shadow-[0_10px_25px_rgba(16,185,129,0.1)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex items-start sm:items-center gap-3.5">
+                        <div className="w-12 h-12 rounded-xl bg-emerald-100/80 text-emerald-600 flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-xs">
+                          <MapPin className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                              Corporate HQ
+                            </span>
+                            <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">Pune, Maharashtra</span>
+                          </div>
+                          <span className="text-base sm:text-lg font-bold text-slate-900 block mt-1 font-heading">
+                            Wakad Business Bay, Pune
+                          </span>
+                          <p className="text-xs text-slate-500 mt-0.5 line-clamp-1 sm:line-clamp-none max-w-[360px]">
+                            518, 5th Floor, Behind Tip Top International Hotel, Wakad, Pune - 411057
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 self-end sm:self-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 w-full sm:w-auto justify-end">
+                        <button
+                          onClick={() => copyToClipboard('Dreamwarez, 518, 5th Floor, Wakad Business Bay, Behind Tip Top International Hotel, Wakad, Pune - 411057, Maharashtra MH, India', 'address')}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-emerald-600 transition-colors py-2 px-3 rounded-xl border border-slate-200 hover:border-emerald-200 hover:bg-emerald-50 cursor-pointer"
+                        >
+                          {copiedField === 'address' ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-emerald-600" />
+                              <span className="text-emerald-600">Copied</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5 text-slate-400" />
+                              <span>Copy</span>
+                            </>
+                          )}
+                        </button>
+
+                        <button
+                          onClick={() => scrollToSection('office-location')}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 py-2 px-3.5 rounded-xl shadow-xs hover:shadow transition-all cursor-pointer"
+                        >
+                          View Map <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
 
             </div>

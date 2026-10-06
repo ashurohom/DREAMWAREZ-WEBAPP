@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import emailjs from '@emailjs/browser';
 import { SiteHeader } from '../../components/layout/SiteHeader';
@@ -28,6 +28,7 @@ export function CareerOpportunitiesPage() {
   const [captchaState, setCaptchaState] = useState('unverified');
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
+  const careersEmail = import.meta.env.VITE_CAREERS_EMAIL || import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'careers@dreamwarez.in';
 
   const handleCaptchaClick = () => {
     if (captchaState !== 'unverified') return;
@@ -103,7 +104,7 @@ export function CareerOpportunitiesPage() {
         `Position: ${selectedJob || 'N/A'}`,
       ].join('\n'));
 
-      window.location.href = `mailto:sakshinilwant@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${careersEmail}?subject=${subject}&body=${body}`;
       setIsSubmitted(true);
     };
 
@@ -538,14 +539,14 @@ export function CareerOpportunitiesPage() {
             <p className="text-slate-555 mt-4 text-base">Whether you're just starting your career or looking to take the next big step, we offer a place where your skills, creativity, and ambition will be valued and nurtured.</p>
             
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
-              <a href="mailto:sakshinilwant@gmail.com" className="block bg-slate-50 border border-slate-200 p-6 rounded-2xl w-full max-w-xs text-center shadow-xs hover:shadow-md hover:border-blue-200 transition-all group cursor-pointer">
+              <a href={`mailto:${careersEmail}`} className="block bg-slate-50 border border-slate-200 p-6 rounded-2xl w-full max-w-xs text-center shadow-xs hover:shadow-md hover:border-blue-200 transition-all group cursor-pointer">
                 <div className="w-12 h-12 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <span className="text-[10px] text-slate-400 font-bold block mb-1">EMAIL APPLICATIONS</span>
-                <span className="font-bold text-slate-800 group-hover:text-blue-600 text-sm transition-colors">sakshinilwant@gmail.com</span>
+                <span className="font-bold text-slate-800 group-hover:text-blue-600 text-sm transition-colors">{careersEmail}</span>
               </a>
 
               <a href="https://wa.me/919130081817" target="_blank" rel="noopener noreferrer" className="block bg-slate-50 border border-slate-200 p-6 rounded-2xl w-full max-w-xs text-center shadow-xs hover:shadow-md hover:border-green-200 transition-all group cursor-pointer">
