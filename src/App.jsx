@@ -203,8 +203,10 @@ function App() {
         <Route path="/privacy-policy/" element={<PolicyPage title="Privacy Policy" slug="privacy-policy" />} />
         <Route path="/privacy-policy" element={<Navigate to="/privacy-policy/" replace />} />
 
-        <Route path="/terms-and-condition/" element={<PolicyPage title="Terms &amp; Conditions" slug="terms-and-condition" />} />
+        <Route path="/terms-and-condition/" element={<PolicyPage title="Terms & Conditions" slug="terms-and-condition" />} />
         <Route path="/terms-and-condition" element={<Navigate to="/terms-and-condition/" replace />} />
+        <Route path="/terms/" element={<Navigate to="/terms-and-condition/" replace />} />
+        <Route path="/terms" element={<Navigate to="/terms-and-condition/" replace />} />
 
         <Route path="/refund-policy/" element={<PolicyPage title="Refund Policy" slug="refund-policy" />} />
         <Route path="/refund-policy" element={<Navigate to="/refund-policy/" replace />} />

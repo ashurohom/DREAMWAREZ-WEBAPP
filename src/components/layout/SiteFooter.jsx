@@ -40,7 +40,7 @@ export function SiteFooter() {
             <h3 className={styles.heading}>Policies</h3>
           </div>
           <nav className={styles.linkList} aria-label="Policies">
-            <a className={styles.link} href="/terms/">Terms and condition</a>
+            <a className={styles.link} href="/terms-and-condition/">Terms and condition</a>
             <a className={styles.link} href="/refund-policy/">Refund Policy</a>
             <a className={styles.link} href="/cancellation-policy/">Cancellation Policy</a>
           </nav>
