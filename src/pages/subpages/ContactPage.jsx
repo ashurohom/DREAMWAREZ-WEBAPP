@@ -224,21 +224,21 @@ export function ContactPage() {
 
       <main className="main-content">
         {/* ================= HERO SECTION WITH INTEGRATED DIRECT CONTACT CHANNELS ================= */}
-        <section className="relative pt-10 pb-12 md:pt-14 md:pb-16 lg:pt-16 lg:pb-16 bg-white overflow-hidden border-b border-slate-200/80">
+        <section className="relative min-h-[calc(100vh-80px)] flex items-center pt-6 pb-8 md:pt-8 md:pb-8 lg:pt-8 lg:pb-10 bg-white overflow-hidden border-b border-slate-200/80">
           {/* Subtle Ambient Backdrops */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div className="absolute -top-32 right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-50/50 blur-[120px]" />
             <div className="absolute top-[30%] -left-24 w-[450px] h-[450px] rounded-full bg-slate-50 blur-[100px]" />
           </div>
 
-          <div className="max-w-[1350px] mx-auto px-6 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="max-w-[1350px] mx-auto px-6 lg:px-12 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               
               {/* Left Column: Brand & Hero Messaging */}
               <div className="lg:col-span-5 flex flex-col justify-center reveal reveal-fade-up">
                 
                 {/* Subtitle with signature accent pill */}
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2.5">
                   <span className="text-[13px] font-bold tracking-[0.22em] text-[#8B2C2C] uppercase relative">
                     <span className="font-extrabold">CONTACT</span> DREAMWAREZ
                     <span className="absolute -bottom-1.5 left-0 flex gap-1.5">
@@ -249,17 +249,17 @@ export function ContactPage() {
                 </div>
 
                 {/* Main Heading */}
-                <h1 className="text-[34px] sm:text-[42px] lg:text-[46px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.1] mt-2 mb-3">
+                <h1 className="text-[34px] sm:text-[40px] lg:text-[44px] font-extrabold text-slate-900 font-heading tracking-tight leading-[1.1] mt-2 mb-2.5">
                   Contact <span className="text-[#0EA5E9]">Us</span>
                 </h1>
 
                 {/* Tagline */}
-                <p className="text-lg sm:text-xl font-semibold text-slate-800 mb-3 leading-snug">
+                <p className="text-base sm:text-lg font-semibold text-slate-800 mb-2.5 leading-snug">
                   Ready to achieve your vision? We&apos;re here to help.
                 </p>
 
                 {/* Paragraph Description */}
-                <p className="text-[15px] sm:text-[16px] text-slate-600 leading-relaxed mb-6">
+                <p className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed mb-4">
                   Connect with Dreamwarez to explore simplified software solutions, custom application development, and enterprise strategies tailored to streamline your business operations and achieve your goals.
                 </p>
 

@@ -26,7 +26,7 @@ export function OurSoftwaresPage() {
 
       <main className="main-content">
         {/* Custom Hero Section */}
-        <section className="pt-24 pb-12 md:pt-36 md:pb-20 bg-white relative overflow-hidden">
+        <section className="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden">
           {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
@@ -38,14 +38,14 @@ export function OurSoftwaresPage() {
             {/* Left Content */}
             <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8 relative">
               <div className="relative z-10">
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '16px' }}>
                   <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>ENTERPRISE ECOSYSTEM</span>
                   <div style={{ display: 'flex', gap: '6px' }}>
                     <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
                     <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
                   </div>
                 </div>
-                <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+                <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                   Our <span style={{ color: '#7A7A7A' }}>Software</span>
                 </h1>
                 <p className="text-[16px] text-black font-bold leading-relaxed max-w-[600px] mb-4">With Us, You Can Grow Your Business</p>

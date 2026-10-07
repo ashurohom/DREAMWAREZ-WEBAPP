@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -42,7 +42,7 @@ export function OurAppsPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="pt-32 pb-36 md:pt-40 md:pb-48 bg-white relative overflow-hidden flex items-center">
+        <section className="min-h-[calc(100vh-80px)] pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden flex items-center">
           {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}

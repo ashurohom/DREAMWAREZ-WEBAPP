@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -24,20 +24,6 @@ import contentMarketing3d from '../../assets/ui_ux_ios_1781516956654.png';
 import biHeroSticker from '../../assets/bi_hero_sticker.png';
 
 export function DigitalMarketingPage() {
-  const [showSimulator, setShowSimulator] = useState(false);
-  const [budget, setBudget] = useState(1000);
-  const [cpc, setCpc] = useState(0.80);
-  const [convRate, setConvRate] = useState(3.5);
-
-  const calculateROI = () => {
-    const clicks = Math.round(budget / cpc);
-    const leads = Math.round(clicks * (convRate / 100));
-    const costPerLead = leads ? budget / leads : 0;
-    return { clicks, leads, costPerLead };
-  };
-
-  const results = calculateROI();
-
   return (
     <div className="app-container software-theme-page" style={{ fontFamily: "'Open Sans', sans-serif", '--font-heading': "'Open Sans', sans-serif", '--font-sans': "'Open Sans', sans-serif" }}>
  
@@ -48,7 +34,7 @@ export function DigitalMarketingPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="relative bg-white min-h-screen pt-32 pb-16 overflow-hidden flex items-center border-b border-slate-100">
+        <section className="relative bg-white min-h-[calc(100vh-80px)] pt-8 pb-10 md:pt-10 md:pb-12 overflow-hidden flex items-center border-b border-slate-100">
           {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
@@ -69,7 +55,7 @@ export function DigitalMarketingPage() {
               </div>
 
               {/* Title */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Digital <span style={{ color: '#7A7A7A' }}>Marketing</span>
               </h1>
 
@@ -119,87 +105,8 @@ export function DigitalMarketingPage() {
             <p className="text-black text-[16px] max-w-4xl mx-auto mt-4 leading-relaxed text-justify">
               Digital marketing companies play a crucial role in helping businesses achieve these goals by providing digital marketing solutions and implementing effective digital marketing strategies.
             </p>
-            <div className="mt-8">
-              <button 
-                onClick={() => setShowSimulator(!showSimulator)}
-                className="bg-[#7A7A7A] hover:bg-[#616161] text-white font-bold text-[16px] px-6 py-3 rounded-full shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
-              >
-                {showSimulator ? 'Hide Campaign ROI Calculator' : '⚡ Try ROI Calculator'}
-              </button>
-            </div>
           </div>
         </section>
-
-        {/* Simulator Section */}
-        {showSimulator && (
-          <section className="py-12 px-6 bg-slate-100/50 border-y border-slate-200">
-            <div className="max-w-[800px] mx-auto bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-lg text-left">
-              <div className="flex justify-between items-center mb-6 pb-3 border-b border-slate-150">
-                <h4 className="font-heading font-bold text-slate-800">Campaign ROI Calculator</h4>
-                <span className="text-[14px] text-slate-400 font-mono">Interactive Sandbox</span>
-              </div>
-
-              <div className="flex flex-col gap-6 mb-6">
-                <div>
-                  <div className="flex justify-between text-[14px] font-bold text-slate-700 mb-1">
-                    <span>Monthly Budget</span>
-                    <span className="text-[#8B2C2C]">${budget.toLocaleString()}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="100" 
-                    max="10000" 
-                    step="100"
-                    value={budget} 
-                    onChange={(e) => setBudget(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-150 rounded-lg appearance-none cursor-pointer accent-[#8B2C2C]"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[14px] font-bold text-slate-400 block mb-1">Cost Per Click (CPC)</label>
-                    <input 
-                      type="number" 
-                      step="0.05"
-                      min="0.1"
-                      value={cpc} 
-                      onChange={(e) => setCpc(parseFloat(e.target.value) || 0.1)}
-                      className="w-full text-[14px] p-2 border border-slate-250 rounded-md bg-transparent text-slate-700 font-bold bg-white"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[14px] font-bold text-slate-400 block mb-1">Conversion Rate (%)</label>
-                    <input 
-                      type="number" 
-                      step="0.1"
-                      min="0.1"
-                      value={convRate} 
-                      onChange={(e) => setConvRate(parseFloat(e.target.value) || 0.1)}
-                      className="w-full text-[14px] p-2 border border-slate-250 rounded-md bg-transparent text-slate-700 font-bold bg-white"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 border-t border-slate-150 pt-6 bg-slate-50/50 p-4 rounded-2xl">
-                <div>
-                  <span className="block text-[14px] font-bold text-slate-400 uppercase">Est. Clicks</span>
-                  <span className="text-[16px] font-black text-slate-800">{results.clicks.toLocaleString()}</span>
-                </div>
-                <div>
-                  <span className="block text-[14px] font-bold text-slate-400 uppercase">Est. Leads</span>
-                  <span className="text-[16px] font-black text-[#8B2C2C]">{results.leads.toLocaleString()}</span>
-                </div>
-                <div>
-                  <span className="block text-[14px] font-bold text-slate-400 uppercase">Est. Cost Per Lead</span>
-                  <span className="text-[16px] font-black text-slate-800">${results.costPerLead.toFixed(2)}</span>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Digital Marketing Services list */}
         <section className="py-20 px-6 bg-slate-50 border-y border-slate-100 relative overflow-hidden">

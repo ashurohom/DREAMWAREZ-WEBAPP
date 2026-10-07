@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -95,7 +95,7 @@ export function EnterpriseSocialNetworkPage() {
 
       <main className="main-content">
         {/* Custom Hero Section */}
-        <section className="relative bg-white min-h-screen pt-32 pb-16 overflow-hidden flex items-center border-b border-slate-100">
+        <section className="relative bg-white pt-8 pb-10 md:pt-10 md:pb-12 min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
           <div className="mx-auto px-6 flex flex-col md:flex-row items-center justify-between w-full" style={{ maxWidth: '1350px' }}>
             {/* Left Content */}
             <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
@@ -106,7 +106,7 @@ export function EnterpriseSocialNetworkPage() {
     <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
   </div>
 </div>
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Enterprise Social <span style={{ color: '#7A7A7A' }}>Network</span>
               </h1>
               <p className="text-[16px] text-black leading-relaxed max-w-[600px] mb-4">

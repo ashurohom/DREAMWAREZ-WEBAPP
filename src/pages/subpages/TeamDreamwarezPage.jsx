@@ -21,7 +21,7 @@ export function TeamDreamwarezPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center pt-24 pb-12 md:pt-24 md:pb-16 bg-white relative overflow-hidden">
+        <section className="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden">
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
@@ -46,7 +46,7 @@ export function TeamDreamwarezPage() {
             {/* Left Content */}
             <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
               {/* Subtitle */}
-              <div className="flex items-center gap-2 mb-8">
+              <div className="flex items-center gap-2 mb-4">
                 <span className="text-xs font-bold tracking-[0.2em] text-[#8B2C2C] uppercase relative">
                   About Us
                   <span className="absolute -bottom-2 left-0 flex gap-1.5">
@@ -57,7 +57,7 @@ export function TeamDreamwarezPage() {
               </div>
 
               {/* Title */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Team <span className="text-[#7A7A7A]">Dreamwarez</span>
               </h1>
 

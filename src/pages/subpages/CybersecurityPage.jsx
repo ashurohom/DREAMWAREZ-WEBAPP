@@ -25,7 +25,7 @@ export function CybersecurityPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center pt-24 pb-12 md:pt-24 md:pb-16 bg-white relative overflow-hidden">
+        <section className="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden">
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
@@ -45,7 +45,7 @@ export function CybersecurityPage() {
               }} 
             />
           </div>
-          <div className="max-w-[1330px] mx-auto px-6 w-full z-10 relative -mt-12 md:-mt-24">
+          <div className="max-w-[1330px] mx-auto px-6 w-full z-10 relative">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
                {/* Left Column: Content */}
                <div className="text-left reveal reveal-fade-left md:col-span-7">

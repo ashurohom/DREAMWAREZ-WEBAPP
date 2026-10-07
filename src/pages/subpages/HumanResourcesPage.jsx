@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -23,7 +23,7 @@ export function HumanResourcesPage() {
       <SEO title="Human Resources" />
 
       <main className="main-content">
-        <section className="relative bg-white min-h-screen pt-32 pb-16 overflow-hidden flex items-center border-b border-slate-100">
+        <section className="relative bg-white pt-8 pb-10 md:pt-10 md:pb-12 min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
           {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
@@ -44,7 +44,7 @@ export function HumanResourcesPage() {
               </div>
 
               {/* Title */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Human <span style={{ color: '#7A7A7A' }}>Resources</span>
               </h1>
 

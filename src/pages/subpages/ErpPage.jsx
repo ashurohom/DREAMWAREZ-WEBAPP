@@ -27,7 +27,7 @@ export function ErpPage() {
 
       <main className="main-content">
         {/* Custom Hero Section */}
-        <section className="relative bg-white pt-48 pb-16 overflow-hidden flex items-center border-b border-slate-100">
+        <section className="relative bg-white pt-8 pb-10 md:pt-10 md:pb-12 min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
           {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
@@ -45,7 +45,7 @@ export function ErpPage() {
                   <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
                 </div>
               </div>
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-12 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Enterprise <span style={{ color: '#7A7A7A' }}>Management System</span>
               </h1>
               <p className="text-lg text-black leading-relaxed max-w-[600px]">

@@ -22,9 +22,11 @@ export function CareerOpportunitiesPage() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [fileName, setFileName] = useState('');
+  const [fileBase64, setFileBase64] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaState, setCaptchaState] = useState('unverified');
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
@@ -38,13 +40,45 @@ export function CareerOpportunitiesPage() {
     }, 1500);
   };
 
+  const scrollToJoinForm = () => {
+    const el = document.getElementById('ready-to-join');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  useEffect(() => {
+    if (window.location.hash === '#ready-to-join') {
+      const el = document.getElementById('ready-to-join');
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    }
+  }, []);
+
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+      setErrors(prev => ({ ...prev, fileName: 'File size exceeds 10MB limit' }));
+      return;
+    }
     
     setFileName(file.name);
     setIsUploading(true);
     setUploadProgress(0);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setFileBase64(reader.result);
+    };
+    reader.onerror = () => {
+      console.warn('Failed to read file as data url');
+    };
+    reader.readAsDataURL(file);
   };
 
   useEffect(() => {
@@ -64,6 +98,7 @@ export function CareerOpportunitiesPage() {
 
   const deleteFile = () => {
     setFileName('');
+    setFileBase64(null);
     setUploadProgress(0);
     setIsUploading(false);
   };
@@ -82,7 +117,7 @@ export function CareerOpportunitiesPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError('');
 
@@ -91,28 +126,72 @@ export function CareerOpportunitiesPage() {
       return;
     }
 
+    setIsSubmitting(true);
+
+    const formData = {
+      name,
+      email,
+      phone,
+      serviceArea: selectedJob,
+      designation: selectedJob,
+      message: `Position applied: ${selectedJob}. CV attachment: ${fileName}`,
+      fileName,
+      fileAttachment: fileBase64 ? {
+        filename: fileName,
+        content: fileBase64
+      } : undefined,
+      formType: 'Career Opportunities Application Form'
+    };
+
+    // 1. Send directly to company notification mail via backend SMTP API (/api/send-email)
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          setIsSubmitted(true);
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    } catch (apiErr) {
+      console.warn('Backend email API unavailable, falling back to secondary transport...', apiErr);
+    }
+
+    // 2. Secondary fallback via EmailJS if configured
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     const sendMail = () => {
+      const adminEmail = import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'ashitosh@dreamwarez.in';
       const subject = encodeURIComponent(`New Job Application from ${name || 'website form'}`);
       const body = encodeURIComponent([
         `Name: ${name || 'N/A'}`,
         `Email: ${email || 'N/A'}`,
         `Phone: ${phone || 'N/A'}`,
         `Position: ${selectedJob || 'N/A'}`,
+        `CV: ${fileName || 'N/A'}`,
       ].join('\n'));
 
-      window.location.href = `mailto:${careersEmail}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
       setIsSubmitted(true);
+      setIsSubmitting(false);
     };
 
     if (serviceId && templateId && publicKey && serviceId !== 'YOUR_SERVICE_ID') {
       emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
         .then((result) => {
-          console.log('Email successfully sent!', result.text);
+          console.log('Email successfully sent via EmailJS!', result.text);
           setIsSubmitted(true);
+          setIsSubmitting(false);
         }, (error) => {
           console.error('Failed to send email. Falling back to mail client.', error.text);
           sendMail();
@@ -132,7 +211,7 @@ export function CareerOpportunitiesPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center pt-24 pb-12 md:pt-24 md:pb-16 bg-white relative overflow-hidden">
+        <section className="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden">
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
@@ -157,7 +236,7 @@ export function CareerOpportunitiesPage() {
             {/* Left Content */}
             <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
               {/* Subtitle */}
-              <div className="flex items-center gap-2 mb-8">
+              <div className="flex items-center gap-2 mb-4">
                 <span className="text-[14px] font-bold tracking-[0.2em] text-[#8B2C2C] uppercase relative">
                   JOIN US
                   <span className="absolute -bottom-2 left-0 flex gap-1.5">
@@ -168,7 +247,7 @@ export function CareerOpportunitiesPage() {
               </div>
 
               {/* Title */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-8 max-w-[700px]">
+              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-4 max-w-[700px]">
                 Career <span className="text-[#7A7A7A]">Opportunities</span>
               </h1>
 
@@ -423,7 +502,7 @@ export function CareerOpportunitiesPage() {
         </section>
 
         {/* Ready To Join Us Form Section */}
-        <section className="py-20 px-6 bg-slate-50 border-y border-slate-100">
+        <section id="ready-to-join" className="py-20 px-6 bg-slate-50 border-y border-slate-100">
           <div className="max-w-[700px] mx-auto text-center mb-10 reveal reveal-fade-up">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 font-heading tracking-tight">Ready To Join Us?</h2>
             <p className="text-slate-600 mt-4 text-sm md:text-base leading-relaxed">
@@ -496,9 +575,10 @@ export function CareerOpportunitiesPage() {
                     </span>
                     <button 
                       type="submit"
-                      className="font-bold py-2.5 px-8 rounded-lg shadow-md transition-all bg-[#7A7A7A] hover:bg-[#5A5A5A] text-white hover:shadow-lg shrink-0"
+                      disabled={isSubmitting}
+                      className="font-bold py-2.5 px-8 rounded-lg shadow-md transition-all bg-[#7A7A7A] hover:bg-[#5A5A5A] text-white hover:shadow-lg shrink-0 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Submit Application
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
                     </button>
                   </div>
                   {errors.fileName && <span className="text-red-500 text-xs mt-1 block">{errors.fileName}</span>}
@@ -569,12 +649,13 @@ export function CareerOpportunitiesPage() {
               “At Dreamwarez, we don’t just build software—we build careers.”
             </h2>
             <div className="mt-8">
-              <a 
-                href="/contact/#contact-form" 
+              <button 
+                type="button"
+                onClick={scrollToJoinForm}
                 className="bg-[#7A7A7A] hover:bg-[#5A5A5A] text-white font-extrabold text-base px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all inline-block hover:scale-[1.02] cursor-pointer"
               >
                 apply job now
-              </a>
+              </button>
             </div>
           </div>
         </section>

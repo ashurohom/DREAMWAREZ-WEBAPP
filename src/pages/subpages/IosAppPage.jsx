@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -86,7 +86,7 @@ export function IosAppPage() {
       <main className="main-content">
 
         {/* Hero Section */}
-        <section className="pt-26 pb-12 md:pt-53 md:pb-28 bg-white relative overflow-hidden flex items-center">
+        <section className="min-h-[calc(100vh-80px)] pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden flex items-center">
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />

@@ -84,7 +84,7 @@ export function Home() {
       <main className="main-content">
         {/* Hero Section - Left Aligned Layout */}
         <section 
-          className="hero-section relative overflow-hidden flex items-center pt-24 pb-8 bg-cover bg-center bg-no-repeat"
+          className="hero-section relative overflow-hidden flex items-center py-4 md:py-6 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${herokaBg})`,
             backgroundSize: 'cover',
@@ -93,15 +93,15 @@ export function Home() {
             imageRendering: 'high-quality',
           }}
         >
-          <div className="hero-inner max-w-[1440px] mx-auto px-6 xl:px-8 relative z-10 w-full flex flex-row justify-between items-center min-h-[500px] -mt-16 md:-mt-24">
-            <div className="hero-content max-w-xl flex flex-col items-start text-left p-8 w-full ml-0 md:ml-4 lg:ml-8 -mt-8 md:-mt-12">
-              <h1 className="hero-title text-white text-[60px] leading-[1.1] font-extrabold tracking-tight mb-4 reveal reveal-fade-up text-left font-['Open_Sans']">
-                Your Pathway <span className="block mt-4 text-[#7a7a7a]">To Innovation</span>
+          <div className="hero-inner max-w-[1440px] mx-auto px-6 xl:px-8 relative z-10 w-full flex flex-row justify-between items-center">
+            <div className="hero-content max-w-xl flex flex-col items-start text-left p-6 md:p-8 w-full ml-0 md:ml-4 lg:ml-8">
+              <h1 className="hero-title text-white text-[52px] lg:text-[60px] leading-[1.1] font-extrabold tracking-tight mb-4 reveal reveal-fade-up text-left font-['Open_Sans']">
+                Your Pathway <span className="block mt-3 text-[#7a7a7a]">To Innovation</span>
               </h1>
-              <p className="hero-subtitle text-[16px] text-white max-w-md mb-2 leading-relaxed reveal reveal-fade-up text-left font-['Open_Sans']" style={{ transitionDelay: '100ms' }}>
+              <p className="hero-subtitle text-[16px] text-white max-w-md mb-4 leading-relaxed reveal reveal-fade-up text-left font-['Open_Sans']" style={{ transitionDelay: '100ms' }}>
                 Streamlining Business Through Technology. Empowering You with Digital Solutions revolutionizing with Every Click.
               </p>
-              <div className="hero-actions flex flex-wrap justify-start w-full gap-4 reveal reveal-fade-up -mt-2" style={{ transitionDelay: '200ms' }}>
+              <div className="hero-actions flex flex-wrap justify-start w-full gap-4 reveal reveal-fade-up" style={{ transitionDelay: '200ms' }}>
                 <Link to="/contact/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all">
                   Contact Us <span style={{ marginLeft: '8px' }}>➔</span>
                 </Link>
@@ -111,8 +111,8 @@ export function Home() {
               </div>
             </div>
             {/* Interactive Network Globe */}
-            <div className="hidden md:flex items-center justify-center mr-0 lg:mr-8 -mt-16 reveal reveal-fade-left relative" style={{ transitionDelay: '300ms', width: '570px', height: '570px', overflow: 'hidden' }}>
-              <NetworkGlobe size={700} />
+            <div className="hidden md:flex items-center justify-center mr-0 lg:mr-8 reveal reveal-fade-left relative" style={{ transitionDelay: '300ms', width: '540px', height: '540px', overflow: 'hidden' }}>
+              <NetworkGlobe size={650} />
             </div>
           </div>
         </section>
