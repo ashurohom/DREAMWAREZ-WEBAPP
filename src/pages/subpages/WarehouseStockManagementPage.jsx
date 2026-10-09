@@ -4,14 +4,15 @@ import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
 
-// Warehouse custom assets
-import warehouseDashboard from '../../assets/warehouse_dashboard.png';
-import warehouseDoubleEntry from '../../assets/warehouse_double_entry.png';
-import warehouseTraceability from '../../assets/warehouse_traceability.png';
-import warehouseReduceStock from '../../assets/warehouse_reduce_stock.png';
-import warehouseScaleWms from '../../assets/warehouse_scale_wms.png';
-import warehouseReporting from '../../assets/warehouse_reporting.png';
-import warehouseHeroPhoto from '../../assets/warehouse_hero_photo.jpg';
+// Warehouse Assets
+import warehouseInventoryOverview from '../../assets/odoo17_inventory_overview.webp';
+import warehouseReplenishment from '../../assets/odoo17_warehouse_replenishment.webp';
+import warehouseDoubleEntryFlow from '../../assets/odoo17_double_entry_flow.webp';
+import warehouseMovesHistory from '../../assets/odoo17_moves_history.png';
+import warehouseInventoryAnalytics from '../../assets/odoo17_inventory_analytics.webp';
+import warehouseMultiWarehouseStock from '../../assets/odoo17_multi_warehouse_stock.png';
+import warehouseTransfers from '../../assets/odoo17_warehouse_transfers.webp';
+import warehouseBarcodeScanner from '../../assets/odoo17_barcode_scanner.png';
 
 export function WarehouseStockManagementPage() {
   const LabelBadge = ({ children, className = '' }) => {
@@ -52,12 +53,12 @@ export function WarehouseStockManagementPage() {
             {/* Left Content */}
             <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-  <span style={{ color: '#8B2C2C',  fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1'  }}>INVENTORY MANAGEMENT</span>
-  <div style={{ display: 'flex', gap: '6px' }}>
-    <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-    <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-  </div>
-</div>
+                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>INVENTORY MANAGEMENT</span>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
+                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
+                </div>
+              </div>
               <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
                 Warehouse/Stock <span style={{ color: '#7A7A7A' }}>Management</span>
               </h1>
@@ -69,18 +70,39 @@ export function WarehouseStockManagementPage() {
               </p>
             </div>
             
-            {/* Right Image */}
-            <div className="md:w-1/2 mt-16 md:mt-0 flex justify-center md:justify-end z-0 reveal reveal-fade-left">
-              <div 
-                className="w-full max-w-[420px] aspect-square overflow-hidden bg-slate-50 p-2 shadow-xl border border-slate-100" 
-                style={{ borderRadius: '24px' }}
-              >
-                <img 
-                  src={warehouseHeroPhoto} 
-                  alt="Warehouse Management Workspace" 
-                  className="w-full h-full object-cover"
-                  style={{ borderRadius: '24px' }}
-                />
+            {/* Right Image: Inventory Overview Dashboard Mockup */}
+            <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center md:justify-end z-0 reveal reveal-fade-left">
+              <div className="relative w-full max-w-[560px]">
+                {/* Status Badge */}
+                <div className="absolute -top-3.5 -right-2 z-20 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-lg flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-xs font-bold text-slate-800 tracking-wide">Live Operations</span>
+                </div>
+
+                {/* Browser-style frame */}
+                <div className="rounded-2xl overflow-hidden bg-white shadow-2xl border border-slate-200/90 transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.14)]">
+                  <div className="bg-slate-100/90 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-rose-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+                      <span className="text-[11px] font-mono text-slate-500 ml-2">warehouse / inventory-overview</span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                      Live WMS
+                    </span>
+                  </div>
+                  <img 
+                    src={warehouseInventoryOverview} 
+                    alt="Inventory Overview Operations Dashboard" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+
+                {/* Floating Stats / Feature Chip */}
+                <div className="absolute -bottom-3.5 -left-2 z-20 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-md flex items-center gap-2">
+                  <span className="text-xs font-semibold text-slate-800">⚡ Double-Entry Stock Engine</span>
+                </div>
               </div>
             </div>
           </div>
@@ -106,8 +128,23 @@ export function WarehouseStockManagementPage() {
             </div>
             
             <div className="reveal reveal-fade-up flex justify-center mt-8">
-              <div className="w-1200 max-w-[500px] border border-slate-200/80 p-3 rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:scale-[1.01] transition-transform duration-500">
-                <img src={warehouseDashboard} alt="Warehouse Dashboard" className="w-full h-auto object-contain rounded-xl" />
+              <div className="w-full max-w-[980px] border border-slate-200/90 rounded-2xl bg-white shadow-[0_15px_45px_rgba(0,0,0,0.06)] overflow-hidden hover:scale-[1.01] transition-transform duration-500">
+                <div className="bg-slate-100/90 border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-rose-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    <span className="text-xs font-mono text-slate-500 ml-2">warehouse / replenishment & stock-rules</span>
+                  </div>
+                  <span className="text-[11px] font-semibold text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-full">
+                    Replenishment Engine
+                  </span>
+                </div>
+                <img 
+                  src={warehouseReplenishment} 
+                  alt="Replenishment Command Center and Location Rules" 
+                  className="w-full h-auto object-cover" 
+                />
               </div>
             </div>
           </div>
@@ -127,8 +164,16 @@ export function WarehouseStockManagementPage() {
           <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10" style={{ maxWidth: '1350px' }}>
             <div className="reveal reveal-fade-up lg:order-1 mx-auto w-full flex justify-center">
               <div className="flex justify-center lg:justify-start hover:scale-[1.02] transition-transform duration-500 w-full">
-                <div className="max-w-[480px] w-full">
-                  <img src={warehouseDoubleEntry} alt="Double Entry Inventory Management" className="w-full h-auto object-contain rounded-lg" />
+                <div className="max-w-[540px] w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-200 p-2">
+                  <div className="bg-slate-50 px-3 py-1.5 border-b border-slate-200 rounded-t-xl mb-2 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-600">Double-Entry Movement Architecture</span>
+                    <span className="text-[10px] font-mono text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">Hierarchical Flow</span>
+                  </div>
+                  <img 
+                    src={warehouseDoubleEntryFlow} 
+                    alt="Double Entry Inventory Movement Flow" 
+                    className="w-full h-auto object-contain rounded-lg" 
+                  />
                 </div>
               </div>
             </div>
@@ -159,8 +204,16 @@ export function WarehouseStockManagementPage() {
 
             <div className="reveal reveal-fade-up mx-auto w-full flex justify-center">
               <div className="flex justify-center lg:justify-end hover:scale-[1.02] transition-transform duration-500 w-full">
-                <div className="max-w-[480px] w-full">
-                  <img src={warehouseTraceability} alt="Full Traceability Moves" className="w-full h-auto object-contain rounded-lg" />
+                <div className="max-w-[540px] w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-200 p-2">
+                  <div className="bg-slate-50 px-3 py-1.5 border-b border-slate-200 rounded-t-xl mb-2 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-600">Stock Moves History & Serial Tracking</span>
+                    <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">100% Traceability</span>
+                  </div>
+                  <img 
+                    src={warehouseMovesHistory} 
+                    alt="Stock Moves Traceability" 
+                    className="w-full h-auto object-contain rounded-lg" 
+                  />
                 </div>
               </div>
             </div>
@@ -179,8 +232,16 @@ export function WarehouseStockManagementPage() {
           <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10" style={{ maxWidth: '1350px' }}>
             <div className="reveal reveal-fade-up lg:order-1 mx-auto w-full flex justify-center">
               <div className="flex justify-center lg:justify-start hover:scale-[1.02] transition-transform duration-500 w-full">
-                <div className="max-w-[480px] w-full">
-                  <img src={warehouseReduceStock} alt="Reduce Stock Procurement" className="w-full h-auto object-contain rounded-lg" />
+                <div className="max-w-[540px] w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-200 p-2">
+                  <div className="bg-slate-50 px-3 py-1.5 border-b border-slate-200 rounded-t-xl mb-2 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-600">Dynamic Stock Forecast & Reservation</span>
+                    <span className="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">Smart Procurement</span>
+                  </div>
+                  <img 
+                    src={warehouseInventoryAnalytics} 
+                    alt="Stock Forecast and Procurement" 
+                    className="w-full h-auto object-contain rounded-lg" 
+                  />
                 </div>
               </div>
             </div>
@@ -208,12 +269,29 @@ export function WarehouseStockManagementPage() {
               <p className="text-[16px] text-black mt-3 leading-relaxed">
                 Dreamwarez Warehouse Management is designed to scale from a few thousands operations to several millions of transactions.
               </p>
+              
+              {/* Barcode scanner feature block */}
+              <div className="mt-6 flex items-center gap-4 p-3.5 bg-white rounded-xl border border-slate-200 shadow-sm max-w-md">
+                <img src={warehouseBarcodeScanner} alt="Mobile Barcode Scanner" className="w-12 h-12 object-contain shrink-0" />
+                <div>
+                  <div className="text-sm font-bold text-slate-800">Mobile Barcode Scanning App</div>
+                  <div className="text-xs text-slate-500">Scan barcodes, serial numbers, lots, and packages on the go with zero latency.</div>
+                </div>
+              </div>
             </div>
 
             <div className="reveal reveal-fade-up mx-auto w-full flex justify-center">
               <div className="flex justify-center lg:justify-end hover:scale-[1.02] transition-transform duration-500 w-full">
-                <div className="max-w-[480px] w-full">
-                  <img src={warehouseScaleWms} alt="Scale Warehouse System" className="w-full h-auto object-contain rounded-lg" />
+                <div className="max-w-[540px] w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-200 p-2">
+                  <div className="bg-slate-50 px-3 py-1.5 border-b border-slate-200 rounded-t-xl mb-2 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-600">Multi-Warehouse Stock Hierarchy</span>
+                    <span className="text-[10px] font-mono text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">Multi-Location</span>
+                  </div>
+                  <img 
+                    src={warehouseMultiWarehouseStock} 
+                    alt="Multi Warehouse Management" 
+                    className="w-full h-auto object-contain rounded-lg" 
+                  />
                 </div>
               </div>
             </div>
@@ -232,14 +310,22 @@ export function WarehouseStockManagementPage() {
           <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10" style={{ maxWidth: '1350px' }}>
             <div className="reveal reveal-fade-up lg:order-1 mx-auto w-full flex justify-center">
               <div className="flex justify-center lg:justify-start hover:scale-[1.02] transition-transform duration-500 w-full">
-                <div className="max-w-[480px] w-full">
-                  <img src={warehouseReporting} alt="Reporting and Dashboards" className="w-full h-auto object-contain rounded-lg" />
+                <div className="max-w-[540px] w-full rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-200 p-2">
+                  <div className="bg-slate-50 px-3 py-1.5 border-b border-slate-200 rounded-t-xl mb-2 flex items-center justify-between">
+                    <span className="text-xs font-semibold text-slate-600">Multi-Stage Transfers Tracking</span>
+                    <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Real-Time Status</span>
+                  </div>
+                  <img 
+                    src={warehouseTransfers} 
+                    alt="Warehouse Operations and Transfers" 
+                    className="w-full h-auto object-contain rounded-lg" 
+                  />
                 </div>
               </div>
             </div>
 
             <div className="reveal reveal-fade-up lg:order-2 flex flex-col justify-center w-full lg:max-w-[580px] lg:ml-auto">
-              <LabelBadge>ANALYTICS</LabelBadge>
+              <LabelBadge>ANALYTICS & REPORTING</LabelBadge>
               <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-4">Reporting and Dashboards</h2>
               <h3 className="text-[16px] font-bold text-slate-700 mt-2">Analyse your warehouse efficiency to improve performance</h3>
               <p className="text-[16px] text-black mt-4 leading-relaxed">
