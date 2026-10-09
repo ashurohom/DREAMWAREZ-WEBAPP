@@ -13,7 +13,7 @@ export function TeamDreamwarezPage() {
 
   return (
     <div className="app-container" style={{ fontFamily: "'Open Sans', sans-serif" }}>
-    
+
       <div className="gradient-overlay" />
       <SiteHeader />
 
@@ -25,20 +25,20 @@ export function TeamDreamwarezPage() {
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
-            <div 
-              className="absolute top-0 right-0 w-full h-full" 
-              style={{ 
+            <div
+              className="absolute top-0 right-0 w-full h-full"
+              style={{
                 background: 'linear-gradient(to bottom left, rgba(147, 196, 253, 0.5) 0%, transparent 70%)',
-                clipPath: 'polygon(20% 0, 100% 0, 100% 80%)' 
-              }} 
+                clipPath: 'polygon(20% 0, 100% 0, 100% 80%)'
+              }}
             />
             {/* Bottom Left Teal Shape */}
-            <div 
-              className="absolute bottom-20 left-0 w-full h-full" 
-              style={{ 
+            <div
+              className="absolute bottom-20 left-0 w-full h-full"
+              style={{
                 background: 'linear-gradient(to top right, rgba(138, 202, 192, 0.5) 0%, transparent 70%)',
-                clipPath: 'polygon(0 20%, 80% 100%, 0 100%)' 
-              }} 
+                clipPath: 'polygon(0 20%, 80% 100%, 0 100%)'
+              }}
             />
           </div>
 
@@ -79,9 +79,9 @@ export function TeamDreamwarezPage() {
               <div className="relative w-full max-w-[550px]">
                 {/* Rounded Image */}
                 <div className="w-full aspect-[4/3] bg-slate-100 relative rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100">
-                  <img 
-                    src={teamHeroBg} 
-                    alt="Team Dreamwarez" 
+                  <img
+                    src={teamHeroBg}
+                    alt="Team Dreamwarez"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -113,7 +113,7 @@ export function TeamDreamwarezPage() {
                   </span>
                 </span>
               </div>
-              
+
               <div>
                 <h2 className="text-[52px] font-black text-[#0f172a] leading-[1.1] mb-3">
                   Mr. Ronit Wagh
@@ -134,20 +134,20 @@ export function TeamDreamwarezPage() {
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
-            <div 
-              className="absolute top-0 right-0 w-full h-full" 
-              style={{ 
+            <div
+              className="absolute top-0 right-0 w-full h-full"
+              style={{
                 background: 'linear-gradient(to bottom left, rgba(147, 197, 253, 0.25) 0%, transparent 70%)',
-                clipPath: 'polygon(20% 0, 100% 0, 100% 80%)' 
-              }} 
+                clipPath: 'polygon(20% 0, 100% 0, 100% 80%)'
+              }}
             />
             {/* Bottom Left #8ACAC0 Shape */}
-            <div 
-              className="absolute bottom-0 left-0 w-full h-full" 
-              style={{ 
+            <div
+              className="absolute bottom-0 left-0 w-full h-full"
+              style={{
                 background: 'linear-gradient(to top right, rgba(138, 202, 192, 0.35) 0%, transparent 70%)',
-                clipPath: 'polygon(0 20%, 80% 100%, 0 100%)' 
-              }} 
+                clipPath: 'polygon(0 20%, 80% 100%, 0 100%)'
+              }}
             />
           </div>
 

@@ -18,9 +18,11 @@ export function SiteHeader() {
   const isAppsActive = ['/qualityconstruction-app', '/android-app', '/ios-app'].some(p => location.pathname.startsWith(p)) ||
                        (location.pathname.startsWith('/customised-software-development') && !isSoftwaresActive);
 
-  const isServicesActive = ['/website-development', '/cybersecurity-digital-forensics', '/ar-vr', '/media-animation', '/odoo-partner'].some(p => location.pathname.startsWith(p));
+  const isServicesActive = ['/website-development', '/cybersecurity-digital-forensics', '/ar-vr', '/media-animation'].some(p => location.pathname.startsWith(p));
 
   const isAboutActive = ['/about-us', '/privacy-policy', '/terms-and-condition', '/refund-policy', '/cancellation-policy'].some(p => location.pathname.startsWith(p));
+
+  const isOdooActive = location.pathname.startsWith('/odoo-partner');
 
 
   useEffect(() => {
@@ -112,7 +114,6 @@ export function SiteHeader() {
               <Link to="/website-development/" className="dropdown-item" onClick={closeMobileMenu}>Website Development</Link>
               <Link to="/cybersecurity-digital-forensics/" className="dropdown-item" onClick={closeMobileMenu}>Cybersecurity & Digital Forensics Services</Link>
               <Link to="/ar-vr/" className="dropdown-item" onClick={closeMobileMenu}>AR & VR Solutions</Link>
-              <Link to="/odoo-partner/" className="dropdown-item" onClick={closeMobileMenu}>Odoo Partner</Link>
             </div>
           </li>
 
@@ -124,6 +125,16 @@ export function SiteHeader() {
               <Link to="/career-opportunities/" className="dropdown-item" onClick={closeMobileMenu}>Career Opportunities</Link>
               <Link to="/about-us/team-dreamwarez/" className="dropdown-item" onClick={closeMobileMenu}>Team Dreamwarez</Link>
             </div>
+          </li>
+
+          <li className="nav-item">
+            <Link 
+              to="/odoo-partner/" 
+              className={`nav-link hover:!text-[#8b2c2c] ${isOdooActive ? 'active !text-[#8b2c2c] !font-semibold' : 'text-slate-800'}`} 
+              onClick={closeMobileMenu}
+            >
+              <span>Odoo Partner</span>
+            </Link>
           </li>
 
           <li className="nav-item">
