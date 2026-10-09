@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
@@ -14,15 +14,98 @@ import accountingChart from '../../assets/accounting_chart.png';
 import mrpBom from '../../assets/mrp_bom.png';
 
 export function OdooPartnerPage() {
-  const LabelBadge = ({ children, isCentered = false }) => (
+  const [activeAppIndex, setActiveAppIndex] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 40 });
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+    const y = Math.round(((e.clientY - rect.top) / rect.height) * 100);
+    setMousePos({ x, y });
+  };
+
+  const heroApps = [
+    {
+      id: 0,
+      name: 'Enterprise Platform',
+      category: 'Core Suite',
+      tag: 'Executive Overview',
+      url: 'odoo.dreamwarez.com / enterprise',
+      img: odooHero,
+      accentColor: '#8b5cf6',
+      posClass: 'top-0 left-1/2 -translate-x-1/2 w-[460px] lg:w-[540px]',
+      baseZ: 10,
+      bullets: ['Complete ERP Modernization', 'Cross-Department Workflows', 'Single Unified Database']
+    },
+    {
+      id: 1,
+      name: 'CRM & Sales Pipeline',
+      category: 'Sales CRM',
+      tag: 'Pipelines & Quotes',
+      url: 'odoo.dreamwarez.com / crm-sales',
+      img: salesDashboard,
+      accentColor: '#f59e0b',
+      posClass: 'top-6 left-[1%] lg:left-[3%] w-[380px] lg:w-[440px]',
+      baseZ: 12,
+      bullets: ['Real-Time Stage Funnels', 'Automated Quotation Builder', 'Omnichannel Inbound Tracking']
+    },
+    {
+      id: 2,
+      name: 'Manufacturing & MRP',
+      category: 'Manufacturing',
+      tag: 'Shop Floor & BOM',
+      url: 'odoo.dreamwarez.com / manufacturing',
+      img: mrpBom,
+      accentColor: '#ec4899',
+      posClass: 'top-8 right-[1%] lg:right-[3%] w-[380px] lg:w-[440px]',
+      baseZ: 12,
+      bullets: ['Multi-Level Bill of Materials', 'Work Center Capacity Planning', 'Barcode Work Orders']
+    },
+    {
+      id: 3,
+      name: 'Inventory & Logistics',
+      category: 'Inventory WMS',
+      tag: 'Warehouse & Barcode',
+      url: 'odoo.dreamwarez.com / inventory',
+      img: warehouseOverview,
+      accentColor: '#06b6d4',
+      posClass: 'bottom-2 left-[8%] lg:left-[13%] w-[420px] lg:w-[490px]',
+      baseZ: 25,
+      bullets: ['Double-Entry Stock Tracking', 'Automated Replenishment Rules', 'Multi-Warehouse Routing']
+    },
+    {
+      id: 4,
+      name: 'Financial Accounting',
+      category: 'Accounting',
+      tag: 'Audit & Ledgers',
+      url: 'odoo.dreamwarez.com / accounting',
+      img: accountingChart,
+      accentColor: '#3b82f6',
+      posClass: 'bottom-0 right-[8%] lg:right-[13%] w-[420px] lg:w-[490px]',
+      baseZ: 25,
+      bullets: ['Direct Bank Reconciliation', 'Dynamic P&L and Balance Sheet', 'Tax Localization Ready']
+    }
+  ];
+
+  const currentActiveApp = activeAppIndex !== null ? heroApps[activeAppIndex] : null;
+
+  const LabelBadge = ({ children, isCentered = false, isLight = false }) => (
     <div style={{ display: 'flex', justifyContent: isCentered ? 'center' : 'flex-start', marginBottom: '20px' }}>
       <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: isCentered ? 'center' : 'flex-start', gap: '6px' }}>
-        <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>
+        <span style={{ 
+          color: isLight ? '#fbcfe8' : '#8B2C2C', 
+          fontSize: '14px', 
+          fontWeight: '700', 
+          textTransform: 'uppercase', 
+          letterSpacing: '1px', 
+          fontFamily: '"Open Sans", sans-serif', 
+          lineHeight: '1' 
+        }}>
           {children}
         </span>
         <div style={{ display: 'flex', gap: '6px' }}>
-          <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-          <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
+          <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: isLight ? '#c084fc' : '#7A7A7A' }}></div>
+          <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: isLight ? '#c084fc' : '#7A7A7A' }}></div>
         </div>
       </div>
     </div>
@@ -40,101 +123,406 @@ export function OdooPartnerPage() {
 
       <main className="main-content">
         
-        {/* HERO SECTION */}
-        <section className="relative bg-white pt-8 pb-12 md:pt-12 md:pb-16 min-h-[calc(100vh-80px)] flex items-center overflow-hidden border-b border-slate-100">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-purple-500/[0.12] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#017e84]/[0.12] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
+        {/* HERO SECTION - VIBRANT PERIWINKLE-VIOLET SKYLINE MATCHING REFERENCE IMAGE */}
+        <section 
+          onMouseMove={handleMouseMove}
+          className="relative pt-8 pb-20 md:pt-12 md:pb-28 overflow-hidden text-white select-none"
+          style={{
+            background: 'linear-gradient(135deg, #4766f4 0%, #546ef6 28%, #6675f7 58%, #7c6cf7 82%, #8e68f8 100%)'
+          }}
+        >
+          
+          {/* Atmospheric Tech Backdrop (High-Rise Cityscape + Interactive Ambient Lighting) */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden select-none -z-0">
+            
+            {/* Ambient Daylight Ceiling Illumination */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%)'
+              }}
+            />
+
+            {/* Interactive Dynamic Radial Spotlight following mouse cursor */}
+            <div 
+              className="absolute inset-0 transition-opacity duration-300 pointer-events-none"
+              style={{
+                background: `radial-gradient(750px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.25) 0%, rgba(199, 210, 254, 0.12) 40%, transparent 70%)`
+              }}
+            />
+
+            {/* Subtle Tech Micro-Grid Overlay */}
+            <div 
+              className="absolute inset-0 opacity-[0.06] pointer-events-none"
+              style={{
+                backgroundImage: 'radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)',
+                backgroundSize: '28px 28px'
+              }}
+            />
+
+            {/* Cityscape Skyline Silhouette SVG (Framing flanks with towering skyscrapers) */}
+            <div 
+              className="absolute inset-x-0 bottom-0 h-[680px] lg:h-[750px] pointer-events-none transition-transform duration-300 ease-out"
+              style={{ 
+                transform: `translate3d(${(mousePos.x - 50) * -0.14}px, ${(mousePos.y - 50) * -0.06}px, 0)` 
+              }}
+            >
+              <svg viewBox="0 0 1600 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+                {/* Background Layer: Deeper Distant High-Rise Towers */}
+                <g fill="rgba(255, 255, 255, 0.14)">
+                  {/* Left distant towers */}
+                  <rect x="25" y="80" width="70" height="620" />
+                  <rect x="105" y="25" width="80" height="675" />
+                  <rect x="195" y="110" width="75" height="590" />
+                  <rect x="280" y="60" width="85" height="640" />
+                  
+                  {/* Center low-rise silhouette behind mockups */}
+                  <rect x="375" y="440" width="100" height="260" />
+                  <rect x="490" y="400" width="95" height="300" />
+                  <rect x="600" y="460" width="110" height="240" />
+                  <rect x="725" y="420" width="105" height="280" />
+                  <rect x="845" y="450" width="95" height="250" />
+                  <rect x="955" y="400" width="110" height="300" />
+                  <rect x="1080" y="440" width="100" height="260" />
+                  <rect x="1195" y="415" width="95" height="285" />
+                  
+                  {/* Right distant towers */}
+                  <rect x="1270" y="80" width="75" height="620" />
+                  <rect x="1355" y="30" width="95" height="670" />
+                  <rect x="1460" y="95" width="75" height="605" />
+                  <rect x="1545" y="55" width="55" height="645" />
+                </g>
+
+                {/* Foreground Architectural Buildings (translucent ice-white matching screenshot) */}
+                {/* LEFT FLANK CLUSTER */}
+                {/* Tower L1: Stepped tower with double spires */}
+                <rect x="45" y="150" width="80" height="550" fill="rgba(255, 255, 255, 0.28)" />
+                <rect x="60" y="120" width="50" height="30" fill="rgba(255, 255, 255, 0.3)" />
+                <line x1="85" y1="50" x2="85" y2="120" stroke="rgba(255, 255, 255, 0.85)" strokeWidth="3" />
+                <circle cx="85" cy="48" r="4" fill="#ffffff" />
+                
+                {/* Tower L2: Prominent Skyscraper with Lit Grid Windows */}
+                <rect x="135" y="85" width="100" height="615" fill="rgba(255, 255, 255, 0.32)" />
+                <rect x="155" y="55" width="60" height="30" fill="rgba(255, 255, 255, 0.34)" />
+                <line x1="185" y1="15" x2="185" y2="55" stroke="rgba(255, 255, 255, 0.95)" strokeWidth="3" />
+                <circle cx="185" cy="13" r="4.5" fill="#ffffff" />
+
+                {/* Tower L3: Modern High-Rise */}
+                <rect x="245" y="170" width="90" height="530" fill="rgba(255, 255, 255, 0.26)" />
+
+                {/* RIGHT FLANK CLUSTER */}
+                {/* Tower R1: Sleek Tower */}
+                <rect x="1275" y="140" width="90" height="560" fill="rgba(255, 255, 255, 0.26)" />
+                <line x1="1320" y1="75" x2="1320" y2="140" stroke="rgba(255, 255, 255, 0.85)" strokeWidth="3" />
+                <circle cx="1320" cy="73" r="4" fill="#ffffff" />
+
+                {/* Tower R2: Tall Iconic High-Rise with Horizontal Slit Ribbon Windows (Directly from screenshot) */}
+                <rect x="1380" y="70" width="115" height="630" fill="rgba(255, 255, 255, 0.34)" />
+                <rect x="1402" y="40" width="70" height="30" fill="rgba(255, 255, 255, 0.36)" />
+                <line x1="1437" y1="8" x2="1437" y2="40" stroke="rgba(255, 255, 255, 0.95)" strokeWidth="3.5" />
+                <circle cx="1437" cy="6" r="4.5" fill="#ffffff" />
+
+                {/* Tower R3: Far Right Tower */}
+                <rect x="1505" y="115" width="90" height="585" fill="rgba(255, 255, 255, 0.28)" />
+
+                {/* Lit Windows Patterns (Illuminated white slots and grids) */}
+                <g fill="#ffffff" opacity="0.8">
+                  {/* Windows on Tower L1 (3 columns of square windows) */}
+                  <rect x="58" y="165" width="14" height="9" rx="1.5" />
+                  <rect x="78" y="165" width="14" height="9" rx="1.5" />
+                  <rect x="98" y="165" width="14" height="9" rx="1.5" />
+                  <rect x="58" y="185" width="14" height="9" rx="1.5" />
+                  <rect x="78" y="185" width="14" height="9" rx="1.5" />
+                  <rect x="98" y="185" width="14" height="9" rx="1.5" />
+                  <rect x="58" y="205" width="14" height="9" rx="1.5" />
+                  <rect x="78" y="205" width="14" height="9" rx="1.5" />
+                  <rect x="98" y="205" width="14" height="9" rx="1.5" />
+                  <rect x="58" y="225" width="14" height="9" rx="1.5" />
+                  <rect x="78" y="225" width="14" height="9" rx="1.5" />
+                  <rect x="98" y="225" width="14" height="9" rx="1.5" />
+                  <rect x="58" y="245" width="14" height="9" rx="1.5" />
+                  <rect x="78" y="245" width="14" height="9" rx="1.5" />
+                  <rect x="98" y="245" width="14" height="9" rx="1.5" />
+
+                  {/* Windows on Tower L2 (Grid of illuminated slots) */}
+                  <rect x="152" y="110" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="128" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="146" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="164" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="182" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="200" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="218" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="236" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="254" width="66" height="5.5" rx="1.5" />
+                  <rect x="152" y="272" width="66" height="5.5" rx="1.5" />
+
+                  {/* Windows on Tower R2 (THE ICONIC HORIZONTAL SLIT BARS FROM SCREENSHOT) */}
+                  <rect x="1395" y="95" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="112" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="129" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="146" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="163" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="180" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="197" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="214" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="231" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="248" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="265" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="282" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="299" width="85" height="5.5" rx="1.5" />
+                  <rect x="1395" y="316" width="85" height="5.5" rx="1.5" />
+
+                  {/* Windows on Tower R3 (Matrix Windows) */}
+                  <rect x="1520" y="135" width="15" height="9" rx="1.5" />
+                  <rect x="1545" y="135" width="15" height="9" rx="1.5" />
+                  <rect x="1570" y="135" width="15" height="9" rx="1.5" />
+                  <rect x="1520" y="155" width="15" height="9" rx="1.5" />
+                  <rect x="1545" y="155" width="15" height="9" rx="1.5" />
+                  <rect x="1570" y="155" width="15" height="9" rx="1.5" />
+                  <rect x="1520" y="175" width="15" height="9" rx="1.5" />
+                  <rect x="1545" y="175" width="15" height="9" rx="1.5" />
+                  <rect x="1570" y="175" width="15" height="9" rx="1.5" />
+                  <rect x="1520" y="195" width="15" height="9" rx="1.5" />
+                  <rect x="1545" y="195" width="15" height="9" rx="1.5" />
+                  <rect x="1570" y="195" width="15" height="9" rx="1.5" />
+                </g>
+              </svg>
+            </div>
+
+            {/* Floating Tech Marks (+, ●, ✕) positioned on outer flanks to avoid text overlap */}
+            {/* Left Flank Marks */}
+            <div 
+              className="absolute top-16 left-[5%] lg:left-[8%] text-white text-3xl font-black select-none pointer-events-none drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] animate-float-slow transition-transform duration-300"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.2}px, ${(mousePos.y - 50) * 0.15}px, 0)` }}
+            >
+              +
+            </div>
+
+            <div 
+              className="absolute top-36 left-[3%] lg:left-[6%] w-3.5 h-3.5 rounded-full bg-white select-none pointer-events-none shadow-[0_0_16px_rgba(255,255,255,1)] transition-transform duration-300"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.25}px, ${(mousePos.y - 50) * 0.2}px, 0)` }}
+            />
+
+            <div 
+              className="absolute top-56 left-[4%] lg:left-[7%] text-white/80 text-xl font-bold select-none pointer-events-none drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.15}px, ${(mousePos.y - 50) * 0.12}px, 0)` }}
+            >
+              ✕
+            </div>
+
+            {/* Right Flank Marks */}
+            <div 
+              className="absolute top-20 right-[5%] lg:right-[8%] w-5 h-5 rounded-full bg-white select-none pointer-events-none shadow-[0_0_20px_rgba(255,255,255,1)] transition-transform duration-300"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.3}px, ${(mousePos.y - 50) * 0.22}px, 0)` }}
+            />
+
+            <div 
+              className="absolute top-40 right-[4%] lg:right-[6%] text-white text-2xl font-bold select-none pointer-events-none drop-shadow-[0_0_12px_rgba(255,255,255,0.9)] rotate-12 animate-float-medium transition-transform duration-300"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.18}px, ${(mousePos.y - 50) * 0.18}px, 0)` }}
+            >
+              ✕
+            </div>
+
+            <div 
+              className="absolute top-64 right-[5%] lg:right-[9%] text-white/90 text-2xl font-black select-none pointer-events-none drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+              style={{ transform: `translate3d(${(mousePos.x - 50) * 0.22}px, ${(mousePos.y - 50) * 0.2}px, 0)` }}
+            >
+              +
+            </div>
+
           </div>
 
-          <div className="mx-auto px-6 flex flex-col md:flex-row items-center justify-between w-full relative z-10" style={{ maxWidth: '1350px' }}>
+          <div className="max-w-[1350px] mx-auto px-6 relative z-10">
             
-            {/* Left Content */}
-            <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-4 md:pr-8">
-              <LabelBadge>OFFICIAL ODOO PARTNER</LabelBadge>
-
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.15] font-extrabold text-black font-heading mb-6 max-w-[700px]">
-                Official Odoo <span style={{ color: '#714B67' }}>Implementation Partner</span>
-              </h1>
-
-              <p className="text-[17px] text-slate-800 leading-relaxed max-w-[600px] mb-6">
-                Transform your business operations with Dreamwarez. As an <strong>Official Certified Odoo Partner</strong>, we deliver scalable ERP solutions, bespoke integrations, and seamless data migrations tailored to your unique workflows.
-              </p>
-
-              {/* Colorful feature chips */}
-              <div className="flex flex-wrap gap-2.5 mb-8">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-purple-100 text-[#714B67] border border-purple-200">
-                  <span className="w-2 h-2 rounded-full bg-[#714B67]"></span>
-                  Certified Odoo Specialists
+            {/* Top Text Header (High Contrast, Authoritative, Clean) */}
+            <div className="text-center max-w-3xl mx-auto mb-6 reveal reveal-fade-up">
+              
+              {/* Official Gold/Emerald Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 hover:bg-white/25 border border-white/40 shadow-lg mb-4 backdrop-blur-md transition-all">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-ping"></span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white">
+                  Official Certified Odoo Partner
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-teal-100 text-[#017e84] border border-teal-200">
-                  <span className="w-2 h-2 rounded-full bg-[#017e84]"></span>
-                  Odoo v17 & v18 Ready
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200">
-                  <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                  Zero-Downtime Migration
-                </span>
+                <span className="text-emerald-300 font-extrabold text-sm">✓</span>
               </div>
 
+              <h1 className="text-[30px] sm:text-[40px] md:text-[48px] lg:text-[54px] leading-[1.14] font-extrabold text-white font-heading mb-4 tracking-tight drop-shadow-md">
+                One Unified Platform For All Your Business Operations
+              </h1>
+
+              <p className="text-[15px] sm:text-[17px] text-white/95 leading-relaxed max-w-2xl mx-auto mb-6 font-sans drop-shadow-sm font-medium">
+                Dreamwarez is recognized as an <strong>Official Certified Odoo Partner</strong>. We implement, customize, and integrate the complete Odoo suite—connecting CRM, warehouse logistics, financial accounting, and manufacturing into one synchronized cloud ecosystem.
+              </p>
+
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center items-center gap-4 mb-5">
                 <Link
                   to="/contact/"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-[15px] font-bold text-white bg-gradient-to-r from-[#714B67] to-[#8B2C2C] rounded-xl hover:shadow-[0_10px_25px_rgba(113,75,103,0.3)] hover:-translate-y-0.5 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-[15px] font-extrabold text-indigo-950 bg-white rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-slate-50 hover:shadow-[0_15px_35px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 transition-all duration-300 border border-white/60"
                 >
-                  Contact Our Experts <span className="ml-2">➔</span>
+                  Contact Our Experts <span className="ml-2 font-bold">➔</span>
                 </Link>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center px-7 py-3.5 text-[15px] font-bold text-slate-700 bg-white border border-slate-300 rounded-xl hover:bg-slate-50 transition-all shadow-sm"
+                  className="inline-flex items-center justify-center px-7 py-3.5 text-[15px] font-bold text-white bg-white/15 hover:bg-white/25 border border-white/35 rounded-xl transition-all backdrop-blur-md shadow-sm"
                 >
-                  Explore Services ↓
+                  Explore Capabilities ↓
                 </a>
               </div>
+
+              {/* Interactive App Switcher Pills (Click or hover to spotlight any window) */}
+              <div className="pt-1">
+                <div className="text-[11px] font-bold text-white/90 uppercase tracking-widest mb-2.5 flex items-center justify-center gap-2">
+                  <span>✦</span>
+                  <span>Hover or click any app to spotlight</span>
+                  <span>✦</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-2" onMouseLeave={() => setActiveAppIndex(null)}>
+                  {heroApps.map((app) => {
+                    const isSelected = activeAppIndex === app.id;
+                    return (
+                      <button
+                        key={app.id}
+                        onClick={() => setActiveAppIndex(activeAppIndex === app.id ? null : app.id)}
+                        onMouseEnter={() => setActiveAppIndex(app.id)}
+                        className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+                          isSelected
+                            ? 'bg-white text-indigo-950 shadow-[0_0_25px_rgba(255,255,255,0.6)] scale-105 ring-2 ring-white'
+                            : 'bg-white/15 text-white hover:bg-white/25 border border-white/25 hover:border-white/50 backdrop-blur-sm'
+                        }`}
+                      >
+                        <span 
+                          className="w-2.5 h-2.5 rounded-full shadow-sm" 
+                          style={{ backgroundColor: app.accentColor }}
+                        />
+                        <span>{app.category}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
             </div>
 
-            {/* Right Image Frame */}
-            <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center md:justify-end z-0 reveal reveal-fade-left">
-              <div className="relative w-full max-w-[500px]">
-                
-                {/* Floating Status Badge */}
-                <div className="absolute -top-3.5 -right-2 z-20 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-purple-200 shadow-lg flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span className="text-xs font-bold text-[#714B67] tracking-wide">Official Partner Verified ✓</span>
-                </div>
+            {/* CASCADING OVERLAPPING BROWSER WINDOWS SHOWCASE (MATCHES USER REFERENCE IMAGE) */}
+            <div 
+              className="relative mt-6 md:mt-8 w-full reveal reveal-fade-up"
+              onMouseLeave={() => setActiveAppIndex(null)}
+            >
+              
+              {/* Desktop & Tablet Layered Composition */}
+              <div className="hidden md:block relative h-[560px] lg:h-[620px] w-full max-w-[1260px] mx-auto">
+                {heroApps.map((app) => {
+                  const isSpotlight = activeAppIndex === app.id;
+                  return (
+                    <div
+                      key={app.id}
+                      onClick={() => setActiveAppIndex(activeAppIndex === app.id ? null : app.id)}
+                      onMouseEnter={() => setActiveAppIndex(app.id)}
+                      style={{
+                        zIndex: isSpotlight ? 50 : app.baseZ
+                      }}
+                      className={`absolute ${app.posClass} rounded-2xl overflow-hidden bg-white cursor-pointer transition-all duration-500 ${
+                        isSpotlight
+                          ? 'scale-[1.04] ring-4 ring-white shadow-[0_30px_90px_rgba(20,25,60,0.5)] -translate-y-3'
+                          : 'shadow-[0_20px_50px_rgba(20,25,60,0.28)] hover:scale-[1.02] hover:-translate-y-1'
+                      } border border-white/90`}
+                    >
+                      {/* macOS Window Top Bar */}
+                      <div className="bg-slate-100/95 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                          <span className="text-[11px] font-mono text-slate-600 ml-2 font-semibold">
+                            {app.url}
+                          </span>
+                        </div>
+                        <span 
+                          className="text-[10px] font-extrabold px-2 py-0.5 rounded border uppercase"
+                          style={{ 
+                            color: app.accentColor,
+                            borderColor: `${app.accentColor}40`,
+                            backgroundColor: `${app.accentColor}15`
+                          }}
+                        >
+                          {app.tag}
+                        </span>
+                      </div>
 
-                {/* macOS Style Window Frame */}
-                <div className="rounded-3xl overflow-hidden bg-white shadow-2xl border border-slate-200 transition-all duration-500 hover:shadow-[0_25px_60px_rgba(113,75,103,0.18)]">
-                  <div className="bg-slate-100/90 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-rose-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
-                      <span className="text-[11px] font-mono text-slate-500 ml-2">dreamwarez / official-odoo-partner</span>
+                      {/* Screen Image with Clean Subtle Gradient Depth */}
+                      <div className="relative group overflow-hidden bg-slate-900">
+                        <img 
+                          src={app.img} 
+                          alt={app.name} 
+                          className="w-full h-[240px] lg:h-[275px] object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
+                      </div>
                     </div>
-                    <span className="text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full uppercase">
-                      Certified
+                  );
+                })}
+              </div>
+
+              {/* Mobile Fallback: Interactive Snap Carousel */}
+              <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory pt-2">
+                {heroApps.map((app) => (
+                  <div 
+                    key={app.id} 
+                    className="min-w-[290px] snap-center rounded-2xl overflow-hidden bg-white shadow-2xl border border-white shrink-0 text-slate-900"
+                  >
+                    <div className="bg-slate-100 px-3 py-2 border-b border-slate-200 flex items-center justify-between">
+                      <div className="flex items-center gap-1">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                        <span className="text-[10px] font-mono text-slate-500 ml-1.5">{app.url}</span>
+                      </div>
+                      <span 
+                        className="text-[9px] font-bold px-1.5 py-0.5 rounded border uppercase"
+                        style={{ color: app.accentColor, borderColor: `${app.accentColor}40` }}
+                      >
+                        {app.tag}
+                      </span>
+                    </div>
+                    <img src={app.img} alt={app.name} className="w-full h-[180px] object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Interactive Live Feature Tour Bar (Shows advantages of the active or general suite) */}
+              <div className="mt-4 max-w-3xl mx-auto p-3.5 rounded-2xl bg-white/15 border border-white/30 backdrop-blur-md shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3 text-white text-xs">
+                <div className="flex items-center gap-3">
+                  <span 
+                    className="w-3 h-3 rounded-full shrink-0 shadow-[0_0_10px_white]"
+                    style={{ backgroundColor: currentActiveApp ? currentActiveApp.accentColor : '#ffffff' }}
+                  />
+                  <div>
+                    <span className="font-extrabold text-white text-sm">
+                      {currentActiveApp ? currentActiveApp.name : 'Certified Odoo 17 ERP Ecosystem'}
+                    </span>
+                    <span className="text-white/80 mx-1.5">•</span>
+                    <span className="text-white/90 font-medium">
+                      {currentActiveApp ? currentActiveApp.tag : 'Enterprise Cloud Suite'}
                     </span>
                   </div>
-
-                  <img 
-                    src={odooHero} 
-                    alt="Dreamwarez Official Odoo Implementation Team" 
-                    className="w-full h-[360px] object-cover"
-                  />
                 </div>
 
-                {/* Floating Bottom Badge */}
-                <div className="absolute -bottom-3.5 -left-2 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 shadow-md flex items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-800">⭐ 100+ Successful Deployments</span>
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-white/95">
+                  {(currentActiveApp ? currentActiveApp.bullets : ['Official Odoo Partner', 'Full Custom Integration', 'PostgreSQL Cloud SLA']).map((bullet, idx) => (
+                    <span key={idx} className="bg-white/15 px-2.5 py-1 rounded-lg border border-white/20">
+                      ✓ {bullet}
+                    </span>
+                  ))}
                 </div>
-
               </div>
+
             </div>
 
           </div>
+
+          {/* Smooth Bottom Gradient Fade to Slate-50 */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-slate-50 pointer-events-none" />
         </section>
 
 
