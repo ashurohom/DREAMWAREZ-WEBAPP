@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -9,7 +10,20 @@ import { teamMembers } from '../../data/teamMembers';
 export function TeamDreamwarezPage() {
   const managingDirector = teamMembers[0];
   const employees = teamMembers.slice(1);
+  const [hoveredMember, setHoveredMember] = useState(null);
 
+  // Symmetrical 3x3 layout of all 9 current Dreamwarez employees (no repetition)
+  const displayEmployees = [
+    employees.find((m) => m.name.includes('Disha')) || employees[1],
+    employees.find((m) => m.name.includes('Ashitosh')) || employees[4],
+    employees.find((m) => m.name.includes('Abhishek')) || employees[5],
+    employees.find((m) => m.name.includes('Ishika')) || employees[3],
+    employees.find((m) => m.name.includes('Kanchan')) || employees[0],
+    employees.find((m) => m.name.includes('Swami')) || employees[7],
+    employees.find((m) => m.name.includes('Shruti')) || employees[6],
+    employees.find((m) => m.name.includes('Rushikesh')) || employees[2],
+    employees.find((m) => m.name.includes('Gayatri')) || employees[8]
+  ];
 
   return (
     <div className="app-container" style={{ fontFamily: "'Open Sans', sans-serif" }}>
@@ -90,6 +104,7 @@ export function TeamDreamwarezPage() {
           </div>
         </section>
 
+        {/* Leadership Section - Preserving Mr. Ronit Wagh photo */}
         <section className="py-20 px-6 bg-white reveal reveal-fade-up">
           <div className="max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] gap-10 md:gap-24 lg:gap-32 items-stretch">
             <div className="relative group w-[380px] h-[380px] mx-auto shrink-0">
@@ -130,6 +145,7 @@ export function TeamDreamwarezPage() {
           </div>
         </section>
 
+        {/* Our People / The Dreamwarez Team Section - 1 Row Layout with Tailwind CSS Circular Mosaic */}
         <section className="py-20 px-6 bg-slate-50 border-y border-slate-100 relative overflow-hidden reveal reveal-fade-up">
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -151,9 +167,65 @@ export function TeamDreamwarezPage() {
             />
           </div>
 
-          <div className="max-w-[1200px] mx-auto relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="max-w-[1160px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-16 lg:gap-24 items-center relative z-10">
+            {/* Left Side: Tailwind CSS Dynamic Circular Team Stage */}
+            <div className="relative group w-[340px] h-[340px] sm:w-[410px] sm:h-[410px] md:w-[440px] md:h-[440px] lg:w-[460px] lg:h-[460px] mx-auto shrink-0 reveal reveal-fade-right">
+              {/* Outer ambient glow */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#2D9E84]/20 via-sky-400/20 to-[#8B2C2C]/20 blur-3xl -z-10 group-hover:scale-110 transition-transform duration-700" />
+
+              {/* Concentric rotating dashed orbital ring */}
+              <div
+                className="absolute -inset-3 sm:-inset-4 rounded-full border-2 border-dashed border-[#8B2C2C]/30 pointer-events-none"
+                style={{ animation: 'spin 60s linear infinite' }}
+              />
+
+              {/* Second sleek concentric ring */}
+              <div className="absolute -inset-6 sm:-inset-7 rounded-full border border-sky-300/40 pointer-events-none" />
+
+              {/* Main Circular Glass Stage */}
+              <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-slate-300/80 bg-white/90 backdrop-blur-md w-full h-full p-4 sm:p-5 flex items-center justify-center">
+                {/* Inner 3x3 Grid of Employee Photo Tiles */}
+                <div className="grid grid-cols-3 gap-2 sm:gap-2.5 w-full h-full">
+                  {displayEmployees.map((member) => {
+                    const isHovered = hoveredMember?.name === member.name;
+                    return (
+                      <div
+                        key={member.name}
+                        onMouseEnter={() => setHoveredMember(member)}
+                        onMouseLeave={() => setHoveredMember(null)}
+                        className={`relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 transition-all duration-300 cursor-pointer aspect-square bg-slate-100 group/tile ${
+                          isHovered
+                            ? 'scale-110 z-30 shadow-2xl border-[#8B2C2C] ring-2 ring-[#8B2C2C]/50'
+                            : 'border-white/90 shadow-sm hover:shadow-xl hover:scale-105 hover:z-20'
+                        }`}
+                      >
+                        <img
+                          src={member.src}
+                          alt={member.name}
+                          className="w-full h-full object-cover group-hover/tile:scale-115 transition-transform duration-500"
+                        />
+                        {/* Live active dot */}
+                        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white shadow-sm" />
+
+                        {/* Hover name/role overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-1.5 sm:p-2 text-center pointer-events-none">
+                          <span className="text-[10px] sm:text-[11px] font-extrabold text-white leading-tight drop-shadow-sm truncate">
+                            {member.name.split(' ')[0]}
+                          </span>
+                          <span className="text-[8px] sm:text-[9px] font-bold text-teal-300 uppercase tracking-wider truncate">
+                            {member.role.replace(' Developer', '')}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side: Team Dreamwarez Heading, Short Info & Live Spotlight */}
+            <div className="reveal reveal-fade-left flex flex-col justify-center gap-6 py-4">
+              <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs font-bold tracking-[0.2em] text-[#8B2C2C] uppercase relative">
                   Our People
                   <span className="absolute -bottom-2 left-0 flex gap-1.5">
@@ -162,36 +234,49 @@ export function TeamDreamwarezPage() {
                   </span>
                 </span>
               </div>
-              <h2 className="text-[46px] font-extrabold text-slate-900">
-                The <span className="text-[#7A7A7A]">Dreamwarez</span> Team
-              </h2>
-              <p className="text-black text-[16px] mt-4 leading-relaxed">
-                A focused group of developers and builders working across mobile, web, backend systems, dashboards, and business applications.
-              </p>
-            </div>
 
-            <div className="flex flex-wrap justify-center gap-7">
-              {employees.map((member) => (
-                <div key={member.name} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] xl:w-[calc(25%-21px)] reveal reveal-fade-up">
-                  <article className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 group h-full">
-                    <div className="aspect-square bg-slate-100 overflow-hidden">
-                      <img
-                        src={member.src}
-                        alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+              <div>
+                <h2 className="text-[40px] sm:text-[48px] md:text-[52px] font-black text-[#0f172a] leading-[1.1] mb-3">
+                  The <span className="text-[#7A7A7A]">Dreamwarez</span> Team
+                </h2>
+              </div>
+
+              <p className="text-slate-600 text-[18px] leading-[1.8] max-w-[500px]">
+                A focused group of developers and builders working across mobile, web, backend systems, dashboards, and business applications to deliver impactful, user-focused experiences.
+              </p>
+
+              {/* Interactive Member Spotlight Bar in Tailwind CSS */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/95 border border-slate-200/90 shadow-md shadow-slate-200/50 max-w-[500px] transition-all duration-300">
+                {hoveredMember ? (
+                  <div className="flex items-center gap-4 transition-all duration-300">
+                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#8B2C2C] shadow-md shrink-0">
+                      <img src={hoveredMember.src} alt={hoveredMember.name} className="w-full h-full object-cover" />
                     </div>
-                    <div className="p-6 text-center">
-                      <h3 className="text-[16px] font-extrabold text-slate-900">{member.name}</h3>
-                      <p className="text-[#0EA5E9] text-[14px] font-bold uppercase tracking-wide mt-1">{member.role}</p>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[17px] font-extrabold text-slate-900 truncate">{hoveredMember.name}</div>
+                      <div className="text-[13px] font-bold text-[#0EA5E9] uppercase tracking-wide">{hoveredMember.role}</div>
+                      {hoveredMember.quote && (
+                        <div className="text-[12.5px] text-slate-500 italic truncate mt-0.5">&ldquo;{hoveredMember.quote}&rdquo;</div>
+                      )}
                     </div>
-                  </article>
-                </div>
-              ))}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3 text-slate-600">
+                    <span className="w-9 h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-sm shrink-0">
+                      ✨
+                    </span>
+                    <div>
+                      <div className="text-[14px] font-bold text-slate-900">Core Engineering Team</div>
+                      <div className="text-[12px] text-slate-500">Dedicated engineers delivering impactful digital solutions</div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
 
+        {/* Work Together Section */}
         <section className="py-20 px-6 lg:px-12 max-w-[1200px] mx-auto relative border-2 border-blue-200 rounded-3xl mt-16 mb-20 bg-white reveal reveal-fade-up">
           <div className="max-w-[1060px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

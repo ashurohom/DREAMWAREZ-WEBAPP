@@ -92,6 +92,20 @@ export function SiteFooter() {
               </svg>
             </a>
 
+            {/* Facebook */}
+            <a
+              href="https://www.facebook.com/dreamwarez.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialBtn}
+              aria-label="Facebook"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+                <path d="M15 12h-2v8h-3v-8H8v-3h2V6.5C10 4.5 11.1 3 13.8 3h2.2v3h-1.6c-1 0-1.4.6-1.4 1.4V9h3l-1 3z" fill="#ffffff"/>
+              </svg>
+            </a>
+
             {/* YouTube */}
             <a
               href="https://www.youtube.com/@dreamwarezsoftware6102"
@@ -104,20 +118,6 @@ export function SiteFooter() {
                 <circle cx="12" cy="12" r="12" fill="#FF0000"/>
                 <path d="M16.5 7H7.5C6.1 7 5 8.1 5 9.5v5c0 1.4 1.1 2.5 2.5 2.5h9c1.4 0 2.5-1.1 2.5-2.5v-5C19 8.1 17.9 7 16.5 7z" fill="#ffffff"/>
                 <path d="M10.5 14l4.5-2.5-4.5-2.5v5z" fill="#FF0000"/>
-              </svg>
-            </a>
-
-            {/* Facebook */}
-            <a
-              href="https://www.facebook.com/dreamwarez.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialBtn}
-              aria-label="Facebook"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="12" fill="#1877F2"/>
-                <path d="M15 12h-2v8h-3v-8H8v-3h2V6.5C10 4.5 11.1 3 13.8 3h2.2v3h-1.6c-1 0-1.4.6-1.4 1.4V9h3l-1 3z" fill="#ffffff"/>
               </svg>
             </a>
           </div>

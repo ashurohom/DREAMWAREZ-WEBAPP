@@ -1079,19 +1079,6 @@ export function ContactPage() {
                 </svg>
               </a>
 
-              {/* YouTube */}
-              <a
-                href="https://www.youtube.com/@dreamwarezsoftware6102"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Dreamwarez YouTube"
-                className="w-11 h-11 bg-white hover:bg-[#FF0000] text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-200 hover:border-[#FF0000] hover:-translate-y-1"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-
               {/* Facebook */}
               <a
                 href="https://www.facebook.com/dreamwarez.in/"
@@ -1102,6 +1089,19 @@ export function ContactPage() {
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
+                </svg>
+              </a>
+
+              {/* YouTube */}
+              <a
+                href="https://www.youtube.com/@dreamwarezsoftware6102"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dreamwarez YouTube"
+                className="w-11 h-11 bg-white hover:bg-[#FF0000] text-slate-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-200 hover:border-[#FF0000] hover:-translate-y-1"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
             </div>
