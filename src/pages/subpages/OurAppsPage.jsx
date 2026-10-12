@@ -25,9 +25,30 @@ export function OurAppsPage() {
   const [appFilter, setAppFilter] = useState('All');
 
   const apps = [
-    { name: 'Construction Quality App', slug: 'qualityconstruction-app', desc: 'Review site structures, quality checklists, and materials audit logs. Built for field inspectors and project managers.', category: 'Business' },
-    { name: 'Android App', slug: 'android-app', desc: 'Premium, high-performance native Android apps designed by experts, optimized for scalability and performance.', category: 'Mobile' },
-    { name: 'iOS App', slug: 'ios-app', desc: 'Elegant, modern native iOS applications for mobile and iPad devices. Crafted to maximize engagement.', category: 'Mobile' }
+    { 
+      name: 'DW Attendance App', 
+      slug: 'dw-attendance-app', 
+      desc: 'All-in-one employee management app that lets you track attendance, manage tasks, and handle leave requests effortlessly with real-time updates and accurate reporting.', 
+      category: 'Business' 
+    },
+    { 
+      name: 'Construction Quality App', 
+      slug: 'qualityconstruction-app', 
+      desc: 'Review site structures, quality checklists, and materials audit logs. Built for field inspectors and project managers.', 
+      category: 'Business' 
+    },
+    { 
+      name: 'Android App', 
+      slug: 'android-app', 
+      desc: 'Premium, high-performance native Android apps designed by experts, optimized for scalability and performance.', 
+      category: 'Mobile' 
+    },
+    { 
+      name: 'iOS App', 
+      slug: 'ios-app', 
+      desc: 'Elegant, modern native iOS applications for mobile and iPad devices. Crafted to maximize engagement.', 
+      category: 'Mobile' 
+    }
   ];
 
   const filteredApps = appFilter === 'All' ? apps : apps.filter(a => a.category === appFilter);
@@ -113,7 +134,7 @@ export function OurAppsPage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
               {filteredApps.map((app, idx) => (
                 <div 
                   key={idx} 

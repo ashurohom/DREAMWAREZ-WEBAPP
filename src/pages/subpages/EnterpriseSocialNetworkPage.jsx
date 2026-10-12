@@ -64,6 +64,7 @@ export function EnterpriseSocialNetworkPage() {
   const [socialFeedLikes, setSocialFeedLikes] = useState(42);
   const [hasLiked, setHasLiked] = useState(false);
   const [socialFeedComments, setSocialFeedComments] = useState([
+    { author: 'Ashitosh Rohom', text: 'Performance updates and seamless real-time syncing deployed! 🚀' },
     { author: 'Disha Khachane', text: 'Looks amazing! Great job team. 👏' },
     { author: 'Kanchan Kate', text: 'Love the new spacing.' }
   ]);

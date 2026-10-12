@@ -32,6 +32,7 @@ import { WarehouseStockManagementPage } from './pages/subpages/WarehouseStockMan
 import { WebsiteDevelopmentPage } from './pages/subpages/WebsiteDevelopmentPage';
 import { TeamDreamwarezPage } from './pages/subpages/TeamDreamwarezPage';
 import { OdooPartnerPage } from './pages/subpages/OdooPartnerPage';
+import { DwAttendanceAppPage } from './pages/subpages/DwAttendanceAppPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -177,6 +178,11 @@ function App() {
 
         <Route path="/customised-software-development/" element={<CustomSoftwarePage />} />
         <Route path="/customised-software-development" element={<Navigate to="/customised-software-development/" replace />} />
+
+        <Route path="/dw-attendance-app/" element={<DwAttendanceAppPage />} />
+        <Route path="/dw-attendance-app" element={<Navigate to="/dw-attendance-app/" replace />} />
+        <Route path="/attendance-app/" element={<Navigate to="/dw-attendance-app/" replace />} />
+        <Route path="/attendance-app" element={<Navigate to="/dw-attendance-app/" replace />} />
 
         <Route path="/qualityconstruction-app/" element={<QualityConstructionPage />} />
         <Route path="/qualityconstruction-app" element={<Navigate to="/qualityconstruction-app/" replace />} />

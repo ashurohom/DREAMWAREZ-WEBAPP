@@ -15,7 +15,7 @@ export function SiteHeader() {
                            location.pathname.startsWith('/media-animation') || 
                            location.pathname.startsWith('/customised-software-development');
 
-  const isAppsActive = ['/qualityconstruction-app', '/android-app', '/ios-app'].some(p => location.pathname.startsWith(p)) ||
+  const isAppsActive = ['/qualityconstruction-app', '/android-app', '/ios-app', '/dw-attendance-app'].some(p => location.pathname.startsWith(p)) ||
                        (location.pathname.startsWith('/customised-software-development') && !isSoftwaresActive);
 
   const isServicesActive = ['/website-development', '/cybersecurity-digital-forensics', '/ar-vr', '/media-animation'].some(p => location.pathname.startsWith(p));
@@ -100,6 +100,7 @@ export function SiteHeader() {
               Our Apps <span style={{ fontSize: '10px', marginLeft: '2px' }}>▼</span>
             </Link>
             <div className="dropdown-menu">
+              <Link to="/dw-attendance-app/" className="dropdown-item" onClick={closeMobileMenu}>DW Attendance App</Link>
               <Link to="/qualityconstruction-app/" className="dropdown-item" onClick={closeMobileMenu}>Construction Quality App</Link>
               <Link to="/android-app/" className="dropdown-item" onClick={closeMobileMenu}>Android App</Link>
               <Link to="/ios-app/" className="dropdown-item" onClick={closeMobileMenu}>iOS App</Link>
