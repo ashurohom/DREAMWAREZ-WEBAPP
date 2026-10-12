@@ -229,11 +229,8 @@ This website is designed, built, and maintained by:
 - 🏢 **Company**: [Dreamwarez](https://dreamwarez.in)
 - 📍 **Location**: 518, 5th Floor, Wakad Business Bay, Wakad, Pune - 411057, Maharashtra, India
 - 💼 **Focus**: Enterprise Full-Stack Engineering, ERP Solutions, and Scalable Web Platforms
-- 🌐 **Social Channels**:
-  - [LinkedIn](https://www.linkedin.com/company/dreamwarez/)
-  - [Instagram](https://www.instagram.com/dreamwarez/)
-  - [YouTube](https://www.youtube.com/@dreamwarezsoftware6102)
-  - [Facebook](https://www.facebook.com/dreamwarez.in/)
+- 🔗 **LinkedIn**: [linkedin.com/in/ashitoshrohom](https://www.linkedin.com/in/ashitoshrohom/)
+- 🌐 **Portfolio**: [ashitoshrohom.netlify.app](https://ashitoshrohom.netlify.app/)
 
 </div>
 
