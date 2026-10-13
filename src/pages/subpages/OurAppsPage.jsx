@@ -38,13 +38,13 @@ export function OurAppsPage() {
       category: 'Business' 
     },
     { 
-      name: 'Android App', 
+      name: 'Customize Android App', 
       slug: 'android-app', 
       desc: 'Premium, high-performance native Android apps designed by experts, optimized for scalability and performance.', 
       category: 'Mobile' 
     },
     { 
-      name: 'iOS App', 
+      name: 'Customize IOS App', 
       slug: 'ios-app', 
       desc: 'Elegant, modern native iOS applications for mobile and iPad devices. Crafted to maximize engagement.', 
       category: 'Mobile' 
