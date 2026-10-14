@@ -1,7 +1,5 @@
 /* Special CSS code specific to the Home page */
 
-
-
 .home-page .site-header .logo-subtitle {
   color: var(--text-muted);
 }
@@ -9,35 +7,20 @@
 /* Home Hero Section Styles */
 .home-page .hero-section {
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1651151798244-e2641c1af115?q=100&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   min-height: calc(100vh - 80px);
-  height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  padding: 10px 0;
   overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .home-page .hero-section {
-    height: auto;
-    min-height: 520px;
-    padding: 30px 0;
-  }
 }
 
 .home-page .hero-inner {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
 }
-
-
 
 /* Interactive Rotating Ring Animation */
 .interactive-ring-container {
@@ -89,7 +72,6 @@
 
 .interactive-ring-container:hover .rotating-text-svg {
   opacity: 1;
-  /* Faster spin on hover */
   animation: spinRing 8s linear infinite;
 }
 
@@ -98,3 +80,210 @@
   100% { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   MOBILE & TABLET VIEWPORT RESPONSIVENESS & POLISH
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Hero Section */
+  .home-page .hero-section {
+    min-height: calc(100vh - 70px);
+    height: auto;
+    padding: 48px 0 40px;
+    background-position: 65% center;
+  }
+
+  .home-page .hero-content {
+    padding: 4px;
+    max-width: 100%;
+  }
+
+  .home-page .hero-title {
+    font-size: 32px !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+
+  .home-page .hero-subtitle {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 22px;
+  }
+
+  .home-page .hero-actions {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  /* Simplify Work / Feature Cards */
+  .home-page .simplify-section {
+    padding-top: 40px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .home-page .feature-card {
+    padding: 20px 12px !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid rgba(226, 232, 240, 0.9) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .home-page .feature-card:active {
+    transform: scale(0.97);
+  }
+
+  .home-page .feature-icon-circle {
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .home-page .feature-card-title {
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+  }
+
+  /* Client Marquee Section */
+  .home-page .logo-slider-container {
+    padding: 12px 0 !important;
+  }
+
+  .home-page .client-logo-slide {
+    width: 130px !important;
+    height: 60px !important;
+    margin: 0 8px !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .home-page .client-logo-slide img {
+    max-height: 38px !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Promo Sections: ERP, Digital Strategies, Android Apps */
+  .home-page .erp-promo-section,
+  .home-page .promo-layout-section {
+    padding: 48px 16px !important;
+  }
+
+  .home-page .erp-grid-redesign,
+  .home-page .strategies-grid-redesign,
+  .home-page .android-grid-redesign {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    text-align: center !important;
+  }
+
+  .home-page .erp-text-content-new,
+  .home-page .strategies-text-new,
+  .home-page .android-text-new {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+
+  .home-page .erp-title-new,
+  .home-page .strategies-title-new,
+  .home-page .android-title-new {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.4px;
+    margin-bottom: 4px;
+  }
+
+  .home-page .erp-desc-new,
+  .home-page .strategies-desc-new,
+  .home-page .android-desc-new {
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    max-width: 100% !important;
+    color: var(--text-secondary);
+  }
+
+  .home-page .erp-btn-wrapper-new,
+  .home-page .strategies-btn-wrapper-new,
+  .home-page .android-btn-wrapper-new {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  /* Visual Media Cards on Mobile */
+  .home-page .collage-3d-stack,
+  .home-page .strategies-media-box,
+  .home-page .android-media-box {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .home-page .main-img-3d,
+  .home-page .strategies-img-wrapper,
+  .home-page .android-img-wrapper {
+    width: 100% !important;
+    max-width: 440px !important;
+    height: 230px !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  .home-page .main-img-3d img,
+  .home-page .strategies-img-wrapper img,
+  .home-page .android-img-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .home-page .secondary-img-3d {
+    display: none !important;
+  }
+}
+
+/* Tablet Optimizations (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-page .hero-title {
+    font-size: 46px !important;
+  }
+
+  .home-page .feature-card {
+    padding: 24px 14px !important;
+  }
+
+  .home-page .erp-promo-section,
+  .home-page .promo-layout-section {
+    padding: 64px 24px !important;
+  }
+
+  .home-page .erp-title-new,
+  .home-page .strategies-title-new,
+  .home-page .android-title-new {
+    font-size: 32px !important;
+  }
+
+  .home-page .main-img-3d,
+  .home-page .strategies-img-wrapper,
+  .home-page .android-img-wrapper {
+    max-width: 500px !important;
+    height: 300px !important;
+  }
+}

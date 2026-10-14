@@ -144,7 +144,7 @@ export function OdooPartnerPage() {
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 shadow-sm mb-4 transition-all">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
-                  Official Certified Odoo Partner
+                  Odoo Partner
                 </span>
                 <span className="text-emerald-600 font-extrabold text-sm">✓</span>
               </div>

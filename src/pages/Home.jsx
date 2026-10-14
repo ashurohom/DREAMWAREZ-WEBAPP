@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SiteHeader } from '../components/layout/SiteHeader';
 import { SiteFooter } from '../components/layout/SiteFooter';
 import { ChatWidget } from '../components/layout/ChatWidget';
 import { NetworkGlobe } from '../components/layout/NetworkGlobe';
 import { Helmet } from 'react-helmet-async';
-import dashboardMockup from '../assets/dashboard_mockup.png';
 import herokaBg from '../assets/hero_bg.jpg';
 import warehouseAgvImg from '../assets/erp_opt1_large.jpg';
 import ruggedTabletImg from '../assets/rugged_tablet_dashboard.jpg';
 import mobileDevImg from '../assets/mobile_dev_tablet_phone.jpg';
+import couchWorkspaceImg from '../assets/couch_workspace.png';
 import './styles/Home.css';
 import './styles/OurSoftwaresPage.css';
 
@@ -41,35 +40,6 @@ const clientLogos = [
 ];
 
 export function Home() {
-  const [modulesSelected, setModulesSelected] = useState({
-    erp: true,
-    crm: false,
-    accounting: false,
-    warehouse: false,
-    pos: false,
-  });
-  const [usersCount, setUsersCount] = useState(10);
-  const [cloudHosting, setCloudHosting] = useState(true);
-
-
-
-  const calculateQuote = () => {
-    let baseRate = 0;
-    if (modulesSelected.erp) baseRate += 50;
-    if (modulesSelected.crm) baseRate += 30;
-    if (modulesSelected.accounting) baseRate += 25;
-    if (modulesSelected.warehouse) baseRate += 20;
-    if (modulesSelected.pos) baseRate += 15;
-
-    const userMultiplier = usersCount <= 5 ? 1.0 : usersCount <= 20 ? 1.2 : 1.5;
-    const hostingCost = cloudHosting ? 20 : 0;
-    return Math.round((baseRate * userMultiplier) + hostingCost);
-  };
-
-  const handleModuleToggle = (mod) => {
-    setModulesSelected(prev => ({ ...prev, [mod]: !prev[mod] }));
-  };
-
   return (
     <div className="app-container home-page">
       <Helmet>
@@ -84,7 +54,7 @@ export function Home() {
       <main className="main-content">
         {/* Hero Section - Left Aligned Layout */}
         <section 
-          className="hero-section relative overflow-hidden flex items-center py-4 md:py-6 bg-cover bg-center bg-no-repeat"
+          className="hero-section relative overflow-hidden flex items-center py-8 sm:py-12 md:py-16 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${herokaBg})`,
             backgroundSize: 'cover',
@@ -93,24 +63,34 @@ export function Home() {
             imageRendering: 'high-quality',
           }}
         >
-          <div className="hero-inner max-w-[1440px] mx-auto px-6 xl:px-8 relative z-10 w-full flex flex-row justify-between items-center">
-            <div className="hero-content max-w-xl flex flex-col items-start text-left p-6 md:p-8 w-full ml-0 md:ml-4 lg:ml-8">
-              <h1 className="hero-title text-white text-[52px] lg:text-[60px] leading-[1.1] font-extrabold tracking-tight mb-4 reveal reveal-fade-up text-left font-['Open_Sans']">
-                Your Pathway <span className="block mt-3 text-[#7a7a7a]">To Innovation</span>
+          {/* Subtle mobile contrast gradient for enhanced readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30 md:from-black/50 md:via-black/25 md:to-transparent z-0 pointer-events-none" />
+
+          <div className="hero-inner max-w-[1440px] mx-auto px-5 sm:px-8 xl:px-12 relative z-10 w-full flex flex-col md:flex-row justify-between items-center">
+            <div className="hero-content max-w-xl flex flex-col items-start text-left p-2 sm:p-6 md:p-8 w-full ml-0 md:ml-4 lg:ml-8">
+              {/* Premium Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 mb-4 text-xs sm:text-sm font-medium text-white shadow-sm reveal reveal-fade-up">
+                <span className="w-2 h-2 rounded-full bg-[#8b2c2c] animate-pulse"></span>
+                The Simplified Software Company
+              </div>
+
+              <h1 className="hero-title text-white text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.12] font-extrabold tracking-tight mb-4 reveal reveal-fade-up text-left font-['Open_Sans']">
+                Your Pathway <span className="block mt-2 sm:mt-3 text-[#d1d5db] md:text-[#7a7a7a]">To Innovation</span>
               </h1>
-              <p className="hero-subtitle text-[16px] text-white max-w-md mb-4 leading-relaxed reveal reveal-fade-up text-left font-['Open_Sans']" style={{ transitionDelay: '100ms' }}>
+              <p className="hero-subtitle text-[14.5px] sm:text-[16px] text-white/90 max-w-md mb-6 leading-relaxed reveal reveal-fade-up text-left font-['Open_Sans']" style={{ transitionDelay: '100ms' }}>
                 Streamlining Business Through Technology. Empowering You with Digital Solutions revolutionizing with Every Click.
               </p>
-              <div className="hero-actions flex flex-wrap justify-start w-full gap-4 reveal reveal-fade-up" style={{ transitionDelay: '200ms' }}>
-                <Link to="/contact/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all">
+              <div className="hero-actions flex flex-col sm:flex-row justify-start w-full sm:w-auto gap-3.5 sm:gap-4 reveal reveal-fade-up" style={{ transitionDelay: '200ms' }}>
+                <Link to="/contact/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-md">
                   Contact Us <span style={{ marginLeft: '8px' }}>➔</span>
                 </Link>
-                <Link to="/our-softwares/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold rounded-full transition-all border-2 border-[#7a7a7a] text-[#7a7a7a] bg-transparent hover:bg-[#7a7a7a] hover:text-white">
+                <Link to="/our-softwares/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold rounded-full transition-all border-2 border-white/70 sm:border-[#7a7a7a] text-white sm:text-[#7a7a7a] bg-white/10 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none hover:bg-[#7a7a7a] hover:text-white active:scale-95">
                   Explore Softwares <span style={{ marginLeft: '8px' }}>➔</span>
                 </Link>
               </div>
             </div>
-            {/* Interactive Network Globe */}
+
+            {/* Interactive Network Globe (Desktop only) */}
             <div className="hidden md:flex items-center justify-center mr-0 lg:mr-8 reveal reveal-fade-left relative" style={{ transitionDelay: '300ms', width: '540px', height: '540px', overflow: 'hidden' }}>
               <NetworkGlobe size={650} />
             </div>
@@ -118,10 +98,10 @@ export function Home() {
         </section>
 
         {/* Section: Simplify Work (Smart Solutions) */}
-        <section className="section simplify-section" style={{ paddingBottom: '20px' }}>
-          <div className="section-header centered reveal reveal-fade-up" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <div className="inline-flex flex-col items-start gap-2 mb-4">
-              <span className="text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
+        <section className="section simplify-section py-12 md:py-16">
+          <div className="section-header centered reveal reveal-fade-up flex flex-col items-center text-center px-4 max-w-4xl mx-auto">
+            <div className="inline-flex flex-col items-center gap-2 mb-4">
+              <span className="text-[13px] sm:text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
                 SIMPLIFY WORK
               </span>
               <div className="flex gap-1.5">
@@ -129,18 +109,18 @@ export function Home() {
                 <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
               </div>
             </div>
-            <h2 className="section-title" style={{ fontWeight: '700', marginBottom: '16px' }}>Smart Solutions For Every Business & Individual</h2>
-            <p className="section-desc" style={{ color: 'var(--text-secondary)', maxWidth: '700px', marginBottom: '24px', lineHeight: '1.6' }}>
-              As a Software Company, we recognize that brilliant ideas demand exceptional executions. We boost your success with our expertise and innovative cutting edge IT solutions. It's our passion, process, & integrity that guarantees your success.
+            <h2 className="section-title text-[24px] sm:text-[30px] md:text-[36px] font-bold mb-3 sm:mb-4 leading-tight text-slate-900">
+              Smart Solutions For Every Business &amp; Individual
+            </h2>
+            <p className="section-desc text-[14px] sm:text-[16px] text-gray-600 max-w-2xl mb-6 leading-relaxed">
+              As a Software Company, we recognize that brilliant ideas demand exceptional executions. We boost your success with our expertise and innovative cutting edge IT solutions. It's our passion, process, &amp; integrity that guarantees your success.
             </p>
-            <Link to="/about-us/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all mt-4">
+            <Link to="/about-us/" className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-md">
               About Us <span style={{ marginLeft: '8px' }}>➔</span>
             </Link>
           </div>
-        </section>
 
-        <section className="section simplify-section" style={{ paddingTop: '20px' }}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-[1300px] mx-auto px-4 w-full mt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-6 max-w-[1300px] mx-auto px-4 w-full mt-10">
             <div className="glass-card feature-card reveal reveal-scale" style={{ transitionDelay: '0ms' }}>
               <div className="feature-icon-circle text-[#8b2c2c]">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -183,7 +163,7 @@ export function Home() {
               <div className="feature-card-title">24/7 Dedicated Support</div>
             </div>
             
-            <div className="glass-card feature-card reveal reveal-scale" style={{ transitionDelay: '400ms' }}>
+            <div className="glass-card feature-card col-span-2 sm:col-span-1 reveal reveal-scale" style={{ transitionDelay: '400ms' }}>
               <div className="feature-icon-circle text-[#8b2c2c]">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -196,11 +176,11 @@ export function Home() {
         </section>
 
         {/* Valued Clients Section */}
-        <section style={{ padding: '80px 20px', backgroundColor: '#ffffff' }}>
-          <div style={{ maxWidth: '1350px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '40px' }} className="reveal reveal-fade-up">
-              <div className="inline-flex flex-col items-start gap-2 mb-4">
-                <span className="text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
+        <section className="py-12 sm:py-16 md:py-20 px-4 bg-white overflow-hidden">
+          <div className="max-w-[1350px] mx-auto text-center mb-8 sm:mb-12">
+            <div className="reveal reveal-fade-up">
+              <div className="inline-flex flex-col items-center gap-2 mb-4">
+                <span className="text-[13px] sm:text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
                   OUR ECOSYSTEM
                 </span>
                 <div className="flex gap-1.5">
@@ -208,12 +188,16 @@ export function Home() {
                   <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
                 </div>
               </div>
-              <h2 style={{ fontSize: '40px', fontWeight: '800', fontFamily: '"Open Sans", sans-serif', marginBottom: '20px', lineHeight: '1.2', color: '#000000' }}>Our Valued Clients &amp; Collaborations</h2>
-              <p style={{ fontSize: '16px', fontFamily: '"Open Sans", sans-serif', color: '#000000', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto' }}>We are constantly searching and testing for the best tools and services on the market. We partner with these organizations to provide the best service and value for our clients.</p>
+              <h2 className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[40px] font-extrabold font-['Open_Sans'] mb-3 sm:mb-4 leading-tight text-black">
+                Our Valued Clients &amp; Collaborations
+              </h2>
+              <p className="text-[14px] sm:text-[16px] font-['Open_Sans'] text-black/80 leading-relaxed max-w-3xl mx-auto px-2">
+                We are constantly searching and testing for the best tools and services on the market. We partner with these organizations to provide the best service and value for our clients.
+              </p>
             </div>
           </div>
           
-          <div className="logo-slider-container reveal reveal-fade-up" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', transitionDelay: '200ms' }}>
+          <div className="logo-slider-container reveal reveal-fade-up w-screen -mx-[calc(50vw-50%)]" style={{ transitionDelay: '200ms' }}>
             <div className="logo-slider-track">
               {/* First set of logos */}
               {clientLogos.map((client, i) => (
@@ -232,62 +216,59 @@ export function Home() {
         </section>
 
         {/* Section: Powerful ERP Solution - Redesigned Asymmetric Open Layout */}
-        <section className="erp-promo-section" style={{ position: 'relative', overflow: 'hidden' }}>
-
+        <section className="erp-promo-section relative overflow-hidden">
           <div className="section-glow-radial erp-radial"></div>
           <div className="erp-section-inner">  
-          <div className="erp-grid-redesign">
-            {/* Left Column: 3D Interactive Isometric Collage (Formerly Right) */}
-            <div className="erp-visual-content-new reveal reveal-fade-right">
-              <div className="collage-3d-stack">
-                <div className="collage-glow"></div>
-                <div className="img-container-3d main-img-3d" style={{ zIndex: 1 }}>
-                  <img src={warehouseAgvImg} alt="Modern High-Tech Warehouse" />
+            <div className="erp-grid-redesign">
+              {/* Left Column: 3D Interactive Isometric Collage */}
+              <div className="erp-visual-content-new reveal reveal-fade-right">
+                <div className="collage-3d-stack">
+                  <div className="collage-glow"></div>
+                  <div className="img-container-3d main-img-3d" style={{ zIndex: 1 }}>
+                    <img src={warehouseAgvImg} alt="Modern High-Tech Warehouse" />
+                  </div>
+                  <div className="img-container-3d secondary-img-3d" style={{ zIndex: 2 }}>
+                    <img src={ruggedTabletImg} alt="Industrial ERP Dashboard" />
+                  </div>
                 </div>
-                <div className="img-container-3d secondary-img-3d" style={{ zIndex: 2 }}>
-                  <img src={ruggedTabletImg} alt="Industrial ERP Dashboard" />
-                </div>
+              </div>
 
+              {/* Right Column: Text & CTA */}
+              <div className="erp-text-content-new reveal reveal-fade-left">
+                <div className="inline-flex flex-col items-center md:items-start gap-2 mb-2 sm:mb-4">
+                  <span className="text-[13px] sm:text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
+                    ENTERPRISE PLATFORM
+                  </span>
+                  <div className="flex gap-1.5">
+                    <span className="w-8 h-1 rounded-full bg-[#7a7a7a]"></span>
+                    <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
+                  </div>
+                </div>
+                <h2 className="erp-title-new text-[24px] sm:text-[30px] md:text-[36px] lg:text-[40px] font-extrabold leading-tight">
+                  Optimize Your Business With Dreamwarez's Powerful ERP Solution
+                </h2>
+                <p className="erp-desc-new text-[14px] sm:text-[16px] leading-relaxed">
+                  Manage your complete business software flow from multiple warehouse, manufacturing to sales and purchase right from a single software solution.
+                </p>
+                <div className="erp-btn-wrapper-new w-full sm:w-auto flex justify-center md:justify-start">
+                  <Link to="/erp/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+                    Explore More <span className="ml-2">➔</span>
+                  </Link>
+                </div>
               </div>
             </div>
-
-            {/* Right Column: Text & CTA (Formerly Left) */}
-            <div className="erp-text-content-new reveal reveal-fade-left">
-              <div className="inline-flex flex-col items-start gap-2 mb-4">
-                <span className="text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
-                  ENTERPRISE PLATFORM
-                </span>
-                <div className="flex gap-1.5">
-                  <span className="w-8 h-1 rounded-full bg-[#7a7a7a]"></span>
-                  <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
-                </div>
-              </div>
-              <h2 className="erp-title-new" style={{ fontSize: '40px' }}>
-                Optimize Your Business With Dreamwarez's Powerful ERP Solution
-              </h2>
-              <p className="erp-desc-new">
-                Manage your complete business software flow from multiple warehouse, manufacturing to sales and purchase right from a single software solution.
-              </p>
-              <div className="erp-btn-wrapper-new">
-                <Link to="/erp/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
-                  Explore More <span className="ml-2">➔</span>
-                </Link>
-              </div>
-            </div>
-          </div>
           </div>
         </section>
 
         {/* Section: Digital Strategies - Redesigned Offset Layout */}
-        <section className="section promo-layout-section section-digital-strategies" style={{ position: 'relative', overflow: 'hidden' }}>
-
+        <section className="section promo-layout-section section-digital-strategies relative overflow-hidden">
           <div className="section-glow-radial strategies-radial"></div>
           <div className="strategies-grid-redesign">
             
             {/* Left Column: Typography */}
             <div className="strategies-text-new reveal reveal-fade-right">
-              <div className="inline-flex flex-col items-start gap-2 mb-4">
-                <span className="text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
+              <div className="inline-flex flex-col items-center md:items-start gap-2 mb-2 sm:mb-4">
+                <span className="text-[13px] sm:text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
                   GROWTH HUB
                 </span>
                 <div className="flex gap-1.5">
@@ -295,14 +276,14 @@ export function Home() {
                   <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
                 </div>
               </div>
-              <h2 className="strategies-title-new">
+              <h2 className="strategies-title-new text-[24px] sm:text-[30px] md:text-[36px] lg:text-[40px] font-extrabold leading-tight">
                 Driving Business Growth Through Smart Digital Strategies
               </h2>
-              <p className="strategies-desc-new">
+              <p className="strategies-desc-new text-[14px] sm:text-[16px] leading-relaxed">
                 Empower your business online with our comprehensive marketing solutions. From paid advertising to organic strategies, and design to web development – the power is in your hands.
               </p>
-              <div className="strategies-btn-wrapper-new">
-                <Link to="/customised-software-development/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+              <div className="strategies-btn-wrapper-new w-full sm:w-auto flex justify-center md:justify-start">
+                <Link to="/customised-software-development/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
                   Explore Services <span className="ml-2">➔</span>
                 </Link>
               </div>
@@ -313,7 +294,7 @@ export function Home() {
               <div className="strategies-media-box">
                 <div className="media-backdrop-circle"></div>
                 <div className="strategies-img-wrapper">
-                  <img src="/src/assets/couch_workspace.png" alt="Digital Strategies Workspace" />
+                  <img src={couchWorkspaceImg} alt="Digital Strategies Workspace" />
                 </div>
               </div>
             </div>
@@ -322,8 +303,7 @@ export function Home() {
         </section>
 
         {/* Section: Android App Development - Redesigned Offset Layout */}
-        <section className="section promo-layout-section alternate section-android-app" style={{ position: 'relative', overflow: 'hidden' }}>
-
+        <section className="section promo-layout-section alternate section-android-app relative overflow-hidden">
           <div className="section-glow-radial android-radial"></div>
           <div className="android-grid-redesign">
             
@@ -334,14 +314,13 @@ export function Home() {
                 <div className="android-img-wrapper">
                   <img src={mobileDevImg} alt="Android Development Workspace" />
                 </div>
-
               </div>
             </div>
 
             {/* Right Column: Text & Actions */}
             <div className="android-text-new reveal reveal-fade-left">
-              <div className="inline-flex flex-col items-start gap-2 mb-4">
-                <span className="text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
+              <div className="inline-flex flex-col items-center md:items-start gap-2 mb-2 sm:mb-4">
+                <span className="text-[13px] sm:text-[14px] font-bold tracking-[1.5px] uppercase text-[#8b2c2c] leading-none">
                   MOBILE PLATFORMS
                 </span>
                 <div className="flex gap-1.5">
@@ -349,14 +328,14 @@ export function Home() {
                   <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
                 </div>
               </div>
-              <h2 className="android-title-new">
-                Bringing Your Ideas To Life<br />With Dreamwarez<br />Custom Android Apps
+              <h2 className="android-title-new text-[24px] sm:text-[30px] md:text-[36px] lg:text-[40px] font-extrabold leading-tight">
+                Bringing Your Ideas To Life With Dreamwarez Custom Android Apps
               </h2>
-              <p className="android-desc-new">
+              <p className="android-desc-new text-[14px] sm:text-[16px] leading-relaxed">
                 We offer a range of Android development services that are fully capable of supporting established companies. We deliver scalability with expertise in everything related to what is android app development.
               </p>
-              <div className="android-btn-wrapper-new">
-                <Link to="/android-app/" className="inline-flex items-center justify-center px-8 py-3.5 text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
+              <div className="android-btn-wrapper-new w-full sm:w-auto flex justify-center md:justify-start">
+                <Link to="/android-app/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-[0_0_15px_rgba(122,122,122,0.3)] hover:shadow-[0_0_25px_rgba(122,122,122,0.5)]">
                   Explore More <span className="ml-2">➔</span>
                 </Link>
               </div>
@@ -364,10 +343,6 @@ export function Home() {
 
           </div>
         </section>
-
-
-
-
       </main>
 
       <ChatWidget />
