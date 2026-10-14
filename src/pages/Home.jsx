@@ -75,16 +75,16 @@ export function Home() {
               </div>
 
               <h1 className="hero-title text-white text-[32px] sm:text-[44px] md:text-[52px] lg:text-[60px] leading-[1.12] font-extrabold tracking-tight mb-4 reveal reveal-fade-up text-left font-['Open_Sans']">
-                Your Pathway <span className="block mt-2 sm:mt-3 text-[#d1d5db] md:text-[#7a7a7a]">To Innovation</span>
+                Your Pathway <span className="block mt-2 sm:mt-3 text-slate-200">To Innovation</span>
               </h1>
               <p className="hero-subtitle text-[14.5px] sm:text-[16px] text-white/90 max-w-md mb-6 leading-relaxed reveal reveal-fade-up text-left font-['Open_Sans']" style={{ transitionDelay: '100ms' }}>
                 Streamlining Business Through Technology. Empowering You with Digital Solutions revolutionizing with Every Click.
               </p>
               <div className="hero-actions flex flex-col sm:flex-row justify-start w-full sm:w-auto gap-3.5 sm:gap-4 reveal reveal-fade-up" style={{ transitionDelay: '200ms' }}>
-                <Link to="/contact/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] rounded-full hover:bg-opacity-90 active:scale-95 transition-all shadow-md">
+                <Link to="/contact/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold text-white bg-[#7a7a7a] hover:bg-[#6a6a6a] border border-[#7a7a7a] rounded-full active:scale-95 transition-all shadow-md">
                   Contact Us <span style={{ marginLeft: '8px' }}>➔</span>
                 </Link>
-                <Link to="/our-softwares/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold rounded-full transition-all border-2 border-white/70 sm:border-[#7a7a7a] text-white sm:text-[#7a7a7a] bg-white/10 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none hover:bg-[#7a7a7a] hover:text-white active:scale-95">
+                <Link to="/our-softwares/" className="inline-flex items-center justify-center w-full sm:w-auto px-7 sm:px-8 py-3.5 text-[15px] sm:text-[16px] font-semibold rounded-full transition-all border-2 border-white/80 text-white bg-white/10 backdrop-blur-md hover:bg-white hover:text-slate-900 active:scale-95 shadow-sm">
                   Explore Softwares <span style={{ marginLeft: '8px' }}>➔</span>
                 </Link>
               </div>
