@@ -239,4 +239,5 @@ This website is designed, built, and maintained by:
 ## 📄 License & Rights
 
 Copyright © 2026 **Dreamwarez - The Simplified Software Company**. All rights reserved.  
-Unauthorized duplication, distribution, or reproduction of any proprietary software code, brand assets, or website graphics is strictly prohibited without prior written permissions.
+Unauthorized duplication, distribution, or reproduction of any proprietary software code, brand assets, or website graphics is strictly prohibited without prior written permission done.
+
