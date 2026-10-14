@@ -117,8 +117,8 @@ export function OdooPartnerPage() {
       <SiteHeader />
 
       <SEO 
-        title="Official Odoo Partner | ERP Implementation & Consulting" 
-        description="Dreamwarez is an official certified Odoo Partner. We deliver enterprise-grade Odoo implementation, custom module development, data migration, and dedicated support."
+        title="Odoo Partner | ERP Implementation & Consulting" 
+        description="Dreamwarez is an Odoo Partner. We deliver enterprise-grade Odoo implementation, custom module development, data migration, and dedicated support."
       />
 
       <main className="main-content">
@@ -154,7 +154,7 @@ export function OdooPartnerPage() {
               </h1>
 
               <p className="text-[15px] sm:text-[17px] text-black leading-relaxed max-w-2xl mx-auto mb-6 font-sans  font-medium">
-                Dreamwarez is recognized as an <strong>Official Certified Odoo Partner</strong>. We implement, customize, and integrate the complete Odoo suite—connecting CRM, warehouse logistics, financial accounting, and manufacturing into one synchronized cloud ecosystem.
+                Dreamwarez is recognized as an <strong>Odoo Partner</strong>. We implement, customize, and integrate the complete Odoo suite—connecting CRM, warehouse logistics, financial accounting, and manufacturing into one synchronized cloud ecosystem.
               </p>
 
               {/* Action Buttons */}
@@ -312,7 +312,7 @@ export function OdooPartnerPage() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-slate-700">
-                  {(currentActiveApp ? currentActiveApp.bullets : ['Official Odoo Partner', 'Full Custom Integration', 'PostgreSQL Cloud SLA']).map((bullet, idx) => (
+                  {(currentActiveApp ? currentActiveApp.bullets : ['Odoo Partner', 'Full Custom Integration', 'PostgreSQL Cloud SLA']).map((bullet, idx) => (
                     <span key={idx} className="bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
                       ✓ {bullet}
                     </span>

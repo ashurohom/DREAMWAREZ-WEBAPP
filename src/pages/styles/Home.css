@@ -87,9 +87,12 @@
 @media (max-width: 768px) {
   /* Hero Section */
   .home-page .hero-section {
-    min-height: calc(100vh - 70px);
-    height: auto;
-    padding: 48px 0 40px;
+    min-height: calc(100vh - 72px) !important;
+    min-height: calc(100dvh - 72px) !important;
+    min-height: calc(100svh - 72px) !important;
+    height: auto !important;
+    align-items: flex-start !important;
+    padding: 24px 0 40px !important;
     background-position: 65% center;
   }
 
@@ -286,4 +289,12 @@
     max-width: 500px !important;
     height: 300px !important;
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
