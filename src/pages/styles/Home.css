@@ -224,6 +224,23 @@
     margin-top: 8px;
   }
 
+  /* Visual Media Column Alignment on Mobile */
+  .home-page .erp-visual-content-new,
+  .home-page .strategies-visual-new,
+  .home-page .android-visual-new {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
   /* Visual Media Cards on Mobile */
   .home-page .collage-3d-stack,
   .home-page .strategies-media-box,
@@ -232,21 +249,28 @@
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    gap: 0 !important;
   }
 
+  /* Unified Photo Size and Style Matching ENTERPRISE PLATFORM Section */
   .home-page .main-img-3d,
   .home-page .strategies-img-wrapper,
   .home-page .android-img-wrapper {
     width: 100% !important;
-    max-width: 440px !important;
-    height: 230px !important;
-    border-radius: 18px !important;
+    max-width: 100% !important;
+    height: 240px !important;
+    border-radius: 24px !important;
     overflow: hidden !important;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
     position: static !important;
     transform: none !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
   }
 
   .home-page .main-img-3d img,
@@ -255,10 +279,22 @@
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+    display: block !important;
+    border-radius: inherit !important;
+    transform: none !important;
   }
 
-  .home-page .secondary-img-3d {
+  .home-page .secondary-img-3d,
+  .home-page .media-backdrop-circle,
+  .home-page .media-backdrop-square {
     display: none !important;
+  }
+
+  .home-page .collage-3d-stack:hover .main-img-3d,
+  .home-page .strategies-media-box:hover .strategies-img-wrapper,
+  .home-page .android-media-box:hover .android-img-wrapper {
+    transform: none !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
   }
 }
 
