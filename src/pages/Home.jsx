@@ -90,7 +90,7 @@ export function Home() {
               </div>
 
               {/* Mobile-Only Round Shape Logo Badges below Explore Softwares */}
-              <div className="mt-5 flex md:hidden items-center gap-2.5 sm:gap-3.5 w-full overflow-x-auto no-scrollbar py-1 reveal reveal-fade-up" style={{ transitionDelay: '250ms' }}>
+              <div className="mt-5 flex md:hidden items-center gap-2.5 sm:gap-3.5 w-full overflow-x-auto no-scrollbar py-1 pl-3.5 sm:pl-4 reveal reveal-fade-up" style={{ transitionDelay: '250ms' }}>
                 {/* Round Badge 1: Odoo Partner */}
                 <Link 
                   to="/odoo-partner/"
@@ -117,13 +117,13 @@ export function Home() {
                   to="/erp/"
                   className="relative w-[72px] h-[72px] sm:w-[78px] sm:h-[78px] shrink-0 rounded-full bg-white/10 backdrop-blur-md border border-white/25 ring-2 ring-white/15 ring-offset-2 ring-offset-black/30 shadow-[0_8px_20px_rgba(0,0,0,0.25)] flex flex-col items-center justify-center text-center p-1 transition-transform active:scale-95 no-underline"
                 >
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 mb-0.5 rounded-full bg-sky-500/25 border border-sky-400/60 flex items-center justify-center text-sky-300 text-[9px] sm:text-[10px] shadow-sm">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 mb-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/60 flex items-center justify-center text-emerald-400 text-[9px] sm:text-[10px] shadow-sm">
                     <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                     </svg>
                   </div>
                   <span className="text-[11px] sm:text-[11.5px] font-extrabold text-white leading-tight tracking-tight">Cloud</span>
-                  <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider text-sky-300 leading-none mt-0.5">ERP</span>
+                  <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider text-emerald-300 leading-none mt-0.5">ERP</span>
                 </Link>
 
                 {/* Round Badge 4: 24/7 Support */}
@@ -131,13 +131,13 @@ export function Home() {
                   to="/contact/"
                   className="relative w-[72px] h-[72px] sm:w-[78px] sm:h-[78px] shrink-0 rounded-full bg-white/10 backdrop-blur-md border border-white/25 ring-2 ring-white/15 ring-offset-2 ring-offset-black/30 shadow-[0_8px_20px_rgba(0,0,0,0.25)] flex flex-col items-center justify-center text-center p-1 transition-transform active:scale-95 no-underline"
                 >
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 mb-0.5 rounded-full bg-purple-500/25 border border-purple-400/60 flex items-center justify-center text-purple-300 text-[9px] sm:text-[10px] shadow-sm">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 mb-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/60 flex items-center justify-center text-emerald-400 text-[9px] sm:text-[10px] shadow-sm">
                     <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
                   </div>
                   <span className="text-[11px] sm:text-[11.5px] font-extrabold text-white leading-tight tracking-tight">24/7</span>
-                  <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider text-purple-300 leading-none mt-0.5">Support</span>
+                  <span className="text-[8px] sm:text-[8.5px] font-bold uppercase tracking-wider text-emerald-300 leading-none mt-0.5">Support</span>
                 </Link>
               </div>
             </div>
