@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
@@ -10,7 +9,6 @@ import { teamMembers } from '../../data/teamMembers';
 export function TeamDreamwarezPage() {
   const managingDirector = teamMembers[0];
   const employees = teamMembers.slice(1);
-  const [hoveredMember, setHoveredMember] = useState(null);
 
   // Symmetrical 3x3 layout of all 9 current Dreamwarez employees (no repetition)
   const displayEmployees = [
@@ -202,40 +200,20 @@ export function TeamDreamwarezPage() {
               <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-slate-300/80 bg-white/90 backdrop-blur-md w-full h-full p-3 sm:p-4 md:p-5 flex items-center justify-center">
                 {/* Inner 3x3 Grid of Employee Photo Tiles */}
                 <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-2.5 w-full h-full">
-                  {displayEmployees.map((member) => {
-                    const isHovered = hoveredMember?.name === member.name;
-                    return (
-                      <div
-                        key={member.name}
-                        onClick={() => setHoveredMember(hoveredMember?.name === member.name ? null : member)}
-                        onMouseEnter={() => setHoveredMember(member)}
-                        onMouseLeave={() => setHoveredMember(null)}
-                        className={`relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border-2 transition-all duration-300 cursor-pointer aspect-square bg-slate-100 group/tile ${
-                          isHovered
-                            ? 'scale-110 z-30 shadow-2xl border-[#8B2C2C] ring-2 ring-[#8B2C2C]/50'
-                            : 'border-white/90 shadow-sm hover:shadow-xl hover:scale-105 hover:z-20'
-                        }`}
-                      >
-                        <img
-                          src={member.src}
-                          alt={member.name}
-                          className="w-full h-full object-cover group-hover/tile:scale-115 transition-transform duration-500"
-                        />
-                        {/* Live active dot */}
-                        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white shadow-sm" />
-
-                        {/* Hover name/role overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent opacity-0 group-hover/tile:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-1.5 sm:p-2 text-center pointer-events-none">
-                          <span className="text-[10px] sm:text-[11px] font-extrabold text-white leading-tight drop-shadow-sm truncate">
-                            {member.name.split(' ')[0]}
-                          </span>
-                          <span className="text-[8px] sm:text-[9px] font-bold text-teal-300 uppercase tracking-wider truncate">
-                            {member.role.replace(' Developer', '')}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {displayEmployees.map((member, idx) => (
+                    <div
+                      key={idx}
+                      className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border-2 border-white/90 shadow-sm aspect-square bg-slate-100"
+                    >
+                      <img
+                        src={member.src}
+                        alt="Dreamwarez Team Member"
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Live active dot */}
+                      <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white shadow-sm" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -262,32 +240,21 @@ export function TeamDreamwarezPage() {
                 A focused group of developers and builders working across mobile, web, backend systems, dashboards, and business applications to deliver impactful, user-focused experiences.
               </p>
 
-              {/* Interactive Member Spotlight Bar in Tailwind CSS */}
+              {/* Static Team Strength Showcase Bar in Tailwind CSS */}
               <div className="p-3.5 sm:p-4 md:p-5 rounded-xl sm:rounded-2xl bg-white/95 border border-slate-200/90 shadow-md shadow-slate-200/50 w-full max-w-[500px] text-left transition-all duration-300">
-                {hoveredMember ? (
-                  <div className="flex items-center gap-3.5 sm:gap-4 transition-all duration-300">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-[#8B2C2C] shadow-md shrink-0">
-                      <img src={hoveredMember.src} alt={hoveredMember.name} className="w-full h-full object-cover" />
+                <div className="flex items-center gap-3 sm:gap-3.5 text-slate-700">
+                  <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-base shrink-0">
+                    ✨
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm sm:text-[15px] font-extrabold text-slate-900 leading-snug">
+                      We Have 40+ Dedicated Employees
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-base sm:text-[17px] font-extrabold text-slate-900 truncate">{hoveredMember.name}</div>
-                      <div className="text-xs sm:text-[13px] font-bold text-[#0EA5E9] uppercase tracking-wide truncate">{hoveredMember.role}</div>
-                      {hoveredMember.quote && (
-                        <div className="text-xs sm:text-[12.5px] text-slate-500 italic truncate mt-0.5">&ldquo;{hoveredMember.quote}&rdquo;</div>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-3 text-slate-600">
-                    <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-sm shrink-0">
-                      ✨
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs sm:text-[14px] font-bold text-slate-900 truncate">Core Engineering Team</div>
-                      <div className="text-[11px] sm:text-[12px] text-slate-500 truncate">Tap or hover any teammate to view spotlight</div>
+                    <div className="text-xs sm:text-[12.5px] text-slate-500 mt-0.5 leading-relaxed">
+                      Our growing in-house team of 40+ software engineers, architects, designers, and technical specialists delivers robust, scalable digital solutions for businesses worldwide.
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
