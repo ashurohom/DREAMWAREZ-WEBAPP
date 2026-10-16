@@ -74,39 +74,55 @@ export function QualityConstructionPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="min-h-[calc(100vh-80px)] pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden flex items-center">
+        <section className="min-h-[auto] lg:min-h-[calc(100vh-80px)] pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 bg-white relative overflow-hidden flex items-center">
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
             {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
             {/* Bottom-Right Polygon */}
-            <div className="absolute bottom--0 right-0 w-full h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
+            <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
-          <div className="mx-auto px-6 w-full z-10" style={{ maxWidth: '1350px' }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Left Column: Content */}
               <div className="text-left reveal reveal-fade-left">
                 <SectionLabel className="mb-4" align="left">
                   Quality Inspections
                 </SectionLabel>
-                <h1 className="text-[40px] md:text-[50px] font-extrabold text-slate-900 font-heading tracking-tight leading-tight mb-6 md:whitespace-nowrap">
-                  Construction <span className="text-[#7A7A7A]">Quality App</span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold text-slate-900 font-heading tracking-tight leading-tight mb-4 sm:mb-6">
+                  Construction <span className="text-[#0EA5E9]">Quality App</span>
                 </h1>
-                <p className="text-[16px] text-black font-normal leading-relaxed mb-0 max-w-lg" style={{ fontFamily: '"Open Sans", sans-serif' }}>
-                  Revolutionize Your Construction Projects with Dreamwarez Quality App. Streamline operations, manage compliance, and ensure high quality delivery.
+                <p className="text-base sm:text-lg text-slate-800 font-semibold mb-3 leading-relaxed">
+                  Revolutionize Your Construction Projects with Dreamwarez Quality App.
                 </p>
+                <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                  Streamline operations, manage compliance, conduct real-time site inspections, and ensure high quality delivery across all construction stages.
+                </p>
+                {/* Hero CTAs */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                  <a
+                    href="/contact/#contact-form"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3.5 px-7 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.22)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.32)] transition-all cursor-pointer text-center"
+                  >
+                    Request Demo &rarr;
+                  </a>
+                  <a
+                    href="#features"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 active:scale-[0.98] text-slate-700 font-bold text-sm py-3.5 px-6 rounded-full border border-slate-200 shadow-xs hover:shadow transition-all cursor-pointer text-center"
+                  >
+                    View Features
+                  </a>
+                </div>
               </div>
 
               {/* Right Column: Hero Image Card */}
-              <div className="flex justify-center md:justify-end reveal reveal-fade-right">
+              <div className="flex justify-center md:justify-end reveal reveal-fade-right mt-4 md:mt-0">
                 <div 
-                  className="w-full max-w-[420px] aspect-square overflow-hidden bg-slate-50 p-2 shadow-xl border border-slate-100" 
-                  style={{ borderRadius: '24px' }}
+                  className="w-full max-w-[340px] sm:max-w-[380px] md:max-w-[420px] aspect-square overflow-hidden bg-slate-50 p-2 shadow-xl border border-slate-100 rounded-2xl sm:rounded-3xl"
                 >
                   <img 
                     src={constructionHeroImg} 
                     alt="Construction Quality" 
-                    className="w-full h-full object-cover" 
-                    style={{ borderRadius: '24px' }}
+                    className="w-full h-full object-cover rounded-xl sm:rounded-2xl" 
                   />
                 </div>
               </div>
@@ -115,83 +131,83 @@ export function QualityConstructionPage() {
         </section>
 
         {/* Intro / Vision Section */}
-        <section className="py-20 max-w-[1350px] mx-auto text-center reveal reveal-fade-up">
-          <SectionLabel>
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-[1100px] mx-auto text-center reveal reveal-fade-up">
+          <SectionLabel align="center">
             COMPLIANCE DIGITIZATION
           </SectionLabel>
-          <p className="text-black text-[16px] max-w-6xl mx-auto mt-6 leading-relaxed">
+          <p className="text-slate-700 font-semibold text-base sm:text-lg max-w-4xl mx-auto mt-4 sm:mt-6 leading-relaxed">
             We understand the challenges construction professionals face—managing quality, ensuring compliance, and staying on schedule.
           </p>
-          <p className="text-black text-[16px] max-w-8xl mx-auto mt-4 leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base max-w-4xl mx-auto mt-3 sm:mt-4 leading-relaxed">
             Our Construction Quality App is designed to empower builders, engineers, and site managers with cutting-edge technology to streamline operations, enhance productivity, and ensure impeccable project delivery.
           </p>
         </section>
 
         {/* Features List Section */}
-        <section className="py-20 px-6 bg-slate-50 border-y border-slate-100">
-          <div className="mx-auto px-6 text-center" style={{ maxWidth: '1350px' }}>
-            <SectionLabel>
+        <section id="features" className="scroll-mt-20 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-100">
+          <div className="max-w-[1350px] mx-auto text-center">
+            <SectionLabel align="center">
               PLATFORM FEATURES
             </SectionLabel>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6 mb-12">Features</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 font-heading mt-3 sm:mt-6 mb-8 sm:mb-12">Platform Features</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <ClipboardCheck size={64} strokeWidth={1.5} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <ClipboardCheck size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Real-Time Quality Inspections</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Real-Time Quality Inspections</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Conduct inspections on the go with intuitive checklists and real-time reporting to ensure all tasks meet quality benchmarks.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <Bug size={64} strokeWidth={1.5} />
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <Bug size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Issue Tracking & Resolution</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Issue Tracking &amp; Resolution</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Identify defects or deviations, assign tasks to team members, and track resolution progress effortlessly.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <FolderOpen size={64} strokeWidth={1.5} />
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <FolderOpen size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Document Management</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Document Management</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Store blueprints, certifications, and reports in a centralized, cloud-based repository for easy access.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <ListTodo size={64} strokeWidth={1.5} />
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <ListTodo size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Customizable Checklists</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Customizable Checklists</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Tailor inspection checklists to suit project-specific requirements, ensuring no detail is overlooked.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <ShieldCheck size={64} strokeWidth={1.5} />
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <ShieldCheck size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Compliance & Standards</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Compliance &amp; Standards</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Maintain compliance with industry standards and regulations through automated alerts and seamless reporting.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <div className="flex justify-center p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <BarChart2 size={64} strokeWidth={1.5} />
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
+                <div className="flex justify-center p-6 sm:p-8 border border-slate-100 rounded-xl bg-red-50 mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <BarChart2 size={56} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Analytics & Reporting</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Analytics &amp; Reporting</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                   Generate comprehensive quality reports, track performance metrics, and gain actionable insights to improve project quality.
                 </p>
               </div>
@@ -200,50 +216,50 @@ export function QualityConstructionPage() {
         </section>
 
         {/* Expectation Benefits */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto px-6 text-center" style={{ maxWidth: '1350px' }}>
-            <SectionLabel>
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-[1350px] mx-auto text-center">
+            <SectionLabel align="center">
               EXPECTED YIELD
             </SectionLabel>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6 mb-12">What can you expect?</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 font-heading mt-3 sm:mt-6 mb-8 sm:mb-12">What Can You Expect?</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
-                <div className="flex justify-center p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <TrendingUp size={48} strokeWidth={1.5} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="bg-slate-50 border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up">
+                <div className="flex justify-center p-5 sm:p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <TrendingUp size={44} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Boost Productivity</h3>
-                <p className="text-black text-[14px] mt-2 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base">Boost Productivity</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
                   Reduce manual tasks and focus on what truly matters—building excellence.
                 </p>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <div className="flex justify-center p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <MinusCircle size={48} strokeWidth={1.5} />
+              <div className="bg-slate-50 border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
+                <div className="flex justify-center p-5 sm:p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <MinusCircle size={44} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Reduce Errors</h3>
-                <p className="text-black text-[14px] mt-2 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base">Reduce Errors</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
                   Detect and address issues early to avoid costly rework.
                 </p>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <div className="flex justify-center p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <MessageCircle size={48} strokeWidth={1.5} />
+              <div className="bg-slate-50 border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
+                <div className="flex justify-center p-5 sm:p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <MessageCircle size={44} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Improve Communication</h3>
-                <p className="text-black text-[14px] mt-2 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base">Improve Communication</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
                   Foster seamless collaboration between teams with real-time updates.
                 </p>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '300ms' }}>
-                <div className="flex justify-center p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
-                  <BarChart2 size={48} strokeWidth={1.5} />
+              <div className="bg-slate-50 border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs reveal reveal-fade-up" style={{ animationDelay: '300ms' }}>
+                <div className="flex justify-center p-5 sm:p-6 bg-white border border-slate-100 rounded-xl mb-4 text-[#8B2C2C] transition-transform hover:scale-105">
+                  <BarChart2 size={44} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[16px]">Data-Driven Decisions</h3>
-                <p className="text-black text-[14px] mt-2 leading-relaxed">
+                <h3 className="font-heading font-bold text-slate-800 text-base">Data-Driven Decisions</h3>
+                <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
                   Utilize analytics to gain insights into performance and improve future projects.
                 </p>
               </div>
@@ -252,33 +268,33 @@ export function QualityConstructionPage() {
         </section>
 
         {/* Tailored Section */}
-        <section className="py-20 bg-slate-50 border-t border-slate-100">
-          <div className="mx-auto px-6 text-center reveal reveal-fade-up" style={{ maxWidth: '1350px' }}>
-            <SectionLabel>
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-100">
+          <div className="max-w-[1350px] mx-auto text-center reveal reveal-fade-up">
+            <SectionLabel align="center">
               TAILORED FOR PROFESSIONALS
             </SectionLabel>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Tailored for Every Construction Professional</h2>
-            <p className="text-black text-[16px] max-w-3xl mx-auto mt-4 leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">Tailored for Every Construction Professional</h2>
+            <p className="text-slate-600 text-sm sm:text-base max-w-3xl mx-auto mt-3 sm:mt-4 leading-relaxed">
               Whether you're an engineer, project manager, or site inspector, our app adapts to your workflow, making your construction journey smoother and more efficient.
             </p>
           </div>
         </section>
 
         {/* Call to Action Section */}
-        <section className="py-24 bg-white border-t border-slate-100 text-center relative overflow-hidden">
-          <div className="mx-auto px-6 z-10 relative" style={{ maxWidth: '1350px' }}>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading tracking-tight">
+        <section className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
+          <div className="max-w-[1200px] mx-auto z-10 relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 font-heading tracking-tight leading-tight">
               Ready to Elevate Your Construction Quality?
             </h2>
-            <p className="text-black text-[16px] max-w-xl mx-auto mt-4 leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto mt-3 sm:mt-4 leading-relaxed">
               Embrace innovation with Dreamwarez Construction Quality App and take the first step towards transforming your construction processes.
             </p>
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8 flex justify-center">
               <a 
                 href="/contact/" 
-                className="bg-[#7A7A7A] hover:bg-[#616161] text-white font-bold text-[16px] px-8 py-3.5 rounded-lg shadow-lg hover:shadow-gray-500/20 transition-all inline-block hover:scale-[1.02] cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.24)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all cursor-pointer text-center"
               >
-                We're Here for You – Reach Out Today!
+                Reach Out Today &rarr;
               </a>
             </div>
           </div>

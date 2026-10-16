@@ -20,7 +20,7 @@ export function WebsiteDevelopmentPage() {
 
       <main className="main-content">
         {/* Hero Section */}
-        <section className="min-h-[calc(100vh-80px)] flex items-center pt-8 pb-10 md:pt-10 md:pb-12 bg-white relative overflow-hidden">
+        <section className="min-h-[auto] lg:min-h-[calc(100vh-80px)] flex items-center pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 bg-white relative overflow-hidden">
           {/* Background Texture & Patterns */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Top Right Blue Shape */}
@@ -40,12 +40,12 @@ export function WebsiteDevelopmentPage() {
               }} 
             />
           </div>
-          <div className="max-w-[1330px] mx-auto px-6 w-full z-10 relative">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1330px] mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Left Column: Content */}
               <div className="text-left reveal reveal-fade-left">
                 <div className="mb-4">
-                  <span className="text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
+                  <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
                     Web Systems
                   </span>
                   <div className="flex gap-2">
@@ -53,23 +53,38 @@ export function WebsiteDevelopmentPage() {
                     <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
                   </div>
                 </div>
-                <h1 className="text-[50px] font-extrabold text-slate-900 font-heading tracking-tight leading-tight">
-                  Website <span className="text-[#7a7a7a]">Development</span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold text-slate-900 font-heading tracking-tight leading-tight">
+                  Website <span className="text-[#0EA5E9]">Development</span>
                 </h1>
-                <p className="animate-subtitle text-[16px] leading-[1.625] text-black max-w-[42rem] my-4 font-['Open_Sans',sans-serif]">
+                <p className="animate-subtitle text-base sm:text-lg font-semibold text-slate-800 max-w-[42rem] my-3 sm:my-4 font-['Open_Sans',sans-serif]">
                   We build modern, fast, and responsive websites for your business.
                 </p>
-                <p className="animate-subtitle text-[16px] leading-[1.625] text-black max-w-[42rem] mb-8 font-['Open_Sans',sans-serif]">
+                <p className="animate-subtitle text-sm sm:text-base leading-[1.625] text-slate-600 max-w-[42rem] mb-6 sm:mb-8 font-['Open_Sans',sans-serif]">
                   Your website is your digital storefront. We create high-performing, visually stunning web experiences that captivate your audience, drive conversions, and perfectly represent your brand identity.
                 </p>
+                {/* Hero CTAs */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                  <a
+                    href="/contact/"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3.5 px-7 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.22)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.32)] transition-all cursor-pointer text-center"
+                  >
+                    Start Your Project &rarr;
+                  </a>
+                  <a
+                    href="#services"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 active:scale-[0.98] text-slate-700 font-bold text-sm py-3.5 px-6 rounded-full border border-slate-200 shadow-xs hover:shadow transition-all cursor-pointer text-center"
+                  >
+                    Explore Solutions
+                  </a>
+                </div>
               </div>
 
               {/* Right Column: Image */}
-              <div className="flex justify-center md:justify-end reveal reveal-fade-right">
+              <div className="flex justify-center md:justify-end reveal reveal-fade-right mt-4 md:mt-0">
                 <img 
                   src={webdevHeroNew} 
                   alt="Website Development" 
-                  className="w-full max-w-[450px] aspect-square object-cover rounded-3xl" 
+                  className="w-full max-w-[340px] sm:max-w-[400px] md:max-w-[450px] aspect-square object-cover rounded-2xl sm:rounded-3xl shadow-xl" 
                   style={{ mixBlendMode: 'multiply' }}
                 />
               </div>
@@ -78,34 +93,34 @@ export function WebsiteDevelopmentPage() {
         </section>
 
         {/* Intro Section - 4 Columns */}
-        <section className="py-20 px-6 max-w-[1330px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-center hover:scale-[1.05] hover:-translate-y-1 hover:shadow-lg transition-all duration-500 reveal reveal-fade-up delay-[200ms]">
-              <span className="text-2xl mb-3 block">🏢</span>
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-[1330px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-center hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 reveal reveal-fade-up delay-[200ms]">
+              <span className="text-2xl sm:text-3xl mb-3 block">🏢</span>
               <h3 className="font-heading font-bold text-slate-800 text-base">Business Website</h3>
               <p className="text-slate-500 text-sm mt-2 leading-relaxed">
                 Professional website for companies
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-center hover:scale-[1.05] hover:-translate-y-1 hover:shadow-lg transition-all duration-500 reveal reveal-fade-up delay-[400ms]">
-              <span className="text-2xl mb-3 block">🛒</span>
+            <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-center hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 reveal reveal-fade-up delay-[400ms]">
+              <span className="text-2xl sm:text-3xl mb-3 block">🛒</span>
               <h3 className="font-heading font-bold text-slate-800 text-base">E-Commerce Website</h3>
               <p className="text-slate-500 text-sm mt-2 leading-relaxed">
                 Online store with payment gateway
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-center hover:scale-[1.05] hover:-translate-y-1 hover:shadow-lg transition-all duration-500 reveal reveal-fade-up delay-[600ms]">
-              <span className="text-2xl mb-3 block">⚙️</span>
+            <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-center hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 reveal reveal-fade-up delay-[600ms]">
+              <span className="text-2xl sm:text-3xl mb-3 block">⚙️</span>
               <h3 className="font-heading font-bold text-slate-800 text-base">Custom Website</h3>
               <p className="text-slate-500 text-sm mt-2 leading-relaxed">
                 Fully custom design & coding
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-center hover:scale-[1.05] hover:-translate-y-1 hover:shadow-lg transition-all duration-500 reveal reveal-fade-up delay-[800ms]">
-              <span className="text-2xl mb-3 block">🔄</span>
+            <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-center hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 reveal reveal-fade-up delay-[800ms]">
+              <span className="text-2xl sm:text-3xl mb-3 block">🔄</span>
               <h3 className="font-heading font-bold text-slate-800 text-base">Website Redesign</h3>
               <p className="text-slate-500 text-sm mt-2 leading-relaxed">
                 Upgrade your old website
@@ -115,10 +130,10 @@ export function WebsiteDevelopmentPage() {
         </section>
 
         {/* Professional Website Development Services */}
-        <section className="py-20 px-6 bg-white border-y border-slate-100">
+        <section id="services" className="scroll-mt-20 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white border-y border-slate-100">
           <div className="max-w-[1200px] mx-auto text-center reveal reveal-fade-up">
-            <div className="mb-4 inline-flex flex-col items-start text-left">
-              <span className="text-[14px] font-bold text-slate-900 uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2"style={{ color: '#8b2c2c' }}>
+            <div className="mb-4 inline-flex flex-col items-center sm:items-start text-center sm:text-left">
+              <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
                 OUR ENGINEERING STANDARDS
               </span>
               <div className="flex gap-2">
@@ -126,13 +141,13 @@ export function WebsiteDevelopmentPage() {
                 <span className="w-3 h-1 rounded-full bg-[#7a7a7a]"></span>
               </div>
             </div>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Professional Website Development Services</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">Professional Website Development Services</h2>
             
-            <p className="text-slate-500 text-sm max-w-3xl mx-auto mt-6 mb-12 leading-relaxed">
+            <p className="text-slate-500 text-sm sm:text-base max-w-3xl mx-auto mt-4 sm:mt-6 mb-8 sm:mb-12 leading-relaxed">
               At Dreamwarez, we specialize in high-quality web systems that help your brand stand out. We focus on speed, design, and usability to build the perfect online solution for your business.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto text-left">
               {[
                 {
                   title: "Professional Web Solutions",
@@ -171,13 +186,13 @@ export function WebsiteDevelopmentPage() {
                   )
                 }
               ].map((point, idx) => (
-                <div key={idx} className="bg-white border border-slate-200 p-5 rounded-2xl flex gap-4 items-start shadow-xs hover:shadow-md transition-all">
-                  <div className="w-10 h-10 rounded-xl bg-orange-50 flex shrink-0 items-center justify-center shadow-inner">
+                <div key={idx} className="bg-white border border-slate-200 p-4 sm:p-5 rounded-xl sm:rounded-2xl flex gap-3.5 sm:gap-4 items-start shadow-xs hover:shadow-md transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 flex shrink-0 items-center justify-center shadow-inner mt-0.5">
                     {point.icon}
                   </div>
                   <div>
-                    <h3 className="text-[16px] font-bold text-slate-800 font-heading mb-1.5">{point.title}</h3>
-                    <p className="text-slate-555 text-[13px] leading-relaxed">{point.desc}</p>
+                    <h3 className="text-[15px] sm:text-[16px] font-bold text-slate-800 font-heading mb-1">{point.title}</h3>
+                    <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">{point.desc}</p>
                   </div>
                 </div>
               ))}
@@ -187,11 +202,11 @@ export function WebsiteDevelopmentPage() {
         </section>
 
         {/* Features of Our Websites */}
-        <section className="py-20 px-6 max-w-[1330px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="reveal reveal-fade-left lg:order-2 lg:pl-20">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-[1330px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="reveal reveal-fade-left lg:order-2 lg:pl-10 xl:pl-16">
               <div className="mb-4">
-                <span className="text-[14px] font-bold text-slate-900 uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2"style={{ color: '#8b2c2c' }}>
+                <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
                   PLATFORM STANDARDS
                 </span>
                 <div className="flex gap-2">
@@ -199,9 +214,9 @@ export function WebsiteDevelopmentPage() {
                   <span className="w-3 h-1.5 rounded-full bg-[#7a7a7a]"></span>
                 </div>
               </div>
-              <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Features of Our Websites</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">Features of Our Websites</h2>
               
-              <div className="grid grid-cols-1 gap-y-4 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 mt-6 sm:mt-8">
                 {[
                   'Mobile Responsive Design',
                   'Fast Loading Speed',
@@ -215,26 +230,26 @@ export function WebsiteDevelopmentPage() {
                     <svg className="w-5 h-5 text-[#8b2c2c] shrink-0 rotate-45" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z" />
                     </svg>
-                    <span className="text-slate-800 text-[15px] font-bold leading-tight">{feat}</span>
+                    <span className="text-slate-800 text-sm sm:text-[15px] font-bold leading-tight">{feat}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="reveal reveal-fade-right lg:order-1 flex justify-center lg:justify-start">
-              <div className="w-full max-w-[500px] rounded-2xl shadow-lg border border-slate-200 overflow-hidden h-[400px]">
-                <img src={platformStandardImg} alt="Features of Our Websites" className="w-full h-full object-cover scale-110" />
+              <div className="w-full max-w-[500px] rounded-2xl shadow-lg border border-slate-200 overflow-hidden h-[260px] sm:h-[340px] md:h-[400px]">
+                <img src={platformStandardImg} alt="Features of Our Websites" className="w-full h-full object-cover scale-105" />
               </div>
             </div>
           </div>
         </section>
 
         {/* SEO Friendly Section */}
-        <section className="py-20 px-6 bg-white border-y border-slate-100">
-          <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white border-y border-slate-100">
+          <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="reveal reveal-fade-left text-left">
               <div className="mb-4">
-                <span className="text-[14px] font-bold text-slate-900 uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2"style={{ color: '#8b2c2c' }}>
+                <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
                   SEARCH OPTIMIZATION
                 </span>
                 <div className="flex gap-2">
@@ -242,14 +257,14 @@ export function WebsiteDevelopmentPage() {
                   <span className="w-3 h-1.5 rounded-full bg-[#7a7a7a]"></span>
                 </div>
               </div>
-              <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">SEO Friendly Website Development</h2>
-              <p className="text-slate-555 text-base mt-6 leading-relaxed">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">SEO Friendly Website Development</h2>
+              <p className="text-slate-600 text-sm sm:text-base mt-4 sm:mt-6 leading-relaxed">
                 We build SEO friendly websites that help your business rank higher on Google. Our websites are optimized for speed, performance, and search engines so that your customers can easily find you online. We follow the latest SEO standards while developing websites to ensure better visibility, more traffic, and more leads.
               </p>
             </div>
             
             <div className="reveal reveal-fade-right flex justify-center lg:justify-end">
-              <div className="w-full max-w-[450px]">
+              <div className="w-full max-w-[380px] sm:max-w-[450px]">
                 <img src={seoImage} alt="SEO Optimization and Global Reach" className="w-full h-auto object-contain drop-shadow-xl rounded-2xl" />
               </div>
             </div>
@@ -257,9 +272,9 @@ export function WebsiteDevelopmentPage() {
         </section>
 
         {/* Why Your Business Needs a Website */}
-        <section className="py-20 px-6 max-w-[900px] mx-auto text-center reveal reveal-fade-up">
-          <div className="mb-4 inline-flex flex-col items-start text-left">
-            <span className="text-[14px] font-bold text-slate-900 uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2"style={{ color: '#8b2c2c' }}>
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-[900px] mx-auto text-center reveal reveal-fade-up">
+          <div className="mb-4 inline-flex flex-col items-center sm:items-start text-center sm:text-left">
+            <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
               BUSINESS VISIBILITY
             </span>
             <div className="flex gap-2">
@@ -267,20 +282,20 @@ export function WebsiteDevelopmentPage() {
               <span className="w-3 h-1.5 rounded-full bg-[#7a7a7a]"></span>
             </div>
           </div>
-          <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Why Your Business Needs a Website</h2>
-          <p className="text-slate-555 text-base mt-6 leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">Why Your Business Needs a Website</h2>
+          <p className="text-slate-600 text-sm sm:text-base mt-4 sm:mt-6 leading-relaxed">
             A website helps your business grow faster by reaching more customers online. Today every company needs a professional website to build trust and attract new clients.
           </p>
-          <p className="text-slate-555 text-base mt-4 leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base mt-3 sm:mt-4 leading-relaxed">
             At Dreamwarez, we design websites that are modern, fast, and optimized for search engines. Our goal is to help your business stand out from competitors and get more leads.
           </p>
         </section>
 
         {/* Our Website Development Process */}
-        <section className="py-20 px-6 bg-white border-t border-slate-100">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-100">
           <div className="max-w-[1280px] mx-auto text-center">
-            <div className="mb-4 inline-flex flex-col items-start text-left">
-              <span className="text-[14px] font-bold text-slate-900 uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2"style={{ color: '#8b2c2c' }}>
+            <div className="mb-4 inline-flex flex-col items-center sm:items-start text-center sm:text-left">
+              <span className="text-xs sm:text-[14px] font-bold uppercase tracking-widest font-['Open_Sans',sans-serif] block mb-2" style={{ color: '#8b2c2c' }}>
                 WORKFLOW STAGES
               </span>
               <div className="flex gap-2">
@@ -288,11 +303,11 @@ export function WebsiteDevelopmentPage() {
                 <span className="w-3 h-1.5 rounded-full bg-[#7a7a7a]"></span>
               </div>
             </div>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Our Website Development Process</h2>
-            <p className="text-slate-555 text-base mt-2">We follow a simple and professional process to create high quality websites for our clients.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-800 font-heading mt-3 sm:mt-6">Our Website Development Process</h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">We follow a simple and professional process to create high quality websites for our clients.</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up">
                 <span className="w-8 h-8 rounded-full bg-[#8b2c2c] text-white flex items-center justify-center font-bold text-sm mb-4">1</span>
                 <h4 className="font-heading font-bold text-slate-800 text-base">Planning</h4>
                 <p className="text-slate-500 text-sm mt-2 leading-relaxed">
@@ -300,7 +315,7 @@ export function WebsiteDevelopmentPage() {
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
                 <span className="w-8 h-8 rounded-full bg-[#8b2c2c] text-white flex items-center justify-center font-bold text-sm mb-4">2</span>
                 <h4 className="font-heading font-bold text-slate-800 text-base">Design</h4>
                 <p className="text-slate-500 text-sm mt-2 leading-relaxed">
@@ -308,7 +323,7 @@ export function WebsiteDevelopmentPage() {
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
                 <span className="w-8 h-8 rounded-full bg-[#8b2c2c] text-white flex items-center justify-center font-bold text-sm mb-4">3</span>
                 <h4 className="font-heading font-bold text-slate-800 text-base">Development</h4>
                 <p className="text-slate-500 text-sm mt-2 leading-relaxed">
@@ -316,7 +331,7 @@ export function WebsiteDevelopmentPage() {
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '300ms' }}>
+              <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl shadow-xs text-left reveal reveal-fade-up" style={{ animationDelay: '300ms' }}>
                 <span className="w-8 h-8 rounded-full bg-[#8b2c2c] text-white flex items-center justify-center font-bold text-sm mb-4">4</span>
                 <h4 className="font-heading font-bold text-slate-800 text-base">Launch</h4>
                 <p className="text-slate-500 text-sm mt-2 leading-relaxed">
@@ -328,20 +343,20 @@ export function WebsiteDevelopmentPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
+        <section className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
           <div className="max-w-[1200px] mx-auto z-10 relative">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 font-heading tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 font-heading tracking-tight leading-tight">
               Start Your Website Today
             </h2>
-            <p className="text-slate-555 text-base max-w-xl mx-auto mt-4 leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto mt-3 sm:mt-4 leading-relaxed">
               Contact Dreamwarez now to build your professional website.
             </p>
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8 flex justify-center">
               <a 
                 href="/contact/" 
-                className="bg-[#7a7a7a]  text-white font-bold text-base px-8 py-3.5 rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all inline-block hover:scale-[1.02] cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.24)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all cursor-pointer text-center"
               >
-                Get Started
+                Get Started &rarr;
               </a>
             </div>
           </div>
