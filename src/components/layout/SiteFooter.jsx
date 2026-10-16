@@ -108,7 +108,7 @@ export function SiteFooter() {
 
             {/* YouTube */}
             <a
-              href="https://www.youtube.com/@dreamwarezsoftware6102"
+              href="https://www.youtube.com/@dreamwarezsoftware"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialBtn}

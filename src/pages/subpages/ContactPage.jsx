@@ -1095,7 +1095,7 @@ export function ContactPage() {
 
               {/* YouTube */}
               <a
-                href="https://www.youtube.com/@dreamwarezsoftware6102"
+                href="https://www.youtube.com/@dreamwarezsoftware"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Dreamwarez YouTube"
