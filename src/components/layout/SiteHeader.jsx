@@ -276,49 +276,93 @@ export function SiteHeader() {
         aria-hidden="true"
       />
 
-      {/* Mobile & Tablet Drawer with Transparent Blur Background */}
+      {/* Mobile & Tablet Drawer with iOS / Teams Sheet Card Aesthetic */}
       <nav
         className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}
         aria-label="Mobile and Tablet Navigation"
       >
-        <div className="mobile-drawer-content">
-          <ul className="mobile-menu-list">
+        <div className="mobile-drawer-sheet">
+          {/* Brand Profile Card (Mirrors Teams profile card in reference) */}
+          <Link to="/about-us/" className="mobile-profile-card" onClick={closeMobileMenu}>
+            <div className="mobile-profile-avatar">
+              <img src={logo} alt="Dreamwarez" className="mobile-avatar-img" />
+            </div>
+            <div className="mobile-profile-info">
+              <div className="mobile-profile-name-row">
+                <span className="mobile-profile-name">Dreamwarez</span>
+                <span className="mobile-profile-chevron">›</span>
+              </div>
+              <span className="mobile-profile-subtitle">The Simplified Software Company</span>
+            </div>
+          </Link>
+
+          {/* Status Row (Mirrors "✓ Available" in reference) */}
+          <div className="mobile-status-row">
+            <span className="mobile-status-dot">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+            <span className="mobile-status-text">Available for Enterprise Solutions</span>
+          </div>
+
+          <div className="mobile-sheet-divider" />
+
+          {/* Primary Navigation Items with Outline Icons */}
+          <div className="mobile-menu-group">
             {/* Home */}
-            <li className="mobile-menu-item">
-              <Link
-                to="/"
-                className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                Home
-              </Link>
-            </li>
+            <Link
+              to="/"
+              className={`mobile-menu-row ${location.pathname === '/' ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              <div className="mobile-menu-row-left">
+                <span className="mobile-menu-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                </span>
+                <span className="mobile-menu-label">Home</span>
+              </div>
+            </Link>
 
             {/* Our Softwares Accordion */}
-            <li className="mobile-menu-item mobile-accordion-item">
-              <div className="mobile-accordion-header">
-                <Link
-                  to="/our-softwares/"
-                  className={`mobile-nav-link ${isSoftwaresActive ? 'active' : ''}`}
-                  onClick={closeMobileMenu}
-                >
-                  Our Softwares
-                </Link>
+            <div className={`mobile-menu-accordion ${expandedSections.softwares ? 'expanded' : ''}`}>
+              <div
+                className={`mobile-menu-row ${isSoftwaresActive ? 'active' : ''}`}
+                onClick={() => toggleSection('softwares')}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="mobile-menu-row-left">
+                  <span className="mobile-menu-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </span>
+                  <span className="mobile-menu-label">Our Softwares</span>
+                </div>
                 <button
                   type="button"
-                  className={`mobile-accordion-toggle ${expandedSections.softwares ? 'expanded' : ''}`}
-                  onClick={() => toggleSection('softwares')}
+                  className={`mobile-chevron-btn ${expandedSections.softwares ? 'rotate' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSection('softwares');
+                  }}
                   aria-label="Toggle Our Softwares dropdown"
                   aria-expanded={expandedSections.softwares}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
               </div>
 
               {expandedSections.softwares && (
-                <div className="mobile-accordion-body">
+                <div className="mobile-sub-body">
                   <Link to="/our-softwares/" className="mobile-sublink overview-link" onClick={closeMobileMenu}>
                     Overview — All Softwares →
                   </Link>
@@ -327,26 +371,32 @@ export function SiteHeader() {
                   </Link>
 
                   {/* Nested ERP Accordion */}
-                  <div className="mobile-nested-accordion">
-                    <div className="mobile-accordion-header nested">
-                      <Link to="/erp/" className="mobile-sublink font-semibold" onClick={closeMobileMenu}>
-                        ERP
-                      </Link>
+                  <div className={`mobile-nested-accordion ${expandedSections.erp ? 'expanded' : ''}`}>
+                    <div
+                      className="mobile-nested-header"
+                      onClick={() => toggleSection('erp')}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <span className="mobile-nested-title">ERP</span>
                       <button
                         type="button"
-                        className={`mobile-accordion-toggle small ${expandedSections.erp ? 'expanded' : ''}`}
-                        onClick={() => toggleSection('erp')}
+                        className={`mobile-chevron-btn small ${expandedSections.erp ? 'rotate' : ''}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleSection('erp');
+                        }}
                         aria-label="Toggle ERP submenu"
                         aria-expanded={expandedSections.erp}
                       >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="6 9 12 15 18 9"></polyline>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="9 18 15 12 9 6" />
                         </svg>
                       </button>
                     </div>
 
                     {expandedSections.erp && (
-                      <div className="mobile-nested-body">
+                      <div className="mobile-nested-sub-body">
                         <Link to="/erp/" className="mobile-nested-link overview-link" onClick={closeMobileMenu}>
                           ERP Overview →
                         </Link>
@@ -369,33 +419,43 @@ export function SiteHeader() {
                   <Link to="/digital-marketing/" className="mobile-sublink" onClick={closeMobileMenu}>Digital Marketing</Link>
                 </div>
               )}
-            </li>
+            </div>
 
             {/* Our Apps Accordion */}
-            <li className="mobile-menu-item mobile-accordion-item">
-              <div className="mobile-accordion-header">
-                <Link
-                  to="/our-apps/"
-                  className={`mobile-nav-link ${isAppsActive ? 'active' : ''}`}
-                  onClick={closeMobileMenu}
-                >
-                  Our Apps
-                </Link>
+            <div className={`mobile-menu-accordion ${expandedSections.apps ? 'expanded' : ''}`}>
+              <div
+                className={`mobile-menu-row ${isAppsActive ? 'active' : ''}`}
+                onClick={() => toggleSection('apps')}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="mobile-menu-row-left">
+                  <span className="mobile-menu-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                      <line x1="12" y1="18" x2="12.01" y2="18" />
+                    </svg>
+                  </span>
+                  <span className="mobile-menu-label">Our Apps</span>
+                </div>
                 <button
                   type="button"
-                  className={`mobile-accordion-toggle ${expandedSections.apps ? 'expanded' : ''}`}
-                  onClick={() => toggleSection('apps')}
+                  className={`mobile-chevron-btn ${expandedSections.apps ? 'rotate' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSection('apps');
+                  }}
                   aria-label="Toggle Our Apps dropdown"
                   aria-expanded={expandedSections.apps}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
               </div>
 
               {expandedSections.apps && (
-                <div className="mobile-accordion-body">
+                <div className="mobile-sub-body">
                   <Link to="/our-apps/" className="mobile-sublink overview-link" onClick={closeMobileMenu}>
                     Overview — All Apps →
                   </Link>
@@ -405,33 +465,43 @@ export function SiteHeader() {
                   <Link to="/ios-app/" className="mobile-sublink" onClick={closeMobileMenu}>Customize IOS App</Link>
                 </div>
               )}
-            </li>
+            </div>
 
-            {/* Services Accordion */}
-            <li className="mobile-menu-item mobile-accordion-item">
-              <div className="mobile-accordion-header">
-                <Link
-                  to="/services/"
-                  className={`mobile-nav-link ${isServicesActive ? 'active' : ''}`}
-                  onClick={closeMobileMenu}
-                >
-                  Services
-                </Link>
+            {/* Services Accordion (Mirrors Settings Gear Icon) */}
+            <div className={`mobile-menu-accordion ${expandedSections.services ? 'expanded' : ''}`}>
+              <div
+                className={`mobile-menu-row ${isServicesActive ? 'active' : ''}`}
+                onClick={() => toggleSection('services')}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="mobile-menu-row-left">
+                  <span className="mobile-menu-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                  </span>
+                  <span className="mobile-menu-label">Services</span>
+                </div>
                 <button
                   type="button"
-                  className={`mobile-accordion-toggle ${expandedSections.services ? 'expanded' : ''}`}
-                  onClick={() => toggleSection('services')}
+                  className={`mobile-chevron-btn ${expandedSections.services ? 'rotate' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSection('services');
+                  }}
                   aria-label="Toggle Services dropdown"
                   aria-expanded={expandedSections.services}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
               </div>
 
               {expandedSections.services && (
-                <div className="mobile-accordion-body">
+                <div className="mobile-sub-body">
                   <Link to="/services/" className="mobile-sublink overview-link" onClick={closeMobileMenu}>
                     Overview — All Services →
                   </Link>
@@ -440,33 +510,45 @@ export function SiteHeader() {
                   <Link to="/ar-vr/" className="mobile-sublink" onClick={closeMobileMenu}>AR & VR Solutions</Link>
                 </div>
               )}
-            </li>
+            </div>
 
             {/* About Us Accordion */}
-            <li className="mobile-menu-item mobile-accordion-item">
-              <div className="mobile-accordion-header">
-                <Link
-                  to="/about-us/"
-                  className={`mobile-nav-link ${isAboutActive ? 'active' : ''}`}
-                  onClick={closeMobileMenu}
-                >
-                  About Us
-                </Link>
+            <div className={`mobile-menu-accordion ${expandedSections.about ? 'expanded' : ''}`}>
+              <div
+                className={`mobile-menu-row ${isAboutActive ? 'active' : ''}`}
+                onClick={() => toggleSection('about')}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="mobile-menu-row-left">
+                  <span className="mobile-menu-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </span>
+                  <span className="mobile-menu-label">About Us</span>
+                </div>
                 <button
                   type="button"
-                  className={`mobile-accordion-toggle ${expandedSections.about ? 'expanded' : ''}`}
-                  onClick={() => toggleSection('about')}
+                  className={`mobile-chevron-btn ${expandedSections.about ? 'rotate' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSection('about');
+                  }}
                   aria-label="Toggle About Us dropdown"
                   aria-expanded={expandedSections.about}
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
               </div>
 
               {expandedSections.about && (
-                <div className="mobile-accordion-body">
+                <div className="mobile-sub-body">
                   <Link to="/about-us/" className="mobile-sublink overview-link" onClick={closeMobileMenu}>
                     About Dreamwarez →
                   </Link>
@@ -474,43 +556,58 @@ export function SiteHeader() {
                   <Link to="/about-us/team-dreamwarez/" className="mobile-sublink" onClick={closeMobileMenu}>Team Dreamwarez</Link>
                 </div>
               )}
-            </li>
+            </div>
 
-            {/* Odoo Partner */}
-            <li className="mobile-menu-item">
-              <Link
-                to="/odoo-partner/"
-                className={`mobile-nav-link ${isOdooActive ? 'active' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                Odoo Partner
-              </Link>
-            </li>
+            {/* Odoo Partner (Second to last item, after About Us) */}
+            <Link
+              to="/odoo-partner/"
+              className={`mobile-menu-row ${isOdooActive ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              <div className="mobile-menu-row-left">
+                <span className="mobile-menu-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 3h12l4 6-10 12L2 9z" />
+                    <path d="M2 9h20" />
+                    <path d="M12 21L8 9l4-6 4 6-4 12z" />
+                  </svg>
+                </span>
+                <span className="mobile-menu-label">Odoo Partner</span>
+              </div>
+            </Link>
 
             {/* Contact Us */}
-            <li className="mobile-menu-item">
-              <Link
-                to="/contact/"
-                className={`mobile-nav-link ${location.pathname.startsWith('/contact') ? 'active' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                Contact Us
-              </Link>
-            </li>
-          </ul>
+            <Link
+              to="/contact/"
+              className={`mobile-menu-row ${location.pathname.startsWith('/contact') ? 'active' : ''}`}
+              onClick={closeMobileMenu}
+            >
+              <div className="mobile-menu-row-left">
+                <span className="mobile-menu-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </span>
+                <span className="mobile-menu-label">Contact Us</span>
+              </div>
+            </Link>
+          </div>
 
-          {/* Drawer Footer with Portal Login */}
-          <div className="mobile-drawer-footer">
+          <div className="mobile-sheet-divider" />
+
+          {/* Bottom Action: "+ Log In to Portal" (Mirrors "+ Add account" in reference) */}
+          <div className="mobile-bottom-action">
             <a
               href="http://143.244.133.157/web/login"
-              className="mobile-login-btn"
+              className="mobile-add-account-row"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                <polyline points="10 17 15 12 10 7"></polyline>
-                <line x1="15" y1="12" x2="3" y2="12"></line>
-              </svg>
-              <span>Log In to Portal</span>
+              <span className="mobile-menu-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </span>
+              <span className="mobile-menu-label">Log In to Portal</span>
             </a>
           </div>
         </div>
