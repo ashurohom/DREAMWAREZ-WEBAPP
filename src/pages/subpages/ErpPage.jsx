@@ -16,54 +16,72 @@ import erpMrp from '../../assets/erp_mrp.png';
 import erpBi from '../../assets/tablet_graphs.png';
 import erpSocial from '../../assets/team_meeting.png';
 
+const SectionLabel = ({ children, align = 'left' }) => {
+  const isCentered = align === 'center';
+  return (
+    <div className={`inline-flex flex-col ${isCentered ? 'items-center' : 'items-start'} gap-1.5 mb-4`}>
+      <span className="text-[#8B2C2C] font-semibold text-xs sm:text-sm uppercase tracking-wider font-heading leading-tight">
+        {children}
+      </span>
+      <div className="flex gap-1.5">
+        <div className="w-10 h-1.5 rounded-full bg-[#7A7A7A]"></div>
+        <div className="w-4 h-1.5 rounded-full bg-[#7A7A7A]"></div>
+      </div>
+    </div>
+  );
+};
+
 export function ErpPage() {
   return (
-    <div className="app-container software-theme-page">
+    <div className="app-container software-theme-page min-h-screen flex flex-col bg-white overflow-x-hidden">
       
       <div className="gradient-overlay" />
       <SiteHeader />
 
       <SEO title="ERP Solutions" />
 
-      <main className="main-content">
+      <main className="main-content flex-grow">
         {/* Custom Hero Section */}
-        <section className="relative bg-white pt-8 pb-10 md:pt-10 md:pb-12 min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="relative bg-white pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 min-h-[auto] lg:min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
+          {/* Background decorative diagonal polygons */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
-          <div className="mx-auto px-6 flex flex-col md:flex-row items-center justify-between w-full relative z-10" style={{ maxWidth: '1350px' }}>
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between w-full relative z-10 gap-8 md:gap-12">
             {/* Left Content */}
-            <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C',  fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1'  }}>CORE PLATFORM</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
-                Enterprise <span style={{ color: '#7A7A7A' }}>Management System</span>
+            <div className="w-full md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up md:pr-6 text-center md:text-left items-center md:items-start">
+              <SectionLabel>CORE PLATFORM</SectionLabel>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[1.15] font-extrabold text-black font-heading mb-4 sm:mb-6 max-w-[700px]">
+                Enterprise <span className="text-[#0EA5E9]">Management System</span>
               </h1>
-              <p className="text-lg text-black leading-relaxed max-w-[600px]">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-[600px] mb-6 sm:mb-8">
                 Build, manage, automate, and integrate custom ERP solutions that reflect your organization's unique business processes.
               </p>
+              {/* Responsive Hero Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <a
+                  href="/contact/#contact-form"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3.5 px-7 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.22)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.32)] transition-all cursor-pointer text-center"
+                >
+                  Request ERP Demo &rarr;
+                </a>
+                <a
+                  href="#features"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 active:scale-[0.98] text-slate-700 font-bold text-sm py-3.5 px-6 rounded-full border border-slate-200 shadow-xs hover:shadow transition-all cursor-pointer text-center"
+                >
+                  Explore Modules
+                </a>
+              </div>
             </div>
             
             {/* Right Image */}
-            <div className="md:w-1/2 mt-16 md:mt-0 flex justify-end z-0 reveal reveal-fade-left">
-              <div 
-                className="w-full max-w-[420px] aspect-square overflow-hidden bg-slate-50 p-2 shadow-xl border border-slate-100" 
-                style={{ borderRadius: '24px' }}
-              >
+            <div className="w-full md:w-1/2 mt-4 md:mt-0 flex justify-center md:justify-end z-0 reveal reveal-fade-left">
+              <div className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] aspect-square overflow-hidden bg-slate-50 p-2 shadow-xl border border-slate-100 rounded-2xl sm:rounded-3xl">
                 <img 
                   src={erpHeroImg} 
                   alt="Enterprise Management System" 
-                  className="w-full h-full object-cover" 
-                  style={{ borderRadius: '24px' }}
+                  className="w-full h-full object-cover rounded-xl sm:rounded-2xl" 
                 />
               </div>
             </div>
@@ -71,22 +89,14 @@ export function ErpPage() {
         </section>
 
         {/* Features Section */}
-        <section className="erp-features-section reveal reveal-fade-up" style={{ position: 'relative', overflow: 'hidden', padding: '100px 0' }}>
-          <div className="erp-features-container">
-            <div className="section-header centered" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '50px', position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-                <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px' }}>
-                  <span style={{ color: '#8B2C2C',  fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1'  }}>CAPABILITIES</span>
-                  <div style={{ display: 'flex', gap: '6px' }}>
-                    <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                    <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  </div>
-                </div>
-              </div>
-              <h2 className="section-title" style={{ fontSize: '40px', fontWeight: '800', fontFamily: '"Open Sans", sans-serif', marginBottom: '20px', lineHeight: '1.2', color: '#000000' }}>Features</h2>
+        <section id="features" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 border-b border-slate-100 reveal reveal-fade-up relative overflow-hidden">
+          <div className="max-w-[1350px] mx-auto">
+            <div className="text-center mb-10 sm:mb-14">
+              <SectionLabel align="center">CAPABILITIES</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading leading-tight">Features</h2>
             </div>
-            <div className="erp-features-grid" style={{ position: 'relative', zIndex: 1 }}>
-              <div className="erp-feature-card reveal reveal-scale" style={{ transitionDelay: '0ms' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="erp-feature-card reveal reveal-scale bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center gap-4" style={{ transitionDelay: '0ms' }}>
                 <div className="erp-feature-icon browser-icon">
                   <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="3" width="20" height="18" rx="2" ry="2" />
@@ -96,11 +106,11 @@ export function ErpPage() {
                     <line x1="14" y1="5" x2="14" y2="5.01" />
                   </svg>
                 </div>
-                <h3>Works In Your Web Browser</h3>
-                <p>Can run on any device that can display websites with little to no setup required.</p>
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Works In Your Web Browser</h3>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">Can run on any device that can display websites with little to no setup required.</p>
               </div>
 
-              <div className="erp-feature-card reveal reveal-scale" style={{ transitionDelay: '100ms' }}>
+              <div className="erp-feature-card reveal reveal-scale bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center gap-4" style={{ transitionDelay: '100ms' }}>
                 <div className="erp-feature-icon offline-icon">
                   <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
@@ -108,29 +118,29 @@ export function ErpPage() {
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                   </svg>
                 </div>
-                <h3>No Internet Required</h3>
-                <p>If installed on premise you can access in full offline mode in your LAN or wifi.</p>
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">No Internet Required</h3>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">If installed on premise you can access in full offline mode in your LAN or wifi.</p>
               </div>
 
-              <div className="erp-feature-card reveal reveal-scale" style={{ transitionDelay: '200ms' }}>
+              <div className="erp-feature-card reveal reveal-scale bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center gap-4" style={{ transitionDelay: '200ms' }}>
                 <div className="erp-feature-icon cloud-icon">
                   <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M17.5 19A4.5 4.5 0 0 0 22 14.5c0-2.25-1.66-4.12-3.88-4.44A7 7 0 0 0 4.56 12.06A4.5 4.5 0 0 0 5.5 21h12c.34 0 .67-.04 1-.12" />
                   </svg>
                 </div>
-                <h3>Cloud Based Option</h3>
-                <p>Faster updates, access from anywhere in the world with internet connection, hassle free backups.</p>
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Cloud Based Option</h3>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">Faster updates, access from anywhere in the world with internet connection, hassle free backups.</p>
               </div>
 
-              <div className="erp-feature-card reveal reveal-scale" style={{ transitionDelay: '300ms' }}>
+              <div className="erp-feature-card reveal reveal-scale bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-7 shadow-xs hover:shadow-md transition-all flex flex-col items-center text-center gap-4" style={{ transitionDelay: '300ms' }}>
                 <div className="erp-feature-icon mobile-icon">
                   <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
                     <line x1="12" y1="18" x2="12" y2="18.01" />
                   </svg>
                 </div>
-                <h3>Mobile Compatible</h3>
-                <p>Responsive design allows the system to adapt to any screen size.</p>
+                <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">Mobile Compatible</h3>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">Responsive design allows the system to adapt to any screen size.</p>
               </div>
             </div>
           </div>
@@ -139,26 +149,22 @@ export function ErpPage() {
         {/* Module Sections */}
         
         {/* Sales Management */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
             {/* Left Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-left">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>SALES MODULE</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Sales Management</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Quotation, Sales Order And Invoicing</p>
-              <p className="erp-page-desc-new">
+            <div className="reveal reveal-fade-left flex flex-col items-start text-left">
+              <SectionLabel>SALES MODULE</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Sales Management</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Quotation, Sales Order And Invoicing</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 This application allows you to manage your goals in an effective and efficient manner by keeping track of all sales and order in history.
               </p>
-              <p className="erp-page-desc-new">It handles full scale workflow.</p>
-              <p className="erp-page-desc-new" style={{ marginTop: '10px', fontSize: '18px', fontWeight: '800', color: '#000000' }}>Quotations ➔ Sales order ➔ Invoice</p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/sales-management/" className="cta-button">Explore More</a>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-2">It handles full scale workflow.</p>
+              <p className="text-base sm:text-lg font-extrabold text-slate-900 mb-6">Quotations ➔ Sales order ➔ Invoice</p>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/sales-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
 
@@ -368,16 +374,14 @@ export function ErpPage() {
         </section>
 
         {/* Purchase Management */}
-        <section className="py-20 bg-slate-50/50 border-y border-slate-100 relative overflow-hidden">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="py-12 sm:py-16 md:py-20 bg-slate-50/50 border-b border-slate-100 relative overflow-hidden">
+          {/* Background decorative diagonal polygons */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
-            <div className="w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
+            <div className="order-2 lg:order-1 w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
               <div className="border border-slate-200/80 p-3 rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] max-w-[500px] w-full hover:scale-[1.03] transition-transform duration-500 overflow-hidden">
                 {/* Odoo Purchase Order View */}
                 <div style={{ borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden', width: '100%', fontFamily: '"Open Sans", sans-serif', position: 'relative' }}>
@@ -574,58 +578,56 @@ export function ErpPage() {
             </div>
 
             {/* Right Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-right">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>PROCUREMENT</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Purchase Management</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Purchase Orders, Receptions, Supplier Invoices</p>
-              <p className="erp-page-desc-new">
+            <div className="order-1 lg:order-2 reveal reveal-fade-right flex flex-col items-start text-left">
+              <SectionLabel>PROCUREMENT</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Purchase Management</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Purchase Orders, Receptions, Supplier Invoices</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 Purchase management enables you to track your suppliers’ price quotations and convert them into purchase orders if necessary.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 Dreamwarez has several methods of monitoring invoices and tracking the receipt of ordered goods.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
                 Dreamwarez’s replenishment management rules enable the system to generate draft purchase orders automatically, or you can configure it to run a lean process driven entirely by current production needs.
               </p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/purchase-management/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/purchase-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
           </div>
         </section>
 
         {/* Warehouse/Stock Management */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
             {/* Left Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-left">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>INVENTORY MODULE</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Warehouse/Stock Management</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Inventory, Logistic, Storage</p>
-              <p className="erp-page-desc-new">
+            <div className="reveal reveal-fade-left flex flex-col items-start text-left">
+              <SectionLabel>INVENTORY MODULE</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Warehouse/Stock Management</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Inventory, Logistic, Storage</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-4">
                 The warehouse and inventory management is based on a hierarchical location structure, from warehouses to storage bins. The double entry inventory system allows you to manage customers, suppliers as well as manufacturing inventories.
               </p>
-              <ul className="erp-bullets-list" style={{ margin: '10px 0', paddingLeft: '0px' }}>
-                <li style={{ marginBottom: '6px', color: 'var(--text-secondary)' }}>Key Features</li>
-                <li style={{ marginBottom: '6px', color: 'var(--text-secondary)' }}>Moves history and planning</li>
-                <li style={{ marginBottom: '6px', color: 'var(--text-secondary)' }}>Stock valuation (standard or average price, …)</li>
-                <li style={{ marginBottom: '6px', color: 'var(--text-secondary)' }}>Robustness faced with Inventory differences</li>
-                <li style={{ marginBottom: '6px', color: 'var(--text-secondary)' }}>Automatic reordering rules</li>
+              <ul className="grid gap-2 w-full mb-6">
+                {[
+                  'Moves history and planning',
+                  'Stock valuation (standard or average price, …)',
+                  'Robustness faced with Inventory differences',
+                  'Automatic reordering rules'
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-slate-700 text-xs sm:text-sm font-medium">
+                    <span className="text-[#8B2C2C] font-bold">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/warehouse-stock-management/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/warehouse-stock-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
 
@@ -739,16 +741,14 @@ export function ErpPage() {
         </section>
 
         {/* Accounting And E-Invoicing */}
-        <section className="py-20 bg-slate-50/50 border-y border-slate-100 relative overflow-hidden">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="py-12 sm:py-16 md:py-20 bg-slate-50/50 border-b border-slate-100 relative overflow-hidden">
+          {/* Background decorative diagonal polygons */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
-            <div className="w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
+            <div className="order-2 lg:order-1 w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
               <div className="border border-slate-200/80 p-3 rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] max-w-[500px] w-full hover:scale-[1.03] transition-transform duration-500 overflow-hidden">
                 {/* Odoo Invoice Detail View */}
                 <div style={{ borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden', width: '100%', fontFamily: '"Open Sans", sans-serif', position: 'relative' }}>
@@ -942,54 +942,46 @@ export function ErpPage() {
             </div>
 
             {/* Right Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-right">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>FINANCE MODULE</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Accounting And E-Invoicing</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Send Invoices And Track Payments</p>
-              <p className="erp-page-desc-new">
+            <div className="order-1 lg:order-2 reveal reveal-fade-right flex flex-col items-start text-left">
+              <SectionLabel>FINANCE MODULE</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Accounting And E-Invoicing</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Send Invoices And Track Payments</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 The specific and easy-to-use Invoicing system in Dreamwarez allows you to keep track of your accounting, even when you are not an accountant. It provides an easy way to follow up on your suppliers and customers.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 You could use this simplified accounting in case you work with an (external) account to keep your books, and you still want to keep track of payments.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
                 You can also track Invoicing & Payments by Accounting Voucher & Receipts.
               </p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/accounting/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/accounting/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
           </div>
         </section>
 
         {/* Manufacturing And Resource Planning */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
             {/* Left Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-left">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>MRP MODULE</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Manufacturing And Resource Planning</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Manage Bill Of Materials, Plan & Track Manufacturing Orders</p>
-              <p className="erp-page-desc-new">
+            <div className="reveal reveal-fade-left flex flex-col items-start text-left">
+              <SectionLabel>MRP MODULE</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Manufacturing And Resource Planning</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Manage Bill Of Materials, Plan & Track Manufacturing Orders</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 MRP Module covers planning, ordering, stocks and manufacturing or assembly of products from raw materials and components.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
                 It handles the consumption and production of products according to Bill of materials.
               </p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/mrp/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/mrp/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
 
@@ -1167,62 +1159,54 @@ export function ErpPage() {
             {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
-            <div className="w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
+            <div className="order-2 lg:order-1 w-full flex items-center justify-center lg:justify-start reveal reveal-fade-left">
               <div className="border border-slate-200/80 p-3 rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] max-w-[500px] w-full hover:scale-[1.03] transition-transform duration-500">
                 <img src={erpBi} alt="Business Intelligence" className="w-full h-auto rounded-xl object-contain" />
               </div>
             </div>
 
             {/* Right Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-right">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>ANALYTICS MODULE</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Business Intelligence</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Statistics About Your Data</p>
-              <p className="erp-page-desc-new">
+            <div className="order-1 lg:order-2 reveal reveal-fade-right flex flex-col items-start text-left">
+              <SectionLabel>ANALYTICS MODULE</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Business Intelligence</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Statistics About Your Data</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 Dreamwarez gives you an easy way to see the statistics about any of your important data.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 You can create detailed reports and graphs in any format you need – all that in few simple clicks.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
                 No need for specialized program to create graphs and charts.
               </p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/business-management/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/business-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
           </div>
         </section>
 
         {/* Enterprise Social Network */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full relative z-10" style={{ maxWidth: '1350px' }}>
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100">
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
             {/* Left Column: Text Content */}
-            <div className="erp-page-text-col reveal reveal-fade-left">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>SOCIAL NETWORK</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-              <h2 className="erp-page-title-new">Enterprise Social Network</h2>
-              <p className="erp-page-subtitle-new" style={{ fontWeight: '700', color: '#000000', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', marginTop: '8px', marginBottom: '0' }}>Your Company's Own Facebook/Twitter And A Complete E-Mail Client</p>
-              <p className="erp-page-desc-new">
+            <div className="reveal reveal-fade-left flex flex-col items-start text-left">
+              <SectionLabel>SOCIAL NETWORK</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-2 leading-tight">Enterprise Social Network</h2>
+              <p className="font-bold text-black text-sm sm:text-base font-heading mb-3">Your Company's Own Facebook/Twitter And A Complete E-Mail Client</p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
                 Connect with experts, follows what interests you, share documents and promote best practices.
               </p>
-              <p className="erp-page-desc-new">
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-6">
                 Get work done with effective collaboration across departments, geographies, documents and business applications. All of this while decreasing email overload.
               </p>
-              <div style={{ marginTop: '15px' }}>
-                <a href="/erp/enterprise-social-network/" className="cta-button">Explore More</a>
+              <div className="w-full sm:w-auto">
+                <a href="/erp/enterprise-social-network/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                  Explore More &rarr;
+                </a>
               </div>
             </div>
 
@@ -1230,6 +1214,27 @@ export function ErpPage() {
               <div className="border border-slate-200/80 p-3 rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] max-w-[500px] w-full hover:scale-[1.03] transition-transform duration-500">
                 <img src={erpSocial} alt="Enterprise Social Network" className="w-full h-auto rounded-xl object-contain" />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Delivering Excellence Banner / CTA */}
+        <section className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
+          <div className="max-w-[900px] mx-auto p-6 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-slate-50/50 shadow-sm flex flex-col items-center gap-4 sm:gap-6 relative z-10">
+            <SectionLabel align="center">TRANSFORM YOUR BUSINESS</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black font-heading leading-tight">
+              Ready to Upgrade to an Intelligent ERP?
+            </h2>
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed max-w-2xl mx-auto">
+              Empower your teams with real-time analytics, automated workflows, and connected department modules built specifically for your business.
+            </p>
+            <div className="mt-2 w-full sm:w-auto">
+              <a 
+                href="/contact/" 
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.24)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all cursor-pointer text-center"
+              >
+                Contact Us Today &rarr;
+              </a>
             </div>
           </div>
         </section>

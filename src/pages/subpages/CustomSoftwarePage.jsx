@@ -1,7 +1,18 @@
-// Force Vite dev server cache bust
-import React, { useState } from 'react';
+import React from 'react';
 import { SEO } from '../../components/layout/SEO';
-import { Monitor, Smartphone, Database, Cloud, Shield, ArrowRight, Settings, Users, Code2, ShieldCheck, Rocket, User, Plus, Heart, Home, DollarSign, ClipboardList, ThumbsUp, ArrowUp, Globe } from 'lucide-react';
+import { Monitor, Shield, Settings, User, Plus, Heart, Home, DollarSign, ClipboardList, ThumbsUp, ArrowUp, Globe } from 'lucide-react';
+import { SiteHeader } from '../../components/layout/SiteHeader';
+import { SiteFooter } from '../../components/layout/SiteFooter';
+import { ChatWidget } from '../../components/layout/ChatWidget';
+
+// Import local assets
+import coffeeDesk from '../../assets/coffee_desk.png';
+import csIndConstruction from '../../assets/cs_industry_construction_elegant.png';
+import csIndRetail from '../../assets/cs_industry_retail_elegant.png';
+import csIndHealthcare from '../../assets/cs_industry_healthcare_elegant.png';
+import csIndLogistics from '../../assets/cs_industry_logistics_elegant.png';
+import csIndEducation from '../../assets/cs_industry_education_elegant.png';
+import csIndFinance from '../../assets/cs_industry_finance_elegant.png';
 
 const NeedsIcon = () => (
   <div className="relative w-16 h-16 flex items-center justify-center">
@@ -41,325 +52,278 @@ const DeployIcon = () => (
     <div className="absolute -top-4 bg-white rounded-full p-0.5"><Globe className="w-8 h-8 text-emerald-500" strokeWidth={1.5} fill="#ccfbf1" /></div>
   </div>
 );
-import { SiteHeader } from '../../components/layout/SiteHeader';
-import { SiteFooter } from '../../components/layout/SiteFooter';
-import { ChatWidget } from '../../components/layout/ChatWidget';
 
-// Import local assets
-import csHeroIsometric from '../../assets/custom_software_hero.jpg';
-import softwaresSolutions from '../../assets/softwares_solutions.jpg';
-import workspaceHands from '../../assets/workspace_hands.png';
-import devWoman from '../../assets/dev_woman.png';
-import tabletGraphs from '../../assets/tablet_graphs.png';
-import coffeeDesk from '../../assets/coffee_desk.png';
-import salesDashboard from '../../assets/sales_dashboard.png';
-import erpWarehouse from '../../assets/erp_warehouse.png';
-import outdoorLaptop from '../../assets/outdoor_laptop.png';
-import accountingDashboard from '../../assets/accounting_dashboard.png';
-import officeChair from '../../assets/office_chair.png';
-import csProcessNeeds from '../../assets/cs_process_needs_1781517456394.png';
-import csProcessDesign from '../../assets/cs_process_design_1781517476994.png';
-import csProcessQa from '../../assets/cs_process_qa_1781517497068.png';
-import csProcessDeploy from '../../assets/cs_process_deploy_1781517517189.png';
-import csIndConstruction from '../../assets/cs_industry_construction_elegant.png';
-import csIndRetail from '../../assets/cs_industry_retail_elegant.png';
-import csIndHealthcare from '../../assets/cs_industry_healthcare_elegant.png';
-import csIndLogistics from '../../assets/cs_industry_logistics_elegant.png';
-import csIndEducation from '../../assets/cs_industry_education_elegant.png';
-import csIndFinance from '../../assets/cs_industry_finance_elegant.png';
+const SectionLabel = ({ children, align = 'left' }) => {
+  const isCentered = align === 'center';
+  return (
+    <div className={`inline-flex flex-col ${isCentered ? 'items-center' : 'items-start'} gap-1.5 mb-4`}>
+      <span className="text-[#8B2C2C] font-semibold text-xs sm:text-sm uppercase tracking-wider font-heading leading-tight">
+        {children}
+      </span>
+      <div className="flex gap-1.5">
+        <div className="w-10 h-1.5 rounded-full bg-[#7A7A7A]"></div>
+        <div className="w-4 h-1.5 rounded-full bg-[#7A7A7A]"></div>
+      </div>
+    </div>
+  );
+};
 
 export function CustomSoftwarePage() {
   return (
-    <div className="app-container software-theme-page" style={{ fontFamily: "'Open Sans', sans-serif", '--font-heading': "'Open Sans', sans-serif", '--font-sans': "'Open Sans', sans-serif" }}>
- 
+    <div className="app-container software-theme-page min-h-screen flex flex-col bg-white overflow-x-hidden font-sans">
       <div className="gradient-overlay" />
       <SiteHeader />
 
       <SEO title="Custom Software Development" />
 
-      <main className="main-content">
+      <main className="main-content flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-white pt-8 pb-10 md:pt-10 md:pb-12 min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
-          <div className="mx-auto px-6 flex flex-col md:flex-row items-center justify-between w-full" style={{ maxWidth: '1350px' }}>
-            {/* Left Content */}
-            <div className="md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up pr-8">
-              {/* Subtitle */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '6px', marginBottom: '20px' }}>
-                <span style={{ color: '#8B2C2C', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: '"Open Sans", sans-serif', lineHeight: '1' }}>Bespoke Systems</span>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <div style={{ width: '40px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                  <div style={{ width: '16px', height: '6px', borderRadius: '3px', backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
+        <section className="relative bg-white pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 min-h-[auto] lg:min-h-[calc(100vh-80px)] overflow-hidden flex items-center border-b border-slate-100">
+          <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
+            <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
+          </div>
 
-              {/* Title */}
-              <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] font-extrabold text-black font-heading mb-6 max-w-[700px]">
-                Customized <span style={{ color: '#7A7A7A' }}>Software Development</span>
+          <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between w-full relative z-10 gap-8 md:gap-12">
+            {/* Left Content */}
+            <div className="w-full md:w-1/2 z-10 flex flex-col justify-center reveal reveal-fade-up md:pr-6 text-center md:text-left items-center md:items-start">
+              <SectionLabel>Bespoke Systems</SectionLabel>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[1.15] font-extrabold text-black font-heading mb-4 sm:mb-6 max-w-[700px]">
+                Customized <span className="text-[#0EA5E9]">Software Development</span>
               </h1>
 
-              {/* Paragraph */}
-              <p className="text-lg text-black leading-relaxed max-w-[600px]">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-[600px] mb-6 sm:mb-8">
                 Empowering Businesses with Tailored Software Solutions
               </p>
+
+              {/* Dual Hero Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <a
+                  href="/contact/#contact-form"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3.5 px-7 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.22)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.32)] transition-all cursor-pointer text-center"
+                >
+                  Start Project &rarr;
+                </a>
+                <a
+                  href="#features"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 active:scale-[0.98] text-slate-700 font-bold text-sm py-3.5 px-6 rounded-full border border-slate-200 shadow-xs hover:shadow transition-all cursor-pointer text-center"
+                >
+                  Core Features
+                </a>
+              </div>
             </div>
 
             {/* Right Image */}
-            <div className="md:w-1/2 mt-16 md:mt-0 flex justify-end z-0 reveal reveal-fade-left">
-              <div className="relative w-full max-w-[450px]">
+            <div className="w-full md:w-1/2 mt-4 md:mt-0 flex justify-center md:justify-end z-0 reveal reveal-fade-left">
+              <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[450px]">
                 <img 
                   src={coffeeDesk} 
                   alt="Customized Software Development" 
-                  className="w-full h-auto object-contain rounded-3xl shadow-2xl border border-slate-100/50"
+                  className="w-full h-auto object-contain rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100"
                 />
               </div>
             </div>
           </div>
         </section>
 
-    
-
         {/* Why Choose Section */}
-        <section className="min-h-[85vh] flex items-center justify-center relative overflow-hidden bg-slate-50/50 border-y border-slate-100 text-center py-16">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-slate-50/50 border-b border-slate-100 text-center">
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
 
-          <div className="max-w-[800px] mx-auto px-6 reveal reveal-fade-up relative z-10">
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex flex-col items-start gap-1.5">
-                <span className="text-[#8B2C2C] font-bold text-[14px] uppercase tracking-widest">
-                  TAILORED SOLUTIONS
-                </span>
-                <div className="flex gap-1.5">
-                  <div className="w-10 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                  <div className="w-4 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-            </div>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Why Choose Customized Software?</h2>
-            <p className="text-black text-[16px] mt-6 leading-relaxed">
+          <div className="max-w-[850px] mx-auto reveal reveal-fade-up relative z-10">
+            <SectionLabel align="center">TAILORED SOLUTIONS</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-4 sm:mb-6 leading-tight">
+              Why Choose Customized Software?
+            </h2>
+            <p className="text-sm sm:text-base md:text-[17px] text-slate-700 leading-relaxed max-w-3xl mx-auto">
               As a software company, we believe that every business is unique, and so are its challenges. That’s why we specialize in developing customized software solutions designed to address your specific needs, streamline your operations, and drive sustainable growth.
             </p>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-20">
-          <div className="mx-auto px-6" style={{ maxWidth: '1350px' }}>
-            <div className="text-center mb-16">
-              <div className="flex justify-center mb-4">
-                <div className="inline-flex flex-col items-start gap-1.5">
-                  <span className="text-[#8B2C2C] font-bold text-[14px] uppercase tracking-widest">
-                    CORE CAPABILITIES
-                  </span>
-                  <div className="flex gap-1.5">
-                    <div className="w-10 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                    <div className="w-4 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                  </div>
-                </div>
-              </div>
-              <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Features</h2>
+        <section id="features" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b border-slate-100">
+          <div className="max-w-[1350px] mx-auto">
+            <div className="text-center mb-10 sm:mb-14">
+              <SectionLabel align="center">CORE CAPABILITIES</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading leading-tight">
+                Features
+              </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">01</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Tailored for Your Business</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  Unlike off-the-shelf software, our solutions are designed to integrate seamlessly with your workflows, ensuring maximum efficiency and minimal disruption.
-                </p>
-              </div>
 
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">02</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Enhanced Flexibility</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  Your business is dynamic, and so should your software be. Our custom solutions adapt to your growth and changing requirements.
-                </p>
-              </div>
-
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">03</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Cost-Efficiency</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  With a focus on delivering value, we ensure that you pay for only the features you need, avoiding unnecessary extras that come with generic software.
-                </p>
-              </div>
-
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">04</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Improved Security</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  We implement robust security measures tailored to your industry’s needs, keeping your sensitive data safe and compliant with regulations.
-                </p>
-              </div>
-
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">05</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Scalable Architecture</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  Whether you’re a startup or an established enterprise, our software solutions grow with you, supporting your journey to success.
-                </p>
-              </div>
-
-              <div className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-6 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-[16px] mb-4">06</div>
-                <h3 className="font-heading font-bold text-[16px] text-slate-800">Seamless Integration</h3>
-                <p className="text-black text-[14px] mt-3 leading-relaxed">
-                  We design custom software to fit directly into your existing ecosystem. Our solutions connect easily with your current databases, CRM, ERP, and API services.
-                </p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+              {[
+                {
+                  id: '01',
+                  title: 'Tailored for Your Business',
+                  desc: 'Unlike off-the-shelf software, our solutions are designed to integrate seamlessly with your workflows, ensuring maximum efficiency and minimal disruption.'
+                },
+                {
+                  id: '02',
+                  title: 'Enhanced Flexibility',
+                  desc: 'Your business is dynamic, and so should your software be. Our custom solutions adapt to your growth and changing requirements.'
+                },
+                {
+                  id: '03',
+                  title: 'Cost-Efficiency',
+                  desc: 'With a focus on delivering value, we ensure that you pay for only the features you need, avoiding unnecessary extras that come with generic software.'
+                },
+                {
+                  id: '04',
+                  title: 'Improved Security',
+                  desc: 'We implement robust security measures tailored to your industry’s needs, keeping your sensitive data safe and compliant with regulations.'
+                },
+                {
+                  id: '05',
+                  title: 'Scalable Architecture',
+                  desc: 'Whether you’re a startup or an established enterprise, our software solutions grow with you, supporting your journey to success.'
+                },
+                {
+                  id: '06',
+                  title: 'Seamless Integration',
+                  desc: 'We design custom software to fit directly into your existing ecosystem. Our solutions connect easily with your current databases, CRM, ERP, and API services.'
+                }
+              ].map((feature, idx) => (
+                <div 
+                  key={feature.id} 
+                  className="bg-white border-[1.5px] border-[#1e3a8a] border-t-[4px] border-t-[#1e3a8a] rounded-2xl p-5 sm:p-6 shadow-sm reveal reveal-fade-up hover:shadow-md transition-shadow"
+                  style={{ animationDelay: `${idx * 80}ms` }}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-[#8B2C2C] font-bold text-sm sm:text-base mb-4">
+                    {feature.id}
+                  </div>
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-slate-800">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm mt-2.5 leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Our Development Process Section */}
-        <section className="py-20 px-6 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 border-b border-slate-100 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
 
-          <div className="mx-auto text-center px-6 relative z-10" style={{ maxWidth: '1350px' }}>
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex flex-col items-start gap-1.5">
-                <span className="text-[#8B2C2C] font-bold text-[14px] uppercase tracking-widest">
-                  WORKFLOW PATHWAY
-                </span>
-                <div className="flex gap-1.5">
-                  <div className="w-10 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                  <div className="w-4 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-            </div>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Our Development Process</h2>
+          <div className="max-w-[1350px] mx-auto text-center relative z-10">
+            <SectionLabel align="center">WORKFLOW PATHWAY</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-8 sm:mb-12 leading-tight">
+              Our Development Process
+            </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-              <div className="flex flex-col items-center text-center reveal reveal-fade-up px-2">
-                <div className="w-32 h-32 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100/60 shadow-xs">
-                  <NeedsIcon />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {[
+                {
+                  icon: <NeedsIcon />,
+                  title: 'Understanding Your Needs',
+                  desc: 'We start by diving deep into your business, identifying pain points, and gathering insights to ensure the software aligns with your goals.'
+                },
+                {
+                  icon: <DesignIcon />,
+                  title: 'Design & Development',
+                  desc: 'Our expert team combines innovation with technical expertise to design intuitive and feature-rich software tailored to your requirements.'
+                },
+                {
+                  icon: <QAIcon />,
+                  title: 'Testing & Quality Assurance',
+                  desc: 'We leave no room for errors. Every solution undergoes rigorous testing to ensure flawless performance and user satisfaction.'
+                },
+                {
+                  icon: <DeployIcon />,
+                  title: 'Deployment & Support',
+                  desc: 'From smooth implementation to ongoing support, we’re with you every step of the way, ensuring your software continues to perform at its best.'
+                }
+              ].map((step, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex flex-col items-center text-center reveal reveal-fade-up p-5 sm:p-6 bg-white rounded-2xl border border-slate-100 shadow-sm"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-slate-50 flex items-center justify-center mb-5 border border-slate-200/60 shadow-xs">
+                    {step.icon}
+                  </div>
+                  <h3 className="font-heading font-bold text-slate-800 text-base sm:text-lg">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                    {step.desc}
+                  </p>
                 </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[18px]">Understanding Your Needs</h3>
-                <p className="text-black text-[14px] mt-4 leading-relaxed">
-                  We start by diving deep into your business, identifying pain points, and gathering insights to ensure the software aligns with your goals.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center reveal reveal-fade-up px-2" style={{ animationDelay: '100ms' }}>
-                <div className="w-32 h-32 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100/60 shadow-xs">
-                  <DesignIcon />
-                </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[18px]">Design & Development</h3>
-                <p className="text-black text-[14px] mt-4 leading-relaxed">
-                  Our expert team combines innovation with technical expertise to design intuitive and feature-rich software tailored to your requirements.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center reveal reveal-fade-up px-2" style={{ animationDelay: '200ms' }}>
-                <div className="w-32 h-32 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100/60 shadow-xs">
-                  <QAIcon />
-                </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[18px]">Testing & Quality Assurance</h3>
-                <p className="text-black text-[14px] mt-4 leading-relaxed">
-                  We leave no room for errors. Every solution undergoes rigorous testing to ensure flawless performance and user satisfaction.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center reveal reveal-fade-up px-2" style={{ animationDelay: '300ms' }}>
-                <div className="w-32 h-32 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100/60 shadow-xs">
-                  <DeployIcon />
-                </div>
-                <h3 className="font-heading font-bold text-slate-800 text-[18px]">Deployment & Support</h3>
-                <p className="text-black text-[14px] mt-4 leading-relaxed">
-                  From smooth implementation to ongoing support, we’re with you every step of the way, ensuring your software continues to perform at its best.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Industries We Serve Section */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto text-center px-6" style={{ maxWidth: '1350px' }}>
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex flex-col items-start gap-1.5">
-                <span className="text-[#8B2C2C] font-bold text-[14px] uppercase tracking-widest">
-                  INDUSTRIES SERVED
-                </span>
-                <div className="flex gap-1.5">
-                  <div className="w-10 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                  <div className="w-4 h-1.5 rounded-full" style={{ backgroundColor: '#7A7A7A' }}></div>
-                </div>
-              </div>
-            </div>
-            <h2 className="text-[40px] font-extrabold text-slate-800 font-heading mt-6">Industries We have Served for</h2>
-            <p className="text-black text-[16px] mt-4 max-w-2xl mx-auto">
+        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-[1350px] mx-auto text-center">
+            <SectionLabel align="center">INDUSTRIES SERVED</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading mb-3 sm:mb-4 leading-tight">
+              Industries We have Served for
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mb-8 sm:mb-12">
               Our customized software solutions cater to a wide range of industries
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up">
-                <img src={csIndConstruction} alt="Construction" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Construction</h4>
-              </div>
-
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <img src={csIndRetail} alt="Retail & E-commerce" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Retail & E-commerce</h4>
-              </div>
-
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <img src={csIndHealthcare} alt="Healthcare" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Healthcare</h4>
-              </div>
-
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up">
-                <img src={csIndLogistics} alt="Logistics & Supply Chain" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Logistics & Supply Chain</h4>
-              </div>
-
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '100ms' }}>
-                <img src={csIndEducation} alt="Education" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Education</h4>
-              </div>
-
-              <div className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-[24px] p-6 flex flex-col items-center text-center gap-4 shadow-sm reveal reveal-fade-up" style={{ animationDelay: '200ms' }}>
-                <img src={csIndFinance} alt="Finance & Accounting" className="w-40 h-40 object-contain" />
-                <h4 className="font-heading text-black text-[16px] font-semibold mt-2">Finance & Accounting</h4>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+              {[
+                { title: 'Construction', img: csIndConstruction },
+                { title: 'Retail & E-commerce', img: csIndRetail },
+                { title: 'Healthcare', img: csIndHealthcare },
+                { title: 'Logistics & Supply Chain', img: csIndLogistics },
+                { title: 'Education', img: csIndEducation },
+                { title: 'Finance & Accounting', img: csIndFinance }
+              ].map((ind, idx) => (
+                <div 
+                  key={idx} 
+                  className="bg-white border-[1px] border-t-[4px] border-[#1e3a8a] rounded-2xl p-5 sm:p-6 flex flex-col items-center text-center gap-3 shadow-xs hover:shadow-md transition-shadow reveal reveal-fade-up"
+                  style={{ animationDelay: `${idx * 80}ms` }}
+                >
+                  <img src={ind.img} alt={ind.title} className="w-28 h-28 sm:w-36 sm:h-36 object-contain" />
+                  <h4 className="font-heading text-slate-800 text-sm sm:text-base font-bold mt-1">
+                    {ind.title}
+                  </h4>
+                </div>
+              ))}
             </div>
 
-            <p className="text-black text-[16px] mt-16 max-w-4xl mx-auto leading-relaxed reveal reveal-fade-up">
+            <p className="text-slate-700 text-sm sm:text-base mt-10 sm:mt-14 max-w-3xl mx-auto leading-relaxed reveal reveal-fade-up">
               Beyond these industries, we serve businesses across diverse sectors by delivering innovative, scalable, and customized software solutions tailored to their unique requirements.
             </p>
           </div>
         </section>
 
         {/* CTA Banner */}
-        <section className="purchase-cta-section reveal reveal-fade-up" style={{ position: 'relative', overflow: 'hidden', textAlign: 'center', padding: '80px 24px', borderTop: '1px solid var(--border-glass)', background: 'linear-gradient(180deg, transparent, rgba(139, 44, 44, 0.02))' }}>
-          {/* Background decorative diagonal polygons (Microsoft/IBM style) */}
+        <section className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-            {/* Top-Left Polygon */}
             <div className="absolute top-0 left-0 w-2/3 h-full bg-gradient-to-br from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(0_0,100%_0,0_70%)]" />
-            {/* Bottom-Right Polygon */}
             <div className="absolute bottom-0 right-0 w-2/3 h-full bg-gradient-to-tl from-[#0ea5e9]/[0.18] to-transparent [clip-path:polygon(100%_30%,100%_100%,0_100%)]" />
           </div>
 
-          <div className="glass-card relative z-10" style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px', padding: '60px 40px', borderRadius: '32px', border: '1px solid var(--border-glass)', background: 'var(--bg-card)' }}>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '40px', fontWeight: '800', color: 'var(--text-primary)', lineHeight: '1.3', margin: '0' }}>
-                Your business deserves a solution as unique as you are. Let’s build it together!
-              </h2>
-              <a href="/contact/" className="cta-button" style={{ padding: '14px 36px', fontSize: '16px', marginTop: '10px', background: '#7A7A7A', boxShadow: '0 4px 15px rgba(122, 122, 122, 0.2)' }}>
-                Contact Us
+          <div className="max-w-[900px] mx-auto p-6 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-slate-50/50 shadow-sm flex flex-col items-center gap-4 sm:gap-6 relative z-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 font-heading leading-tight">
+              Your business deserves a solution as unique as you are. Let’s build it together!
+            </h2>
+            <div className="mt-2 w-full sm:w-auto">
+              <a 
+                href="/contact/" 
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full shadow-[0_8px_20px_rgba(14,165,233,0.24)] hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)] transition-all cursor-pointer text-center"
+              >
+                Contact Us Today &rarr;
               </a>
             </div>
-          </section>
+          </div>
+        </section>
       </main>
 
       <ChatWidget />
