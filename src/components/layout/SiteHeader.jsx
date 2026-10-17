@@ -266,6 +266,9 @@ export function SiteHeader() {
       </div>
     </header>
 
+    {/* Header placeholder spacer to prevent content overlap when header is fixed */}
+    <div className="site-header-spacer" aria-hidden="true" />
+
     {/* Mobile & Tablet Backdrop Overlay */}
       <div
         className={`mobile-menu-backdrop ${mobileMenuOpen ? 'open' : ''}`}
