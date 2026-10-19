@@ -33,7 +33,12 @@ export function MrpPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="MRP" />
+      <SEO 
+        title="Manufacturing ERP Software & MRP Solutions | Dreamwarez"
+        description="Comprehensive manufacturing ERP software and MRP solutions by Dreamwarez. Optimize bill of materials, work orders, production planning, and shop floor tracking."
+        keywords="Manufacturing ERP software, MRP software, Manufacturing resource planning, Production management software, ERP software"
+        canonical="/mrp/"
+      />
 
       <main className="main-content flex-grow">
         {/* Custom Hero Section */}

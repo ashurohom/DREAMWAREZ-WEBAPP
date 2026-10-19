@@ -74,7 +74,12 @@ export function CustomSoftwarePage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="Custom Software Development" />
+      <SEO 
+        title="Custom Software Development Company | Bespoke Web Application Solutions"
+        description="Dreamwarez is a premier custom software development company and web application development firm in Pune. We engineer scalable, secure, enterprise-grade software."
+        keywords="Custom software development company, Custom web application development company, Software development company in Pune, Software development company, Bespoke software solutions"
+        canonical="/customised-software-development/"
+      />
 
       <main className="main-content flex-grow">
         {/* Hero Section */}

@@ -39,7 +39,12 @@ export function AndroidAppPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="Android App Development" />
+      <SEO 
+        title="Android App Development Company in Pune | Custom Mobile Apps"
+        description="Dreamwarez is a leading Android app development company in Pune. We engineer high-performance, secure, and user-friendly native and hybrid Android mobile applications."
+        keywords="Android app development company, Android app development company in Pune, Mobile app development, Custom Android applications"
+        canonical="/android-app/"
+      />
 
       <main className="main-content">
         {/* Hero Section */}

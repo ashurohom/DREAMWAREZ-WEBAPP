@@ -15,7 +15,12 @@ export function AboutUsPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="About Us" />
+      <SEO 
+        title="About Dreamwarez | Top Software & IT Company in Pune, Maharashtra"
+        description="Learn about Dreamwarez, a leading software company in Pune, Maharashtra. We empower global businesses with enterprise ERP, digital transformation, and custom tech solutions."
+        keywords="Software companies in Pune, Best IT company in Pune, Top software companies in Pune, Leading software company in Pune, Best software development company in Maharashtra"
+        canonical="/about-us/"
+      />
 
       <main className="main-content">
         {/* Hero Section */}

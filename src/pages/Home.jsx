@@ -3,7 +3,7 @@ import { SiteHeader } from '../components/layout/SiteHeader';
 import { SiteFooter } from '../components/layout/SiteFooter';
 import { ChatWidget } from '../components/layout/ChatWidget';
 import { NetworkGlobe } from '../components/layout/NetworkGlobe';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/layout/SEO';
 import herokaBg from '../assets/hero_bg.jpg';
 import warehouseAgvImg from '../assets/erp_opt1_large.jpg';
 import ruggedTabletImg from '../assets/rugged_tablet_dashboard.jpg';
@@ -42,11 +42,12 @@ const clientLogos = [
 export function Home() {
   return (
     <div className="app-container home-page">
-      <Helmet>
-        <title>Dreamwarez | Custom ERP & Enterprise Software Solutions</title>
-        <meta name="description" content="Dreamwarez offers bespoke software development, ERP solutions, cutting-edge digital marketing, and 3D media animations for global businesses." />
-        <meta name="keywords" content="ERP Software, Custom Software Development, Digital Marketing, 3D Animation, Web Development, Tech Agency" />
-      </Helmet>
+      <SEO 
+        title="Top Software Development & ERP Software Company in Pune | Dreamwarez"
+        description="Dreamwarez is a leading software development company in Pune. We deliver custom software development, enterprise ERP software, web development, and mobile applications."
+        keywords="Software development company in Pune, Software companies in Pune, Best IT company in Pune, Top software companies in Pune, Best software company in Pune, Best software development company in Pune, Leading software company in Pune, Best software development company in Maharashtra, Custom software development company, ERP software"
+        canonical="/"
+      />
       
       <div className="gradient-overlay" />
       <SiteHeader />

@@ -34,8 +34,10 @@ export function DigitalMarketingPage() {
       <SiteHeader />
 
       <SEO 
-        title="Digital Marketing Services | Dreamwarez"
-        description="Accelerate brand growth, capture high-intent leads, and scale conversions with comprehensive SEO, SMM, Meta Ads, and content marketing."
+        title="Top Digital Marketing Agency in Pune | SEO & Performance Marketing"
+        description="Accelerate brand growth and capture high-intent leads with Dreamwarez, a leading digital marketing agency in Pune offering technical SEO, Google Ads, Meta Ads, and content marketing."
+        keywords="Digital marketing agency, Digital marketing agency in Pune, SEO services, Search engine optimization, Social media marketing"
+        canonical="/digital-marketing/"
       />
 
       <main className="main-content">

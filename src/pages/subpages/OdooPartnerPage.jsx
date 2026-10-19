@@ -117,8 +117,10 @@ export function OdooPartnerPage() {
       <SiteHeader />
 
       <SEO 
-        title="Odoo Partner | ERP Implementation & Consulting" 
-        description="Dreamwarez is an Odoo Partner. We deliver enterprise-grade Odoo implementation, custom module development, data migration, and dedicated support."
+        title="Odoo Implementation Partner in Pune | Dreamwarez ERP Consulting" 
+        description="Dreamwarez is a certified Odoo implementation partner in Pune. We deliver end-to-end Odoo ERP implementation, custom module development, data migration, and dedicated support."
+        keywords="Odoo implementation partner, Odoo implementation partner in Pune, Odoo ERP customization, ERP software company in Pune, Odoo integration"
+        canonical="/odoo-partner/"
       />
 
       <main className="main-content">

@@ -35,7 +35,12 @@ export function WarehouseStockManagementPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="Warehouse & Stock Management" />
+      <SEO 
+        title="Inventory Management Software & Warehouse Stock Management | Dreamwarez"
+        description="Streamline supply chains with Dreamwarez inventory management software and warehouse management software. Real-time stock tracking, automated reordering, and multi-location control."
+        keywords="Inventory management software, Warehouse management software, Warehouse stock management, Stock control software, Supply chain management"
+        canonical="/warehouse-stock-management/"
+      />
 
       <main className="main-content flex-grow">
         {/* Custom Hero Section */}

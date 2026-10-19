@@ -38,7 +38,12 @@ export function ErpPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="ERP Solutions" />
+      <SEO 
+        title="ERP Software Company in Pune | Custom ERP Software for Small & Large Business"
+        description="Dreamwarez is a top ERP software company in Pune providing cloud ERP software for small business, manufacturing ERP, CRM, inventory, and automated business workflows."
+        keywords="ERP software, ERP software for small business, ERP software company in Pune, Manufacturing ERP software, Custom ERP Solutions"
+        canonical="/erp/"
+      />
 
       <main className="main-content flex-grow">
         {/* Custom Hero Section */}

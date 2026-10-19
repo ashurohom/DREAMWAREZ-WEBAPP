@@ -16,7 +16,12 @@ export function WebsiteDevelopmentPage() {
       <div className="gradient-overlay" />
       <SiteHeader />
 
-      <SEO title="Website Development" />
+      <SEO 
+        title="Best Web Development Company in Pune | Web Design & Development"
+        description="Looking for the best web development company in Pune? Dreamwarez offers responsive website design, custom web applications, and SEO-friendly web development services."
+        keywords="Web development company, Web design and development company in Pune, Web development companies Pune, Best web development company in Pune, Web development company in Pune, Website development company in Pune, Custom web application development company"
+        canonical="/website-development/"
+      />
 
       <main className="main-content">
         {/* Hero Section */}
