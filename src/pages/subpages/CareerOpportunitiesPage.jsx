@@ -30,7 +30,7 @@ export function CareerOpportunitiesPage() {
   const [captchaState, setCaptchaState] = useState('unverified');
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
-  const careersEmail = import.meta.env.VITE_CAREERS_EMAIL || import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'careers@dreamwarez.in';
+  const careersEmail = import.meta.env.VITE_CAREERS_EMAIL || 'careers@dreamwarez.in';
 
   const handleCaptchaClick = () => {
     if (captchaState !== 'unverified') return;
