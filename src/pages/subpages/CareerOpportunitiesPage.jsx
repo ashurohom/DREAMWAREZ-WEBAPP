@@ -4,14 +4,14 @@ import emailjs from '@emailjs/browser';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
-import hrHeroBg from '../../assets/hr_hero_bg.png';
-import teamMeeting from '../../assets/hr_startup_spirit.png';
-import officeChair from '../../assets/hr_continuous_learning.png';
-import officeWalk from '../../assets/hr_diverse_team.png';
-import couchWorkspace from '../../assets/hr_flexible_culture.png';
-import tabletGraphs from '../../assets/hr_growth_pathways.png';
-import coffeeDesk from '../../assets/hr_mission_driven.png';
-
+import {
+  validateEmail,
+  validatePhone,
+  validateName,
+  validateRequired,
+  validateResumeFile
+} from '../../utils/validation';
+import { submitFormEmail } from '../../utils/sendEmail';
 
 export function CareerOpportunitiesPage() {
   const [showSimulator, setShowSimulator] = useState(false);
@@ -62,12 +62,16 @@ export function CareerOpportunitiesPage() {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (file.size > 10 * 1024 * 1024) {
-      setErrors(prev => ({ ...prev, fileName: 'File size exceeds 10MB limit' }));
+    const fileVal = validateResumeFile(file);
+    if (!fileVal.isValid) {
+      setErrors(prev => ({ ...prev, fileName: fileVal.error }));
+      setFileName('');
+      setFileBase64(null);
       return;
     }
-    
+
     setFileName(file.name);
+    setErrors(prev => ({ ...prev, fileName: null }));
     setIsUploading(true);
     setUploadProgress(0);
 
@@ -107,12 +111,23 @@ export function CareerOpportunitiesPage() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name.trim() || !/^[a-zA-Z\s]+$/.test(name)) newErrors.name = 'Invalid name';
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Invalid email';
-    if (!phone.trim() || !/^\d{10,15}$/.test(phone)) newErrors.phone = 'Invalid phone number';
-    if (!selectedJob.trim()) newErrors.selectedJob = 'Invalid position';
-    if (!fileName) newErrors.fileName = 'Please upload your CV';
-    
+
+    const nameRes = validateName(name);
+    if (!nameRes.isValid) newErrors.name = nameRes.error;
+
+    const emailRes = validateEmail(email);
+    if (!emailRes.isValid) newErrors.email = emailRes.error;
+
+    const phoneRes = validatePhone(phone);
+    if (!phoneRes.isValid) newErrors.phone = phoneRes.error;
+
+    const jobRes = validateRequired(selectedJob, 'Position applying for', 3);
+    if (!jobRes.isValid) newErrors.selectedJob = jobRes.error;
+
+    if (!fileName) {
+      newErrors.fileName = 'Please upload your CV / Resume (PDF or Word document)';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -143,61 +158,14 @@ export function CareerOpportunitiesPage() {
       formType: 'Career Opportunities Application Form'
     };
 
-    // 1. Send directly to company notification mail via backend SMTP API (/api/send-email)
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        if (result.success) {
-          setIsSubmitted(true);
-          setIsSubmitting(false);
-          return;
-        }
-      }
-    } catch (apiErr) {
-      console.warn('Backend email API unavailable, falling back to secondary transport...', apiErr);
-    }
-
-    // 2. Secondary fallback via EmailJS if configured
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    const sendMail = () => {
-      const adminEmail = import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'ashitosh@dreamwarez.in';
-      const subject = encodeURIComponent(`New Job Application from ${name || 'website form'}`);
-      const body = encodeURIComponent([
-        `Name: ${name || 'N/A'}`,
-        `Email: ${email || 'N/A'}`,
-        `Phone: ${phone || 'N/A'}`,
-        `Position: ${selectedJob || 'N/A'}`,
-        `CV: ${fileName || 'N/A'}`,
-      ].join('\n'));
-
-      window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+      await submitFormEmail(formData);
       setIsSubmitted(true);
       setIsSubmitting(false);
-    };
-
-    if (serviceId && templateId && publicKey && serviceId !== 'YOUR_SERVICE_ID') {
-      emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
-        .then((result) => {
-          console.log('Email successfully sent via EmailJS!', result.text);
-          setIsSubmitted(true);
-          setIsSubmitting(false);
-        }, (error) => {
-          console.error('Failed to send email. Falling back to mail client.', error.text);
-          sendMail();
-        });
-    } else {
-      sendMail();
+    } catch (err) {
+      console.error('Failed to submit job application:', err);
+      setFormError(err.message || 'Failed to submit application directly to email. Please check your connection and try again.');
+      setIsSubmitting(false);
     }
   };
 
@@ -594,9 +562,22 @@ export function CareerOpportunitiesPage() {
                     name="user_name" 
                     required 
                     value={name} 
-                    onChange={e => { setName(e.target.value); setErrors(prev => ({...prev, name: null})); }}
+                    onChange={e => { 
+                      const val = e.target.value;
+                      setName(val); 
+                      if (errors.name) {
+                        const res = validateName(val);
+                        if (res.isValid) setErrors(prev => ({...prev, name: null}));
+                      }
+                    }}
+                    onBlur={() => {
+                      if (name.trim()) {
+                        const res = validateName(name);
+                        if (!res.isValid) setErrors(prev => ({...prev, name: res.error}));
+                      }
+                    }}
                     placeholder="e.g. John Doe"
-                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.name ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.name ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                   />
                   {errors.name && <span className="text-red-500 text-xs mt-1 block font-medium">{errors.name}</span>}
                 </div>
@@ -610,9 +591,22 @@ export function CareerOpportunitiesPage() {
                     name="user_email" 
                     required 
                     value={email} 
-                    onChange={e => { setEmail(e.target.value); setErrors(prev => ({...prev, email: null})); }}
+                    onChange={e => { 
+                      const val = e.target.value;
+                      setEmail(val); 
+                      if (errors.email) {
+                        const res = validateEmail(val);
+                        if (res.isValid) setErrors(prev => ({...prev, email: null}));
+                      }
+                    }}
+                    onBlur={() => {
+                      if (email.trim()) {
+                        const res = validateEmail(email);
+                        if (!res.isValid) setErrors(prev => ({...prev, email: res.error}));
+                      }
+                    }}
                     placeholder="john@example.com"
-                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.email ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.email ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                   />
                   {errors.email && <span className="text-red-500 text-xs mt-1 block font-medium">{errors.email}</span>}
                 </div>
@@ -626,9 +620,24 @@ export function CareerOpportunitiesPage() {
                     name="user_phone" 
                     required 
                     value={phone} 
-                    onChange={e => { setPhone(e.target.value); setErrors(prev => ({...prev, phone: null})); }}
+                    onChange={e => { 
+                      const val = e.target.value;
+                      if (/^[0-9+\s\-().]*$/.test(val)) {
+                        setPhone(val); 
+                        if (errors.phone) {
+                          const res = validatePhone(val);
+                          if (res.isValid) setErrors(prev => ({...prev, phone: null}));
+                        }
+                      }
+                    }}
+                    onBlur={() => {
+                      if (phone.trim()) {
+                        const res = validatePhone(phone);
+                        if (!res.isValid) setErrors(prev => ({...prev, phone: res.error}));
+                      }
+                    }}
                     placeholder="+91 98765 43210"
-                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.phone ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
+                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.phone ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                   />
                   {errors.phone && <span className="text-red-500 text-xs mt-1 block font-medium">{errors.phone}</span>}
                 </div>
@@ -641,10 +650,23 @@ export function CareerOpportunitiesPage() {
                     name="message" 
                     required 
                     value={selectedJob} 
-                    onChange={e => { setSelectedJob(e.target.value); setErrors(prev => ({...prev, selectedJob: null})); }} 
+                    onChange={e => { 
+                      const val = e.target.value;
+                      setSelectedJob(val); 
+                      if (errors.selectedJob) {
+                        const res = validateRequired(val, 'Position applying for', 3);
+                        if (res.isValid) setErrors(prev => ({...prev, selectedJob: null}));
+                      }
+                    }} 
+                    onBlur={() => {
+                      if (selectedJob.trim()) {
+                        const res = validateRequired(selectedJob, 'Position applying for', 3);
+                        if (!res.isValid) setErrors(prev => ({...prev, selectedJob: res.error}));
+                      }
+                    }}
                     rows="3"
                     placeholder="e.g. Full Stack Developer, Mobile App Engineer, UI/UX Designer..."
-                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.selectedJob ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all resize-none placeholder:text-slate-400`}
+                    className={`w-full px-3.5 sm:px-4 py-3 border ${errors.selectedJob ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'} rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all resize-none placeholder:text-slate-400`}
                   ></textarea>
                   {errors.selectedJob && <span className="text-red-500 text-xs mt-1 block font-medium">{errors.selectedJob}</span>}
                 </div>

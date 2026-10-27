@@ -1,0 +1,133 @@
+# ==============================================================================
+# Apache Configuration for Dreamwarez Single Page Application (React / Vite)
+# ==============================================================================
+
+# Disable directory browsing
+Options -Indexes
+
+# ------------------------------------------------------------------------------
+# 1. MIME Types Configuration
+# Ensures correct MIME types for modern ES modules, styles, fonts, and images
+# ------------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType application/javascript           .js .mjs
+  AddType text/css                         .css
+  AddType image/svg+xml                    .svg
+  AddType image/webp                       .webp
+  AddType font/woff2                       .woff2
+  AddType font/woff                        .woff
+  AddType application/json                 .json
+  AddType application/xml                  .xml
+  AddType text/plain                       .txt
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 2. SPA URL Rewriting (HTML5 History API)
+# Fixes 404 / "This page doesn't seem to exist" errors on page refresh and routing
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. If requested path is an existing file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 2. Allow direct execution of PHP scripts (e.g. email dispatch)
+  RewriteCond %{REQUEST_URI} \.php$ [NC]
+  RewriteRule ^ - [L]
+
+  # 3. Route /api/send-email or /send-email to send-email.php
+  RewriteRule ^api/send-email/?$ send-email.php [L,QSA]
+  RewriteRule ^send-email/?$ send-email.php [L,QSA]
+
+  # 4. Never rewrite index.html
+  RewriteRule ^index\.html$ - [L]
+
+  # 5. If deployed inside the /react-preview/ subfolder, route to /react-preview/index.html
+  RewriteCond %{REQUEST_URI} ^/react-preview/ [NC]
+  RewriteRule ^.*$ /react-preview/index.html [L]
+
+  # 6. Standard fallback for root deployment (or relative rewrite)
+  RewriteRule . index.html [L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3. Security Headers
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevent MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Cross-Site Scripting protection for legacy browsers
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 4. Gzip / Deflate Compression
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. Browser Caching
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML: Never cache index.html so updates are visible immediately
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Hashed CSS and JS assets (safe to cache long-term)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Images and Media
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Web Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+</IfModule>
+
+# Prevent caching for HTML files via Cache-Control headers
+<FilesMatch "\.(html)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </IfModule>
+</FilesMatch>
+
+# ------------------------------------------------------------------------------
+# 6. Block Sensitive Files
+# ------------------------------------------------------------------------------
+<FilesMatch "(\.env|\.git|package\.json|package-lock\.json|vite\.config\.js)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>

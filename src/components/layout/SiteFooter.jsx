@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './siteFooter.module.css'
 
 export function SiteFooter() {
@@ -24,13 +25,13 @@ export function SiteFooter() {
             <h3 className={styles.heading}>Quick Links</h3>
           </div>
           <nav className={styles.linkList} aria-label="Quick Links">
-            <a className={styles.link} href="/">Home</a>
-            <a className={styles.link} href="/about-us/">About Us</a>
-            <a className={styles.link} href="/career-opportunities/">Career Opportunities</a>
-            <a className={styles.link} href="/contact/">Contact Us</a>
-            <a className={styles.link} href="/our-softwares/">Our Softwares</a>
-            <a className={styles.link} href="/privacy-policy/">Privacy Policy</a>
-            <a className={styles.link} href="/services/">Services</a>
+            <Link className={styles.link} to="/">Home</Link>
+            <Link className={styles.link} to="/about-us/">About Us</Link>
+            <Link className={styles.link} to="/career-opportunities/">Career Opportunities</Link>
+            <Link className={styles.link} to="/contact/">Contact Us</Link>
+            <Link className={styles.link} to="/our-softwares/">Our Softwares</Link>
+            <Link className={styles.link} to="/privacy-policy/">Privacy Policy</Link>
+            <Link className={styles.link} to="/services/">Services</Link>
           </nav>
         </div>
 
@@ -40,9 +41,9 @@ export function SiteFooter() {
             <h3 className={styles.heading}>Policies</h3>
           </div>
           <nav className={styles.linkList} aria-label="Policies">
-            <a className={styles.link} href="/terms-and-condition/">Terms and condition</a>
-            <a className={styles.link} href="/refund-policy/">Refund Policy</a>
-            <a className={styles.link} href="/cancellation-policy/">Cancellation Policy</a>
+            <Link className={styles.link} to="/terms-and-condition/">Terms and condition</Link>
+            <Link className={styles.link} to="/refund-policy/">Refund Policy</Link>
+            <Link className={styles.link} to="/cancellation-policy/">Cancellation Policy</Link>
           </nav>
         </div>
 

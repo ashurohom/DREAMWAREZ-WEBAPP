@@ -1,8 +1,19 @@
+import ronitImg from '../assets/dw_team/RonitProfile.jpg';
+import kanchanImg from '../assets/dw_team/Kanchan.jpg';
+import dishaImg from '../assets/dw_team/Disha.jpg';
+import rushikeshImg from '../assets/dw_team/Rushikesh.jpg';
+import ishikaImg from '../assets/dw_team/Ishika.jpeg';
+import ashitoshImg from '../assets/dw_team/Ashitosh.jpg';
+import abhishekImg from '../assets/dw_team/Abhishek.jpg';
+import shrutiImg from '../assets/dw_team/Shruti.jpg';
+import swamiImg from '../assets/dw_team/swami.jpg';
+import gayatriImg from '../assets/dw_team/gayatri.jpg';
+
 export const teamMembers = [
   {
     name: "Mr. Ronit Wagh",
     role: "Managing Director",
-    src: "/dw_team/RonitProfile.jpg",
+    src: ronitImg,
     skills: [{ n: "Strategy & Ops", v: 95 }, { n: "Software Architecture", v: 90 }, { n: "Cloud Infrastructure", v: 88 }],
     bio: "Ronit drives the technological vision and operations at Dreamwarez, ensuring our clients receive world-class solutions.",
     quote: "Technology should dissolve into the workflow and just work."
@@ -10,7 +21,7 @@ export const teamMembers = [
   {
     name: "Kanchan Kate",
     role: "Android Developer",
-    src: "/dw_team/Kanchan.jpg",
+    src: kanchanImg,
     skills: [{ n: "Kotlin & Java", v: 96 }, { n: "Android SDK", v: 92 }, { n: "Jetpack Compose", v: 90 }],
     bio: "Kanchan designs robust, user-friendly mobile applications optimized for the Android platform ecosystem.",
     quote: "Elegant mobile layouts drive user engagement."
@@ -18,7 +29,7 @@ export const teamMembers = [
   {
     name: "Disha Khachane",
     role: "Software Developer",
-    src: "/dw_team/Disha.jpg",
+    src: dishaImg,
     skills: [{ n: "React & Node.js", v: 90 }, { n: "TypeScript", v: 88 }, { n: "REST APIs", v: 94 }],
     bio: "Disha focuses on front-end architectures and seamless REST integration across the web application suite.",
     quote: "Clean code always leads to scalable architectures."
@@ -26,7 +37,7 @@ export const teamMembers = [
   {
     name: "Rushikesh Bankar",
     role: "Software Developer",
-    src: "/dw_team/Rushikesh.jpg",
+    src: rushikeshImg,
     skills: [{ n: "Python & Django", v: 92 }, { n: "PostgreSQL", v: 90 }, { n: "Docker & CI/CD", v: 85 }],
     bio: "Rushikesh manages backend performance, secure databases, and continuous integration workflows.",
     quote: "Reliability is the foundation of backend engineering."
@@ -34,7 +45,7 @@ export const teamMembers = [
   {
     name: "Ishika Bhaskar",
     role: "Web Developer",
-    src: "/dw_team/Ishika.jpeg",
+    src: ishikaImg,
     skills: [{ n: "HTML/CSS & Tailwind", v: 95 }, { n: "JavaScript", v: 90 }, { n: "UI/UX Design", v: 86 }],
     bio: "Ishika creates responsive, interactive interface designs utilizing modern styling tools.",
     quote: "User experiences are sculpted by layout symmetry."
@@ -42,7 +53,7 @@ export const teamMembers = [
   {
     name: "Ashitosh Rohom",
     role: "Software Developer",
-    src: "/dw_team/Ashitosh.jpg",
+    src: ashitoshImg,
     skills: [{ n: "PHP & Laravel", v: 90 }, { n: "MySQL", v: 88 }, { n: "JavaScript", v: 85 }],
     bio: "Ashitosh builds scalable PHP applications and handles database schema operations.",
     quote: "Simplify logic at every level."
@@ -50,7 +61,7 @@ export const teamMembers = [
   {
     name: "Abhishek Jagzap",
     role: "Android Developer",
-    src: "/dw_team/Abhishek.jpg",
+    src: abhishekImg,
     skills: [{ n: "Android Studio", v: 92 }, { n: "Flutter", v: 88 }, { n: "Material Design", v: 90 }],
     bio: "Abhishek builds clean mobile components and handles API data synchronization.",
     quote: "Responsive widgets create outstanding mobile apps."
@@ -58,7 +69,7 @@ export const teamMembers = [
   {
     name: "Shruti Shukla",
     role: "Software Developer",
-    src: "/dw_team/Shruti.jpg",
+    src: shrutiImg,
     skills: [{ n: "Java Spring Boot", v: 90 }, { n: "Microservices", v: 85 }, { n: "SQL Server", v: 88 }],
     bio: "Shruti designs backend services and implements secure business rule controllers.",
     quote: "Architecture must support growth."
@@ -66,7 +77,7 @@ export const teamMembers = [
   {
     name: "Swami Wardule",
     role: "Software Developer",
-    src: "/dw_team/swami.jpg",
+    src: swamiImg,
     skills: [{ n: "C# & .NET", v: 93 }, { n: "Entity Framework", v: 90 }, { n: "Web API", v: 92 }],
     bio: "Swami designs secure system features and handles core code integrations.",
     quote: "Precision in logic eliminates bugs."
@@ -74,7 +85,7 @@ export const teamMembers = [
   {
     name: "Gayatri Gaikwad",
     role: "Software Developer",
-    src: "/dw_team/gayatri.jpg",
+    src: gayatriImg,
     skills: [{ n: "Python & AI", v: 88 }, { n: "Data Processing", v: 90 }, { n: "React", v: 85 }],
     bio: "Gayatri implements data-driven models and develops rich dashboards.",
     quote: "Insightful metrics drive smart decisions."

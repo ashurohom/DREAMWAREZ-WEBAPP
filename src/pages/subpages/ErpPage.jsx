@@ -1,19 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
 import { Interactive3DSticker } from '../../components/layout/Interactive3DSticker';
 
-// ERP custom assets
-import erpHeroBg from '../../assets/erp_hero_bg.png';
-import erpHeroImg from '../../assets/erp_hero.jpg';
-import erpSales from '../../assets/erp_sales.png';
-import erpPurchase from '../../assets/erp_purchase.png';
-import erpWarehouse from '../../assets/erp_warehouse.png';
-import erpAccounting from '../../assets/erp_accounting.png';
-import erpMrp from '../../assets/erp_mrp.png';
-import erpBi from '../../assets/tablet_graphs.png';
+// ERP custom assetsimport erpHeroImg from '../../assets/erp_hero.jpg';import erpBi from '../../assets/tablet_graphs.png';
 import erpSocial from '../../assets/team_meeting.png';
 
 const SectionLabel = ({ children, align = 'left' }) => {
@@ -167,9 +160,9 @@ export function ErpPage() {
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-2">It handles full scale workflow.</p>
               <p className="text-base sm:text-lg font-extrabold text-slate-900 mb-6">Quotations ➔ Sales order ➔ Invoice</p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/sales-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/sales-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -597,9 +590,9 @@ export function ErpPage() {
                 Dreamwarez’s replenishment management rules enable the system to generate draft purchase orders automatically, or you can configure it to run a lean process driven entirely by current production needs.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/purchase-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/purchase-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -630,9 +623,9 @@ export function ErpPage() {
                 ))}
               </ul>
               <div className="w-full sm:w-auto">
-                <a href="/erp/warehouse-stock-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/warehouse-stock-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -961,9 +954,9 @@ export function ErpPage() {
                 You can also track Invoicing & Payments by Accounting Voucher & Receipts.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/accounting/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/accounting/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -984,9 +977,9 @@ export function ErpPage() {
                 It handles the consumption and production of products according to Bill of materials.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/mrp/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/mrp/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -1186,9 +1179,9 @@ export function ErpPage() {
                 No need for specialized program to create graphs and charts.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/business-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/business-management/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -1209,9 +1202,9 @@ export function ErpPage() {
                 Get work done with effective collaboration across departments, geographies, documents and business applications. All of this while decreasing email overload.
               </p>
               <div className="w-full sm:w-auto">
-                <a href="/erp/enterprise-social-network/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
+                <Link to="/erp/enterprise-social-network/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0EA5E9] hover:bg-[#0284C7] active:scale-[0.98] text-white font-bold text-sm py-3 px-6 rounded-full shadow-[0_6px_16px_rgba(14,165,233,0.22)] transition-all text-center">
                   Explore More &rarr;
-                </a>
+                </Link>
               </div>
             </div>
 

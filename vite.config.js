@@ -7,11 +7,24 @@ function emailApiPlugin() {
   return {
     name: 'email-api-plugin',
     configureServer(server) {
-      server.middlewares.use('/api/send-email', (req, res) => {
+      server.middlewares.use((req, res, next) => {
+        const url = (req.url || '').split('?')[0];
+        const isEmailEndpoint =
+          url === '/api/send-email' ||
+          url === '/send-email.php' ||
+          url === '/api/send-email.php' ||
+          url.endsWith('/api/send-email') ||
+          url.endsWith('/send-email.php') ||
+          url.endsWith('/api/send-email.php');
+
+        if (!isEmailEndpoint) {
+          return next();
+        }
+
         if (req.method === 'OPTIONS') {
           res.setHeader('Access-Control-Allow-Origin', '*');
           res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
           res.statusCode = 200;
           res.end();
           return;
@@ -39,7 +52,7 @@ function emailApiPlugin() {
             res.end(JSON.stringify(result));
           } catch (err) {
             console.error('Email API Error:', err);
-            res.statusCode = 500;
+            res.statusCode = 400;
             res.end(JSON.stringify({ success: false, error: err.message || 'Failed to send email' }));
           }
         });
@@ -55,5 +68,6 @@ export default defineConfig({
     tailwindcss(),
     emailApiPlugin(),
   ],
+  base: '/react-preview/',
 })
 

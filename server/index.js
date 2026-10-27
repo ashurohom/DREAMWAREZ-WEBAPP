@@ -40,8 +40,17 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // API Endpoint: /api/send-email
-  if (req.url === '/api/send-email') {
+  // API Endpoint: /api/send-email and /send-email.php
+  const requestUrl = (req.url || '').split('?')[0];
+  const isEmailEndpoint =
+    requestUrl === '/api/send-email' ||
+    requestUrl === '/send-email.php' ||
+    requestUrl === '/api/send-email.php' ||
+    requestUrl.endsWith('/api/send-email') ||
+    requestUrl.endsWith('/send-email.php') ||
+    requestUrl.endsWith('/api/send-email.php');
+
+  if (isEmailEndpoint) {
     if (req.method !== 'POST') {
       res.statusCode = 405;
       res.setHeader('Content-Type', 'application/json');
@@ -63,7 +72,7 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(result));
       } catch (err) {
         console.error('Email API Error:', err);
-        res.statusCode = 500;
+        res.statusCode = 400;
         res.end(JSON.stringify({ success: false, error: err.message || 'Failed to send email' }));
       }
     });

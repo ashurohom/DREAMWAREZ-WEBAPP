@@ -2402,7 +2402,7 @@ textarea.form-control {
 /* Custom ERP Page Styles */
 .erp-hero-section {
   position: relative;
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/erp_hero_bg_new.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2646,7 +2646,7 @@ textarea.form-control {
 
 /* Purchase Management page specific styles */
 .purchase-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/purchase_hero_bg.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .purchase-intro-section {
@@ -2690,16 +2690,16 @@ textarea.form-control {
 }
 
 .warehouse-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/warehouse_hero_bg.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .accounting-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/accounting_hero_bg.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 /* Our Softwares specific styles */
 .softwares-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('./assets/softwares_hero_bg.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6));
 }
 
 .softwares-title-gradient {
@@ -4488,8 +4488,7 @@ textarea.form-control {
 
 /* MRP page specific styles */
 .mrp-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
-url('./assets/mrp_hero_bg_new.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .mrp-page-section-redesign {
@@ -4695,7 +4694,7 @@ url('./assets/mrp_hero_bg_new.png');
 
 /* Sales page redesigned sections and grid (same height cards and text) */
 .erp-hero-section.sales-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/sales_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .sales-page-section-redesign {
@@ -4865,7 +4864,7 @@ url('./assets/mrp_hero_bg_new.png');
 
 /* Business Intelligence (BI) page specific styles */
 .erp-hero-section.bi-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/bi_hero_bg_new.jpg');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .bi-title-gradient {
@@ -5049,7 +5048,7 @@ url('./assets/mrp_hero_bg_new.png');
    ========================================================================== */
 
 .erp-hero-section.social-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/mrp_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .social-intro-section {
@@ -5289,7 +5288,7 @@ url('./assets/mrp_hero_bg_new.png');
 
 /* CRM page specific styles */
 .erp-hero-section.crm-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/crm_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .crm-title-gradient {
@@ -5311,7 +5310,7 @@ url('./assets/mrp_hero_bg_new.png');
 
 /* Human Resources page specific styles */
 .erp-hero-section.hr-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/hr_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
 }
 
 .hr-title-gradient {
@@ -5328,35 +5327,35 @@ url('./assets/mrp_hero_bg_new.png');
 
 /* Cybersecurity & Digital Forensics */
 .erp-hero-section.cyber-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/cyber_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
   background-size: cover;
   background-position: center;
 }
 
 /* AR & VR Solutions */
 .erp-hero-section.ar-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('./assets/arvr_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75));
   background-size: cover;
   background-position: center;
 }
 
 /* About Us */
 .erp-hero-section.about-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60)), url('./assets/about_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60));
   background-size: cover;
   background-position: center;
 }
 
 /* Career Opportunities */
 .erp-hero-section.careers-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60)), url('./assets/careers_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60));
   background-size: cover;
   background-position: center;
 }
 
 /* Contact Us */
 .erp-hero-section.contact-hero {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60)), url('./assets/contact_hero_bg.png');
+  background-image: linear-gradient(rgba(15, 23, 42, 0.60), rgba(15, 23, 42, 0.60));
   background-size: cover;
   background-position: center;
 }

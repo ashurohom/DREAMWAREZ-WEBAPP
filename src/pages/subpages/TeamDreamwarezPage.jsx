@@ -207,7 +207,7 @@ export function TeamDreamwarezPage() {
                     >
                       <img
                         src={member.src}
-                        alt="Dreamwarez Team Member"
+                        alt={member.name}
                         className="w-full h-full object-cover"
                       />
                       {/* Live active dot */}

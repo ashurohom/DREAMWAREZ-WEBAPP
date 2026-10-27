@@ -39,6 +39,21 @@ export async function sendEnquiryEmail({
   fileAttachment,
   formType = 'Website Contact Form'
 }) {
+  // Server-side validation
+  if (!name || typeof name !== 'string' || name.trim().length < 2) {
+    throw new Error('Valid name is required (minimum 2 characters)');
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!email || typeof email !== 'string' || !emailRegex.test(email.trim())) {
+    throw new Error('Valid email address is required');
+  }
+
+  const rawPhoneDigits = (phone || '').toString().replace(/\D/g, '');
+  if (rawPhoneDigits.length < 10 || rawPhoneDigits.length > 15) {
+    throw new Error('Valid phone number is required (10 to 15 digits)');
+  }
+
   const transporter = getMailTransporter();
   const hostUser = process.env.EMAIL_HOST_USER;
   const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || process.env.VITE_ADMIN_NOTIFICATION_EMAIL || hostUser;

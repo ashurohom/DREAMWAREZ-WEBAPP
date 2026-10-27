@@ -8,15 +8,7 @@ import androidUserCentric from '../../assets/android_user_centric.png';
 import androidRobustPerf from '../../assets/android_robust_perf.png';
 import androidFeatureRich from '../../assets/android_feature_rich.png';
 import androidScalableArch from '../../assets/android_scalable_arch.png';
-import androidRobustSecurity from '../../assets/android_robust_security.png';
-import androidHeroBg from '../../assets/android_hero.png';
-import devWoman from '../../assets/dev_woman.png';
-import androidReqAnalysis from '../../assets/req_analysis_ios_1781516934814.png';
-import androidUiUx from '../../assets/ui_ux_ios_1781516956654.png';
-import androidDevIntegration from '../../assets/dev_integration_ios_1781516976696.png';
-import androidQaTesting from '../../assets/qa_testing_ios_1781516996394.png';
-import androidLaunchMaint from '../../assets/launch_maint_ios_1781517017797.png';
-
+import androidRobustSecurity from '../../assets/android_robust_security.png';import devWoman from '../../assets/dev_woman.png';
 const SectionLabel = ({ children, className = '', align = 'left' }) => {
   const isCentered = align === 'center';
   return (

@@ -29,17 +29,7 @@ const SectionLabel = ({ children, className = '', align = 'left' }) => {
   );
 };
 
-// Import local assets
-import warehouseReporting from '../../assets/warehouse_reporting.png';
-import mrpScheduling from '../../assets/mrp_scheduling.png';
-import warehouseDoubleEntry from '../../assets/warehouse_double_entry.png';
-import purchaseControl from '../../assets/purchase_control.png';
-import accountingInvoicing from '../../assets/accounting_invoicing.png';
-import workspaceHands from '../../assets/workspace_hands.png';
-import mrpAnalytics from '../../assets/mrp_analytics.png';
-import teamMeeting from '../../assets/team_meeting.png';
-import tabletGraphs from '../../assets/tablet_graphs.png';
-import constructionHeroImg from '../../assets/construction_hero.jpg';
+// Import local assetsimport constructionHeroImg from '../../assets/construction_hero.jpg';
 
 export function QualityConstructionPage() {
   const [showSimulator, setShowSimulator] = useState(false);

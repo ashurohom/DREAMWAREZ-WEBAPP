@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
-import { ChatWidget } from '../../components/layout/ChatWidget';
-import couchWorkspace from '../../assets/couch_workspace.png';
-import csWebDesign from '../../assets/cs_process_design_1781517476994.png';
-import platformStandardImg from '../../assets/platform standard.png';
+import { ChatWidget } from '../../components/layout/ChatWidget';import platformStandardImg from '../../assets/platform standard.png';
 import seoImage from '../../assets/global_reach_ios_1781517195521.png';
 import webdevHeroNew from '../../assets/webdev_hero.png';
 

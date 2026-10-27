@@ -86,7 +86,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white text-purple-400 font-bold">Loading Experience...</div>}>
       <Routes>

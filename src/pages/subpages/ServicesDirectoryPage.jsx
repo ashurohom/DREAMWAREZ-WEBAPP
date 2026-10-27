@@ -8,6 +8,7 @@ import iosCustomSolutions from '../../assets/ios_custom_solutions.png';
 import androidScalableArch from '../../assets/android_scalable_arch.png';
 import erpOpt1Large from '../../assets/erp_opt1_large.jpg';
 import erpOpt1Small from '../../assets/erp_opt1_small.jpg';
+import servicesHeroSticker from '../../assets/stickers/services_hero_specific_3.png';
 
 export function ServicesDirectoryPage() {
   const [showSimulator, setShowSimulator] = useState(false);
@@ -108,7 +109,7 @@ export function ServicesDirectoryPage() {
               {/* Right Column: Image */}
               <div className="flex justify-center md:justify-end reveal reveal-fade-right">
                 <img 
-                  src="/stickers/services_hero_specific_3.png" 
+                  src={servicesHeroSticker} 
                   alt="Services Directory" 
                   className="w-full max-w-[450px] aspect-square object-cover rounded-3xl shadow-2xl animate-float" 
                 />

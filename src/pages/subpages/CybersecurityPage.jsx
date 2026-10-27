@@ -2,17 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { SEO } from '../../components/layout/SEO';
 import { SiteHeader } from '../../components/layout/SiteHeader';
 import { SiteFooter } from '../../components/layout/SiteFooter';
-import { ChatWidget } from '../../components/layout/ChatWidget';
-import cybersecurity3dShield from '../../assets/cybersecurity_hero.png';
-import cyberHeroBg from '../../assets/cyber_hero_bg.png';
+import { ChatWidget } from '../../components/layout/ChatWidget';import cyberHeroBg from '../../assets/cyber_hero_bg.png';
 import erpHeroBgNew from '../../assets/erp_hero_bg.png';
 import coffeeDesk from '../../assets/coffee_desk.png';
-import teamMeeting from '../../assets/team_meeting.png';
-import alertsDashboard from '../../assets/alerts_dashboard_ui.png';
-import sofaLaptop from '../../assets/sofa_laptop.png';
-import accountingInvoice from '../../assets/accounting_invoice_moderate.png';
-import cyberHeroIsometric from '../../assets/cyber_hero_isometric.png';
-import cyberHeroDark from '../../assets/cyber_hero_dark.jpg';
+import teamMeeting from '../../assets/team_meeting.png';import cyberHeroDark from '../../assets/cyber_hero_dark.jpg';
 
 export function CybersecurityPage() {
   return (

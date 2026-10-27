@@ -7,6 +7,14 @@ import { SiteFooter } from '../../components/layout/SiteFooter';
 import { ChatWidget } from '../../components/layout/ChatWidget';
 import contactHeroBg from '../../assets/new_contact_hero.png';
 import {
+  validateEmail,
+  validatePhone,
+  validateName,
+  validateRequired,
+  validateSelect
+} from '../../utils/validation';
+import { submitFormEmail } from '../../utils/sendEmail';
+import {
   MapPin,
   Phone,
   Mail,
@@ -110,12 +118,24 @@ export function ContactPage() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name.trim() || !/^[a-zA-Z\s]+$/.test(name)) newErrors.name = 'Invalid name';
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Invalid email';
-    if (!phone.trim() || !/^\d{10,15}$/.test(phone)) newErrors.phone = 'Invalid phone number';
-    if (!designation) newErrors.designation = 'Invalid designation';
-    if (!serviceArea) newErrors.serviceArea = 'Invalid service area';
-    if (!message.trim()) newErrors.message = 'Invalid message';
+
+    const nameRes = validateName(name);
+    if (!nameRes.isValid) newErrors.name = nameRes.error;
+
+    const emailRes = validateEmail(email);
+    if (!emailRes.isValid) newErrors.email = emailRes.error;
+
+    const phoneRes = validatePhone(phone);
+    if (!phoneRes.isValid) newErrors.phone = phoneRes.error;
+
+    const serviceRes = validateSelect(serviceArea, 'a service area');
+    if (!serviceRes.isValid) newErrors.serviceArea = serviceRes.error;
+
+    const desigRes = validateSelect(designation, 'your designation / role');
+    if (!desigRes.isValid) newErrors.designation = desigRes.error;
+
+    const msgRes = validateRequired(message, 'Project requirements', 10);
+    if (!msgRes.isValid) newErrors.message = msgRes.error;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -143,68 +163,14 @@ export function ContactPage() {
       formType: 'Website Consultation Form'
     };
 
-    // 1. Send directly to company mail via our backend SMTP API (/api/send-email)
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        if (result.success) {
-          setIsSubmitted(true);
-          setIsSubmitting(false);
-          return;
-        }
-      }
-    } catch (apiErr) {
-      console.warn('Backend email API unavailable, falling back to secondary transport...', apiErr);
-    }
-
-    // 2. Secondary fallback via EmailJS if configured
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    const sendMailFallback = () => {
-      const adminEmail = import.meta.env.VITE_ADMIN_NOTIFICATION_EMAIL || 'ashitosh@dreamwarez.in';
-      const subject = encodeURIComponent(`New enquiry from ${name || 'website form'}`);
-      const body = encodeURIComponent([
-        `Name: ${name || 'N/A'}`,
-        `Email: ${email || 'N/A'}`,
-        `Company: ${company || 'N/A'}`,
-        `Phone: ${phone || 'N/A'}`,
-        `Designation: ${designation || 'N/A'}`,
-        `Service Area: ${serviceArea || 'N/A'}`,
-        '',
-        `Message: ${message || 'N/A'}`,
-      ].join('\n'));
-
-      window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+      await submitFormEmail(formData);
       setIsSubmitted(true);
       setIsSubmitting(false);
-    };
-
-    if (serviceId && templateId && publicKey && serviceId !== 'YOUR_SERVICE_ID') {
-      emailjs
-        .sendForm(serviceId, templateId, formRef.current, publicKey)
-        .then(
-          (result) => {
-            console.log('Email successfully sent via EmailJS!', result.text);
-            setIsSubmitted(true);
-            setIsSubmitting(false);
-          },
-          (error) => {
-            console.error('Failed to send email via EmailJS. Falling back to mail client.', error.text);
-            sendMailFallback();
-          }
-        );
-    } else {
-      sendMailFallback();
+    } catch (err) {
+      console.error('Failed to submit consultation form:', err);
+      setFormError(err.message || 'Failed to submit form directly to email. Please check your connection and try again.');
+      setIsSubmitting(false);
     }
   };
 
@@ -616,11 +582,21 @@ export function ContactPage() {
                           required
                           value={name}
                           onChange={(e) => {
-                            setName(e.target.value);
-                            setErrors((prev) => ({ ...prev, name: null }));
+                            const val = e.target.value;
+                            setName(val);
+                            if (errors.name) {
+                              const res = validateName(val);
+                              if (res.isValid) setErrors((prev) => ({ ...prev, name: null }));
+                            }
+                          }}
+                          onBlur={() => {
+                            if (name.trim()) {
+                              const res = validateName(name);
+                              if (!res.isValid) setErrors((prev) => ({ ...prev, name: res.error }));
+                            }
                           }}
                           className={`w-full px-3.5 sm:px-4 py-3 border ${
-                            errors.name ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                            errors.name ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'
                           } rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                           placeholder="e.g. John Doe"
                         />
@@ -642,11 +618,21 @@ export function ContactPage() {
                           required
                           value={email}
                           onChange={(e) => {
-                            setEmail(e.target.value);
-                            setErrors((prev) => ({ ...prev, email: null }));
+                            const val = e.target.value;
+                            setEmail(val);
+                            if (errors.email) {
+                              const res = validateEmail(val);
+                              if (res.isValid) setErrors((prev) => ({ ...prev, email: null }));
+                            }
+                          }}
+                          onBlur={() => {
+                            if (email.trim()) {
+                              const res = validateEmail(email);
+                              if (!res.isValid) setErrors((prev) => ({ ...prev, email: res.error }));
+                            }
                           }}
                           className={`w-full px-3.5 sm:px-4 py-3 border ${
-                            errors.email ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                            errors.email ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'
                           } rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                           placeholder="john@company.com"
                         />
@@ -668,11 +654,24 @@ export function ContactPage() {
                           required
                           value={phone}
                           onChange={(e) => {
-                            setPhone(e.target.value);
-                            setErrors((prev) => ({ ...prev, phone: null }));
+                            const val = e.target.value;
+                            // Allow digits, spaces, hyphens, plus, parentheses, and dots
+                            if (/^[0-9+\s\-().]*$/.test(val)) {
+                              setPhone(val);
+                              if (errors.phone) {
+                                const res = validatePhone(val);
+                                if (res.isValid) setErrors((prev) => ({ ...prev, phone: null }));
+                              }
+                            }
+                          }}
+                          onBlur={() => {
+                            if (phone.trim()) {
+                              const res = validatePhone(phone);
+                              if (!res.isValid) setErrors((prev) => ({ ...prev, phone: res.error }));
+                            }
                           }}
                           className={`w-full px-3.5 sm:px-4 py-3 border ${
-                            errors.phone ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                            errors.phone ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'
                           } rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all placeholder:text-slate-400`}
                           placeholder="+91 98765 43210"
                         />
@@ -779,11 +778,20 @@ export function ContactPage() {
                           value={message}
                           onChange={(e) => {
                             handleMessageChange(e);
-                            setErrors((prev) => ({ ...prev, message: null }));
+                            if (errors.message) {
+                              const res = validateRequired(e.target.value, 'Project requirements', 10);
+                              if (res.isValid) setErrors((prev) => ({ ...prev, message: null }));
+                            }
+                          }}
+                          onBlur={() => {
+                            if (message.trim()) {
+                              const res = validateRequired(message, 'Project requirements', 10);
+                              if (!res.isValid) setErrors((prev) => ({ ...prev, message: res.error }));
+                            }
                           }}
                           rows={4}
                           className={`w-full px-3.5 sm:px-4 py-3 border ${
-                            errors.message ? 'border-red-500 bg-red-50/20' : 'border-slate-200 bg-slate-50/30'
+                            errors.message ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400' : 'border-slate-200 bg-slate-50/30'
                           } rounded-xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/25 focus:border-[#0EA5E9] focus:bg-white hover:border-slate-300 transition-all resize-none placeholder:text-slate-400`}
                           placeholder="Tell us about your project requirements, scope, timeline, or objectives... *"
                         />

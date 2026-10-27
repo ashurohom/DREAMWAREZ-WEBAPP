@@ -7,6 +7,7 @@ import couchWorkspace from '../../assets/couch_workspace.png';
 import warehouseScaleWms from '../../assets/warehouse_scale_wms.png';
 import outdoorLaptop from '../../assets/outdoor_laptop.png';
 import devWoman from '../../assets/dev_woman.png';
+import arVrHeroLight from '../../assets/stickers/ar_vr_hero_light.png';
 
 export function ArVrPage() {
 
@@ -83,7 +84,7 @@ export function ArVrPage() {
               {/* Right Column: Image */}
               <div className="flex justify-center md:justify-end reveal reveal-fade-right mt-4 md:mt-0">
                 <img 
-                  src="/stickers/ar_vr_hero_light.png" 
+                  src={arVrHeroLight} 
                   alt="AR VR Solutions" 
                   className="w-full max-w-[340px] sm:max-w-[400px] md:max-w-[450px] aspect-square object-cover rounded-2xl sm:rounded-[2rem] shadow-2xl animate-float" 
                 />
