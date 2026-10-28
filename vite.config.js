@@ -68,6 +68,6 @@ export default defineConfig({
     tailwindcss(),
     emailApiPlugin(),
   ],
-  base: '/react-preview/',
+  base: '/',
 })
 

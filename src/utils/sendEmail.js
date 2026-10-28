@@ -11,10 +11,10 @@ export async function submitFormEmail(formData) {
     : `${import.meta.env.BASE_URL}/`;
 
   // Candidate URLs in priority order:
-  // 1. Live PHP script at active base path (e.g. https://dreamwarez.in/react-preview/send-email.php)
-  // 2. Live PHP script in api subfolder (e.g. https://dreamwarez.in/react-preview/api/send-email.php)
+  // 1. Live PHP script at active base path (e.g. https://dreamwarez.in/send-email.php)
+  // 2. Live PHP script in api subfolder (e.g. https://dreamwarez.in/api/send-email.php)
   // 3. Root PHP script (/send-email.php)
-  // 4. API endpoint relative to base (/react-preview/api/send-email)
+  // 4. API endpoint relative to base (/api/send-email)
   // 5. Default Node/Vite endpoint (/api/send-email)
   const candidateUrls = [
     `${base}send-email.php`,

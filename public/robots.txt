@@ -3,4 +3,4 @@ Allow: /
 Disallow: /login/
 Disallow: /login
 
-Sitemap: https://dreamwarez.com/sitemap.xml
+Sitemap: https://dreamwarez.in/sitemap.xml

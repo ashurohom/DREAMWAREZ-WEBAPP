@@ -64,9 +64,9 @@ if (strlen($digitsOnly) < 10 || strlen($digitsOnly) > 15) {
 }
 
 // 4. Configuration (reads from .env if present, otherwise uses production defaults)
-$hostUser = 'ashitosh.rohom@gmail.com';
-$hostPass = 'crwwheesfikpxikr'; // Gmail App Password without spaces
-$adminEmail = 'ashitosh@dreamwarez.in';
+$hostUser = 'sender@gmail.com';
+$hostPass = 'apppassword'; // Gmail App Password without spaces
+$adminEmail = 'receiver@dreamwarez.in';
 
 // Try loading credentials from .env in current or parent directories
 $envPaths = [

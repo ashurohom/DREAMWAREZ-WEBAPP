@@ -44,11 +44,11 @@ Options -Indexes
   # 4. Never rewrite index.html
   RewriteRule ^index\.html$ - [L]
 
-  # 5. If deployed inside the /react-preview/ subfolder, route to /react-preview/index.html
-  RewriteCond %{REQUEST_URI} ^/react-preview/ [NC]
-  RewriteRule ^.*$ /react-preview/index.html [L]
+  # 5. Redirect legacy /react-preview/ URLs to root domain
+  RewriteCond %{REQUEST_URI} ^/react-preview/(.*)$ [NC]
+  RewriteRule ^react-preview/(.*)$ /$1 [R=301,L]
 
-  # 6. Standard fallback for root deployment (or relative rewrite)
+  # 6. Standard fallback for root SPA deployment (HTML5 History API)
   RewriteRule . index.html [L]
 </IfModule>
 

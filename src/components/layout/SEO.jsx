@@ -6,7 +6,7 @@ export function SEO({
   description, 
   keywords, 
   canonical, 
-  ogImage = 'https://dreamwarez.com/logo.png', 
+  ogImage = 'https://dreamwarez.in/logo.png', 
   ogType = 'website',
   schema 
 }) {
@@ -21,7 +21,7 @@ export function SEO({
   const currentDesc = description || defaultDesc;
   const currentKeywords = keywords || defaultKeywords;
   const canonicalUrl = canonical 
-    ? (canonical.startsWith('http') ? canonical : `https://dreamwarez.com${canonical.startsWith('/') ? canonical : `/${canonical}`}`)
+    ? (canonical.startsWith('http') ? canonical : `https://dreamwarez.in${canonical.startsWith('/') ? canonical : `/${canonical}`}`)
     : undefined;
 
   return (
